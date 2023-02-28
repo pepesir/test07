@@ -20,6 +20,7 @@ const { mediafireDl } = require('./lib/mediafire.js')
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
 const { exec, spawn, execSync } = require("child_process")
+const keyopenai = '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'
 const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
@@ -904,7 +905,7 @@ break
             if (!isPremium) throw mess.premime
 			if (!text) throw `Example : ${prefix + command} hai|halo`
             let jawab = `${text.split("|")[0]}`
-            let buttons = [{ buttonId: 'menu', buttonText: { displayText: `` }, type: 1 }]
+            let buttons = [{ buttonId: 'menu', buttonText: { displayText: `` }, type: 1 }]
             await tio.sendButtonText(m.chat, buttons, jawab, `${text.split("|")[1]}`, m, {quoted: ftoko})
             }
             break
@@ -3132,11 +3133,61 @@ let img = `https://api.botcahx.biz.id/api/tools/ssweb?link=${text}&apikey=Admin`
 tio.sendMessage(m.chat,{ image :{ url : img } , caption : '*Nih..*' }, { quoted: fkontak })
 }
 break
-case 'ai': case 'openai': {
-if (!text) throw 'Masukkan text!'
-var api = await fetchJson(`https://mfarels.my.id/api/openai?text=${text}`)
-tio.sendMessage(m.chat, { text: api.result }, {quoted: ftoko })
-}
+case 'ai': case 'openai': 
+try { 
+  
+             if (keyopenai === "ISI_APIKEY_OPENAI_DISINI") setReply("ᴀᴘɪ ᴋᴇʏ ʜᴀꜱ ɴᴏᴛ ʙᴇᴇɴ ꜰɪʟʟᴇᴅ ɪɴ\n\nᴘʟᴇᴀꜱᴇ ꜰɪʟʟ ɪɴ ᴛʜᴇ ᴀᴘɪᴋᴇʏ ꜰɪʀꜱᴛ ɪɴ ᴛʜᴇ key.json ꜰɪʟᴇ\n\nᴛʜᴇ ᴀᴘɪᴋᴇʏ ᴄᴀɴ ʙᴇ ᴍᴀᴅᴇ ᴏɴ ᴛʜᴇ ᴡᴇʙꜱɪᴛᴇ : https://beta.openai.com/account/api-keys"); 
+  
+             if (!text) return m.reply(`ᴄʜᴀᴛ ᴡɪᴛʜ ᴀɪ.\n\nᴇxᴀᴍᴘʟᴇ:\n${prefix} ${command} ᴡʜᴀᴛ ɪꜱ ʀᴇᴄᴇꜱꜱɪᴏɴ`); 
+  
+             const configuration = new Configuration({ 
+  
+               apiKey: keyopenai, 
+  
+             }); 
+  
+             const openai = new OpenAIApi(configuration); 
+  
+             const response = await openai.createCompletion({ 
+  
+               model: "text-davinci-003", 
+  
+               prompt: text, 
+  
+               temperature: 0.3, 
+  
+               max_tokens: 3000, 
+  
+               top_p: 1.0, 
+  
+               frequency_penalty: 0.0, 
+  
+               presence_penalty: 0.0, 
+  
+             }); 
+  
+             m.reply(`${response.data.choices[0].text}`); 
+  
+           } catch (error) { 
+  
+           if (error.response) { 
+  
+             console.log(error.response.status); 
+  
+             console.log(error.response.data); 
+  
+             console.log(`${error.response.status}\n\n${error.response.data}`); 
+  
+           } else { 
+  
+             console.log(error); 
+  
+             m.reply("Sorry, there seems to be an error :"+ error.message); 
+  
+           } 
+  
+         } 
+
 break
 case 'aiimg': case 'openaiimg': case 'aigambar': {
  if (!text) throw 'Masukan text!'
