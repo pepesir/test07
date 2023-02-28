@@ -5,6 +5,7 @@ const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
 const yargs = require('yargs/yargs')
+const { Configuration, OpenAIApi } = require("openai");
 const chalk = require('chalk')
 const FileType = require('file-type')
 const path = require('path')
