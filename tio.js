@@ -18,6 +18,8 @@ const request = require('request');
 const textpro = require('./lib/textpro')
 const bochil = require('@bochilteam/scraper')
 const { mediafireDl } = require('./lib/mediafire.js')
+const dfrply = fs.readFileSync('client.jpg')
+const bcpic = fs.readFileSync('client.jpg')
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
 const { exec, spawn, execSync } = require("child_process")
@@ -33,9 +35,9 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const tengah = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const timur = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const esce = ('©WHATS-KRIZ-AI')
+const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
+const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
+const esce = ('© TioXd')
 const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
@@ -43,22 +45,22 @@ gambar = fs.readFileSync('./media/image/tio.jpg')
 //TIME
 const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
  if(time2 < "23:59:00"){
-var ucapanWaktu = 'Good night 🌌'
+var ucapanWaktu = 'Selamat Malam 🌌'
  }
  if(time2 < "19:00:00"){
-var ucapanWaktu = 'Good afternoon 🌃'
+var ucapanWaktu = 'Selamat Sore 🌃'
  }
  if(time2 < "18:00:00"){
-var ucapanWaktu = 'Good afternoon 🌅'
+var ucapanWaktu = 'Selamat Sore 🌅'
  }
  if(time2 < "15:00:00"){
-var ucapanWaktu = 'Good afternoon 🏙'
+var ucapanWaktu = 'Selamat Siang 🏙'
  }
  if(time2 < "11:00:00"){
-var ucapanWaktu = 'Good morning 🌄'
+var ucapanWaktu = 'Selamat Pagi 🌄'
  }
  if(time2 < "05:00:00"){
-var ucapanWaktu = 'Good morning 🌉'
+var ucapanWaktu = 'Selamat Pagi 🌉'
  } 
  
 // read database
@@ -1662,6 +1664,58 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 
 		m.reply('Sukses Broadcast')
 }
 break
+case 'tobc':
+					
+					if (!isCreator) return m.reply(mess.only.owner)
+						 if (args.length < 1) return m.reply(`*Reply to a audio/sticker/video with link and caption
+Example :  ${prefix}${command} https://youtu.be/ZJQ5wYh7dc , hehe 🌝*`) 
+                    var F = body.slice(6)
+					var F1 = F.split(",")[0];
+					var F2 = F.split(",")[1]; 
+					anu = await tio.chats.all()
+					if (isMedia && !m.message.videoMessage || isQuotedAudio) {
+					const encmedia = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : m
+					buff = await tio.downloadMediaMessage(encmedia)
+					for (let _ of anu) {
+					tio.sendMessage(_.jid, buff, MessageType.audio, { quoted: ftrol, mimetype: 'audio/mp4', duration: '40000271', ptt: true, contextInfo: { forwardingScore: 1, isForwarded: true, externalAdReply:{title: `${F2}`,body:"",mediaType:"2",thumbnail: bcpic,mediaUrl:`${F1}`}}})
+					}
+					} else if (isMedia && !m.message.videoMessage || isQuotedSticker) {
+					const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+					buff = await tio.downloadMediaMessage(encmedia)
+					for (let _ of anu) {
+					tio.sendMessage(_.jid, buff, sticker, { quoted: { key: {
+				   fromMe: false,
+				   participant: `0@s.whatsapp.net`, // Fake sender Jid
+				   remoteJid: "status@broadcast"
+				  },
+				  message: {
+				   orderMessage: {
+				    itemCount: 2022, 
+				    status: 1,
+				    surface: 1,
+				    message: `${body.slice(5)}`,
+				    orderTitle: '999999999', // Idk what this does
+                    thumbnail: fs.readFileSync('client.jpg'), // pepe
+				    sellerJid: `0@s.whatsapp.net` // Seller
+				   }
+				  }}, contextInfo: { forwardingScore: 508, isForwarded: true}})
+					}
+					} else if (isMedia && !m.message.videoMessage || isQuotedVideo) {
+					const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+					buff = await tio.downloadMediaMessage(encmedia)			
+					for (let _ of anu) {
+					tio.sendMessage(_.jid, buff, MessageType.video, { quoted: ftrol, thumbnail: fs.readFileSync('./media/Bosco/hemme.jpg'), contextInfo: { forwardingScore: 1, isForwarded: true, externalAdReply:{title: `${F2}`,body:"",mediaType:"2",thumbnail: bcpic,mediaUrl:`${F1}`}}})
+					}
+					} else if (isMedia && !m.message.videoMessage || isQuotedGif) {
+					const encmedia = isQuotedGif ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+					buff = await tio.downloadMediaMessage(encmedia)
+					for (let _ of anu) {
+					tio.sendMessage(_.jid, buff, gif, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 1000, status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `𝑬𝑽𝑬𝑹𝒀𝑻𝑯𝑰𝑵𝑮\n𝑾𝑰𝑳𝑳 𝑩𝑬\n😎𝑶𝑲😎`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 22, isForwarded: true}})
+					}
+					} else {
+                   m.reply('*Reply To Sticker/Audio/Video*')
+				    }
+					break	
 case 'infochat': {
 if (!m.quoted) m.reply('Reply Pesan')
 let msg = await m.getQuotedObj()
@@ -3170,17 +3224,17 @@ case 'facebook': case 'fb': case 'fbdl':
  break
  case 'instagram': case 'ig': case 'igdl': 
  if (!text) throw 'Masukkan Query Link!'
- anu = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=55a772e6eb87942896a9cd2d&url=${text}`)
+ anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
  tio.sendMessage(m.chat, { video: { url: anu.result.url }, fileName: 'ig.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
  break  
  case 'instagramreel': case 'igreel': case 'igdlreel': 
  if (!text) throw 'Masukkan Query Link!'
- anu = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=55a772e6eb87942896a9cd2d&url=${text}`)
+ anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
  tio.sendMessage(m.chat, { video: { url: anu.result.url }, fileName: 'reel.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
  break  
  case 'instagramstory': case 'igstory': case 'igdlstroy': 
  if (!text) throw 'Masukkan Query Link!'
- anu = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=55a772e6eb87942896a9cd2d&url=${text}`)
+ anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
  tio.sendMessage(m.chat, { image: { url: anu.result.url }, fileName: 'foto.jpg', mimetype: 'image/jpeg' }, { quoted: fkontak })
  break  
  case 'twitter': case 'tw': case 'twitdl':     
