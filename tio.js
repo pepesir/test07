@@ -324,6 +324,7 @@ jumlahharian = `${dataa.value}`
 if (budy.startsWith("https://youtu")) {
 takes = budy.replace('https://youtube.com/shorts/','').replace('?feature=share','').replace('https://youtube.com/watch?v=','').replace('https://youtu.be/','')   
 let yts = require("yt-search")
+let jawab = `*${ucapanWaktu}*
 let search = await yts(`https://youtu.be/${takes}`)
 ngen = `
  Title : ${search.videos[0].title}
@@ -338,28 +339,8 @@ ngen = `
 `
 message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
  let buttons = [{ buttonId: 'ytmp3', buttonText: { displayText: 'ᴀᴜᴅɪᴏ' }, type: 1 },{ buttonId: 'ytmp4', buttonText: { displayText: 'ᴠɪᴅᴇᴏ' }, type: 1 } ]
-            let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : omlen + (` | Halo ${pushname}`),
-  mimetype: `${filsk}`,
-  fileLength: 999999999999,
-  pageCount: 100,
-  caption: ʜᴇʜᴇ❗️,
-  footer: *WʜᴀᴛꜱKʀɪᴢ AI*,
-  buttons: buttons,
-  mentions: ments,
-  headerType: 4,
-  contextInfo:{externalAdReply:{
-  title: 'WʜᴀᴛꜱKʀɪᴢ AI',
-  body: 'ʜᴇʜᴇ❗️', 
-  showAdAttribution: true,
-  thumbnail: thumb,
-  mediaType: 2,
-  mediaUrl: ghme,
-  sourceUrl: webmy
-  }}
-  }
-  tio.relayMessage(m.chat, buttonMessage, {quoted: fkontak})
+           
+  tio.relayMessage(m.chat, buttons, {quoted: fkontak})
 }
 
 
