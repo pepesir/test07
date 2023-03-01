@@ -38,7 +38,7 @@ global.ghme = 'https://github.com/BOTCAHX'
 global.gcbot = "https://api.botcahx.biz.id"
 global.botname = 'WHATS-KRIZ-AI'
 global.omlen = '©WHATS-KRIZ-AI'
-global.weem = 'TEAM-TOXIC'
+global.weem = 'WHATS-KRIZ-AI'
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 	fs.unwatchFile(file)
