@@ -339,7 +339,7 @@ ngen = `
 message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
  let buttons = [{ buttonId: 'ytmp3', buttonText: { displayText: 'ᴀᴜᴅɪᴏ' }, type: 1 },{ buttonId: 'ytmp4', buttonText: { displayText: 'ᴠɪᴅᴇᴏ' }, type: 1 } ]
            
-  tio.relayMessage(m.chat, buttons, {quoted: fkontak})
+  tio.sendMessage(m.chat, buttons, {quoted: ftoko})
 }
 
 
