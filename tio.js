@@ -354,8 +354,9 @@ ngen = `
 🌹 ᴄʜᴀɴɴᴇʟ : ${search.videos[0].author.url}
 🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
 `
-message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
-message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
+
+
+
 const buttons = [
   {buttonId: `ytmp3  ${search.videos[0].url} 320kbps`, buttonText: {displayText: '🎧Audio🎧'}, type: 1},
   {buttonId: `ytmp4 ${search.videos[0].url} 360p`, buttonText: {displayText: '📽️VIdeo📽️'}, type: 1}
@@ -364,7 +365,7 @@ const buttonMessage = {
     text: ngen ,
     footer: 'ᴋʀɪᴢ ᴍᴏʟ ᴀɪ ʙᴇᴛᴀ',
     buttons: buttons,
-    image: message.imageMessage,
+    image: { url: search.videos[0].thumbnail },
     headerType: 1
 }
  tio.sendMessage(m.chat, buttonMessage)
