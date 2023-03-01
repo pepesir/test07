@@ -11,7 +11,7 @@ const chalk = require('chalk')
 const yts = require('yt-search')
 const xfar = require('xfarr-api')
 const google = require('google-it')
-const { Configurakrizn, OpenAIApi } = require("openai");
+const { Configuration, OpenAIApi } = require("openai");
 const maker = require('mumaker')
 const { VERSION } = require("../config.js");
 const naztod = require("tod-api")
@@ -31,7 +31,7 @@ const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMenkrizn, getRandom, getGroupAdmins } = require('./lib/myfunc')
+const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 
 const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
@@ -42,11 +42,11 @@ const esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
 const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
-gambar = fs.readFileSync('./media/image/tio.jpg')
+gambar = fs.readFileSync('./media/image/kriz.jpg')
 
 module.exports = kriz = async (kriz, m, chatUpdate, store) => {
     try {
-        var body = (m.mtype === 'conversakrizn') ? m.message.conversakrizn : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
+        var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
         var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
@@ -95,12 +95,12 @@ module.exports = kriz = async (kriz, m, chatUpdate, store) => {
 		'🍌 : 🍌 : 🍌 Lose'
 		]
 		
-	funckrizn pickRandom(list) {
+	function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
   }
 	const klqor = ['😁','🥰','😇','🥲','🙃','🙂','🤑','😑','♻️','🔞','✅','🙏','❤','🔴','❗','〽️','🎶','🤗','👤','🔎','🔋','📚','🎬','🐵','🐒','🐦','🍌','🍎','🥝','🥒','🫓','🍒','🍐','🥦','🌍','🌎','🎃','🎄','🥎','🎖','🏆','🏅','🥇','🥈','🥉','🎗','🎟','🎫','🎁','🎀','👑','💎','⚠️']
 	const kloadq = klqor[Math.floor(Math.random() * klqor.length)]
-	const filsj = ['applicakrizn/vnd.openxmlformats-officedocument.spreadsheetml.sheet','applicakrizn/vnd.openxmlformats-officedocument.presentakriznml.presentakrizn','applicakrizn/vnd.openxmlformats-officedocument.wordprocessingml.document','applicakrizn/pdf']
+	const filsj = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.openxmlformats-officedocument.presentationml.presentation','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/pdf']
 	const filsk = filsj[Math.floor(Math.random() * filsj.length)]
 	
 	try {
@@ -176,23 +176,23 @@ kriz.readMessages([m.key])
             key: m.key
           }})
         }
-        //Console logs by kriz
+        //Console logs by tio
    if (m.message) {
       	await console.log(chalk.black(chalk.bgRed('[ CMD ]')), chalk.black(chalk.bgGreen(new Date)), chalk.white(chalk.bgBlue(isCmd ? body : m.mtype || body.slice(0, 20))) + '\n' + chalk.black(chalk.bgCyan('[ ~> from ]')), chalk.black(chalk.bgWhite(pushname)), chalk.black(chalk.bgYellow(m.sender)) + '\n' + chalk.black(chalk.bgMagentaBright('[ ~> in ]')), chalk.black(chalk.bgYellow(m.isGroup ? pushname : 'Private Chat')), chalk.black(chalk.bgCyan(m.chat)))
 		  console.log('\n')      
             }               
 //Premium Exp
-prem.expiredCheck(kriz, m, premium);
+prem.expiredCheck(tio, m, premium);
                 
 //sticker url
 const sendStickerFromUrl = async(to, url) => {
                 var names = Date.now() / 10000;
-                var download = funckrizn (uri, filename, callback) {
-                    request.head(uri, funckrizn (err, res, body) {
+                var download = function (uri, filename, callback) {
+                    request.head(uri, function (err, res, body) {
                         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
                     });
                 };
-                download(url, './database/stick' + names + '.png', async funckrizn () {
+                download(url, './database/stick' + names + '.png', async function () {
                     console.log('selesai');
                     let filess = './database/stick' + names + '.png'
                     let asw = './database/stick' + names + '.webp'
@@ -216,16 +216,16 @@ const sendStickerFromUrl = async(to, url) => {
              }
              
              //Fake
-	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'kriz', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'tio', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${weem}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
 		const ftextt = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})}, message: { "extendedTextMessage": {"text":`${weem}`, "title": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-        const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${weem}`, "descripkrizn": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "1000000000000000000", "retailerId": `${weem}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
+        const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${weem}`, "description": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "1000000000000000000", "retailerId": `${weem}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
 		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`${weem}`, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${weem}`, "caption": `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${weem}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locakriznMessage: {name: `${weem}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
-		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocakriznMessage": { "title": `${weem}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${weem}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
+		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": `${weem}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${weem}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;weem,;;;\nFN:weem\nitem1.TEL;waid=6285875158363:6285875158363\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
 	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": `${weem}`,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 		
@@ -301,7 +301,7 @@ ngen = `
 🌹 ᴜᴘʟᴏᴀᴅᴇᴅ : ${search.videos[0].ago}
 🌹 ᴀᴜᴛʜᴏʀ : ${search.videos[0].author.name}
 🌹 ᴄʜᴀɴɴᴇʟ : ${search.videos[0].author.url}
-🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].descripkrizn}
+🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
 `
 message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: kriz.waUploadToServer })
 template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -335,8 +335,8 @@ id: `ytmp4 ${search.videos[0].url} 360p`
         // Respon Cmd with media
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
         let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
-        let { text, menkriznedJid } = hash
-        let messages = await generateWAMessage(m.chat, { text: text, menkrizns: menkriznedJid }, {
+        let { text, mentionedJid } = hash
+        let messages = await generateWAMessage(m.chat, { text: text, mentions: mentionedJid }, {
             userJid: kriz.user.id,
             quoted: m.quoted && m.quoted.fakeObj
         })
@@ -370,7 +370,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
         return isSurender || room.terjawab[index] ? `(${index + 1}) ${jawaban} ${room.terjawab[index] ? '@' + room.terjawab[index].split('@')[0] : ''}`.trim() : false
     }).filter(v => v).join('\n')}
     ${isSurender ? '' : `Perfect Player`}`.trim()
-            kriz.sendText(m.chat, caption, m, { contextInfo: { menkriznedJid: parseMenkrizn(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
+            kriz.sendText(m.chat, caption, m, { contextInfo: { mentionedJid: parseMention(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
             if (isWin || isSurender) delete _family100['family100'+m.chat]
         }
 
@@ -462,25 +462,25 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 	if (!text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4 ...')
 	const image1 = await getBuffer(url1)
 	const image2 = await getBuffer(url2)
-	const opkrizns = {}
-	opkrizns.contextInfo = {
+	const options = {}
+	options.contextInfo = {
 		forwardingScore: 5, // change it to 999 for many times forwarded
 		isForwarded: false,
 	}
 
-	opkrizns.linkPreview = {
+	options.linkPreview = {
 		title: ' 𝞛𝞓𝙎𝞙 𝙎𝞝𝗥💖 ',
 		body: 'Made by mask 𝐰𝐢𝐭𝐡 ❤️💫',
 		mediaType: 2,
 		thumbnail: image2,
 		mediaUrl: 'https://www.instagram.com/p/heehe', // insta link for video 
 		sourceUrl: 'https://wa.me/919544951258?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
-		showAdAttribukrizn: true
+		showAdAttribution: true
 	}
 
-	opkrizns.filesize = 99999999999;
+	options.filesize = 99999999999;
 
-	opkrizns.quoted = {
+	options.quoted = {
 		key: {
 			fromMe: false,
 			participant: `0@s.whatsapp.net`,
@@ -498,13 +498,13 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 	}
 
 	if (/audio/.test(m.mine)) {
-		opkrizns.durakrizn = 2000001355
-		opkrizns.ptt = true
+		options.duration = 2000001355
+		options.ptt = true
 	}
-opkrizns.audiowave = [99,0,99,0,99]
+options.audiowave = [99,0,99,0,99]
 
 	for (let jid of parsedJid(text)) {
-		await kriz.forwardMessage(jid, m.quoted_message, opkrizns)
+		await kriz.forwardMessage(jid, m.quoted_message, options)
 	}
 break
 case 'jid':
@@ -512,7 +512,7 @@ m.reply(m.chat)
 break
             case 'chat': {
                 if (!isCreator) throw mess.owner
-                if (!q) throw 'Opkrizn : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
+                if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
                 if (args[0] === 'mute') {
                     kriz.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'unmute') {
@@ -538,13 +538,13 @@ break
             break
             case 'react': {
                 if (!isCreator) throw mess.owner
-                reackriznMessage = {
+                reactionMessage = {
                     react: {
                         text: args[0],
                         key: m.key
                     }
                 }
-                kriz.sendMessage(m.chat, reackriznMessage)
+                kriz.sendMessage(m.chat, reactionMessage)
             }
             break  
             case 'join': {
@@ -574,7 +574,7 @@ break
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-		let users = m.menkriznedJid[0] ? m.menkriznedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
@@ -590,7 +590,7 @@ break
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-		let users = m.menkriznedJid[0] ? m.menkriznedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
@@ -598,19 +598,19 @@ break
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-		let users = m.menkriznedJid[0] ? m.menkriznedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
         case 'block': {
 		if (!isCreator) throw mess.owner
-		let users = m.menkriznedJid[0] ? m.menkriznedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.updateBlockStatus(users, 'block').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
         case 'unblock': {
 		if (!isCreator) throw mess.owner
-		let users = m.menkriznedJid[0] ? m.menkriznedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
@@ -627,7 +627,7 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (!text) throw 'Text ?'
-                await kriz.groupUpdateDescripkrizn(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
+                await kriz.groupUpdateDescription(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
             }
             break
           case 'setppbot': {
@@ -656,7 +656,7 @@ break
                if (!isBotAdmins) throw mess.botAdmin
                if (!isAdmins) throw mess.admin
                if (!m.quoted) throw `Message Replies dengan caption ${prefix + command}`
-               kriz.sendMessage(m.chat, { forward: m.quoted.fakeObj, menkrizns: participants.map(a => a.id) })
+               kriz.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(a => a.id) })
                }
                break
             case 'tagall': {
@@ -669,14 +669,14 @@ break
                 for (let mem of participants) {
                 teks += ` *»* @${mem.id.split('@')[0]}\n`
                 }
-                kriz.sendMessage(m.chat, { text: teks, menkrizns: participants.map(a => a.id) }, { quoted: m })
+                kriz.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
                 case 'tag': case 'hidetag': {
             if (!m.isGroup) throw mess.group
             if (!isBotAdmins) throw mess.botAdmin
             if (!isAdmins) throw mess.admin
-            kriz.sendMessage(m.chat, { text : q ? q : '' , menkrizns: participants.map(a => a.id)}, { quoted: m })
+            kriz.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
 	    case 'style': case 'styletext': {
@@ -830,7 +830,7 @@ case 'tobc':
 
 					let buff1 = fs.readFileSync('client.jpg')
 					let buff2 = fs.readFileSync('client.jpg')
-					let opkrizns = {}
+					let options = {}
 					let media = await kriz.downloadAndSaveMediaMessage(quoted)
 					let anu = await store.chats.all().map(v => v.id)
 					m.reply(`Sending Broadcast To ${anu.length} Chat\nDone Time ${anu.length * 1.5} seconds`)
@@ -887,7 +887,7 @@ let waktu = read ? read : unread
 teks += `⌕ @${i.userJid.split('@')[0]}\n`
 teks += ` ┗━⌕ *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⌕ *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: 'SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'Rules' }, type: 1 }]
-await kriz.sendButtonText(m.chat, buttons, teks, esce, m, {menkrizns: [i.userJid], quoted: fkontak})
+await kriz.sendButtonText(m.chat, buttons, teks, esce, m, {mentions: [i.userJid], quoted: fkontak})
 }}
 break
             case 'q': case 'quoted': {
@@ -904,7 +904,7 @@ break
              case 'listonline': case 'liston': {
                     let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
                     let online = [...Object.keys(store.presences[id]), botNumber]
-                    kriz.sendText(m.chat, 'List Online:\n\n' + online.map(v => ' *»* @' + v.replace(/@.+/, '')).join`\n`, m, { menkrizns: online })
+                    kriz.sendText(m.chat, 'List Online:\n\n' + online.map(v => ' *»* @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
              break
             case 'public': {
@@ -934,12 +934,12 @@ case 'mode': case 'worktype': {
   caption: wrt,
   footer: esce,
   buttons: buttons,
-  menkrizns: ments,
+  mentions: ments,
   headerType: 4,
   contextInfo:{externalAdReply:{
   title: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
   body: 'Don't Spam!', 
-  showAdAttribukrizn: true,
+  showAdAttribution: true,
   thumbnail: thumb,
   mediaType: 2,
   mediaUrl: ghme,
@@ -1006,18 +1006,18 @@ case 'mode': case 'worktype': {
                 setbot.templateMsg = true
                 m.reply(mess.success)
                 } else {
-                let seckrizns = [
+                let sections = [
                 {
                 title: "CHANGE MENU BOT",
                 rows: [
-                {title: "Template Image", rowId: `setmenu templateImage`, descripkrizn: `Change menu bot to Template Image`},
-                {title: "Template Video", rowId: `setmenu templateVideo`, descripkrizn: `Change menu bot to Template Video`},
-                {title: "Template Gif", rowId: `setmenu templateGif`, descripkrizn: `Change menu bot to Template Gif`},
-                {title: "Template Message", rowId: `setmenu templateMessage`, descripkrizn: `Change menu bot to Template Message`}
+                {title: "Template Image", rowId: `setmenu templateImage`, description: `Change menu bot to Template Image`},
+                {title: "Template Video", rowId: `setmenu templateVideo`, description: `Change menu bot to Template Video`},
+                {title: "Template Gif", rowId: `setmenu templateGif`, description: `Change menu bot to Template Gif`},
+                {title: "Template Message", rowId: `setmenu templateMessage`, description: `Change menu bot to Template Message`}
                 ]
                 },
                 ]
-                kriz.sendListMsg(m.chat, `pilih aja *${pushname}* Setmenu nya!`, esce, `*Hello Kak* !`, `Pilih Set Menu`, seckrizns, m)
+                kriz.sendListMsg(m.chat, `pilih aja *${pushname}* Setmenu nya!`, esce, `*Hello Kak* !`, `Pilih Set Menu`, sections, m)
                 }
             }
             break
@@ -1169,7 +1169,7 @@ case 'mode': case 'worktype': {
                 let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
                 let no = 1
                 for (let i of search.all) {
-                    teks += ` *»* No : ${no++}\n *»* Type : ${i.type}\n *»* Video ID : ${i.videoId}\n *»* Title : ${i.title}\n *»* Views : ${i.views}\n *»* Durakrizn : ${i.timestamp}\n *»* Upload At : ${i.ago}\n *»* Author : ${i.author.name}\n *»* Url : ${i.url}\n\n─────────────────\n\n`
+                    teks += ` *»* No : ${no++}\n *»* Type : ${i.type}\n *»* Video ID : ${i.videoId}\n *»* Title : ${i.title}\n *»* Views : ${i.views}\n *»* Duration : ${i.timestamp}\n *»* Upload At : ${i.ago}\n *»* Author : ${i.author.name}\n *»* Url : ${i.url}\n\n─────────────────\n\n`
                 }
                 kriz.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
@@ -1181,7 +1181,7 @@ case 'mode': case 'worktype': {
                 let teks = `Google Search From : ${text}\n\n`
                 for (let g of res) {
                 teks += ` *»* *Title* : ${g.title}\n`
-                teks += ` *»* *Descripkrizn* : ${g.snippet}\n`
+                teks += ` *»* *Description* : ${g.snippet}\n`
                 teks += ` *»* *Link* : ${g.link}\n\n────────────────────────\n\n`
                 } 
                 m.reply(teks)
@@ -1228,12 +1228,12 @@ case 'mode': case 'worktype': {
  *»* Title : ${anu.title}
  *»* Ext : Search
  *»* ID : ${anu.videoId}
- *»* Durakrizn : ${anu.timestamp}
+ *»* Duration : ${anu.timestamp}
  *»* Viewers : ${anu.views}
  *»* Upload At : ${anu.ago}
  *»* Author : ${anu.author.name}
  *»* Channel : ${anu.author.url}
- *»* Descripkrizn : ${anu.descripkrizn}
+ *»* Description : ${anu.description}
  *»* Url : ${anu.url}`,
                     footer: kriz.user.name,
                     buttons: buttons,
@@ -1363,11 +1363,11 @@ case 'ai': case 'openai':
 try {   
              if (keyopenai === "ISI_APIKEY_OPENAI_DISINI") setReply("ᴀᴘɪ ᴋᴇʏ ʜᴀꜱ ɴᴏᴛ ʙᴇᴇɴ ꜰɪʟʟᴇᴅ ɪɴ\n\nᴘʟᴇᴀꜱᴇ ꜰɪʟʟ ɪɴ ᴛʜᴇ ᴀᴘɪᴋᴇʏ ꜰɪʀꜱᴛ ɪɴ ᴛʜᴇ key.json ꜰɪʟᴇ\n\nᴛʜᴇ ᴀᴘɪᴋᴇʏ ᴄᴀɴ ʙᴇ ᴍᴀᴅᴇ ᴏɴ ᴛʜᴇ ᴡᴇʙꜱɪᴛᴇ : https://beta.openai.com/account/api-keys");   
              if (!text) return m.reply(`ᴄʜᴀᴛ ᴡɪᴛʜ ᴀɪ.\n\nᴇxᴀᴍᴘʟᴇ:\n${prefix} ${command} ᴡʜᴀᴛ ɪꜱ ʀᴇᴄᴇꜱꜱɪᴏɴ`);   
-             const configurakrizn = new Configurakrizn({   
+             const configuration = new Configuration({   
                apiKey: keyopenai,   
              });   
-             const openai = new OpenAIApi(configurakrizn);   
-             const response = await openai.createComplekrizn({  
+             const openai = new OpenAIApi(configuration);   
+             const response = await openai.createCompletion({  
                model: "text-davinci-003",   
                prompt: text,   
                temperature: 0.3,   
@@ -1446,12 +1446,12 @@ break
   caption: myr,
   footer: esce,
   buttons: buttons,
-  menkrizns: ments,
+  mentions: ments,
   headerType: 4,
   contextInfo:{externalAdReply:{
   title: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
   body: 'ᴅᴏɴ'ᴛ ꜱᴘᴀᴍ!', 
-  showAdAttribukrizn: true,
+  showAdAttribution: true,
   thumbnail: thumb,
   mediaType: 2,
   mediaUrl: ghme,
@@ -1466,43 +1466,43 @@ break
             let me = m.sender
             let ments = [ownernya, me, ini_kangbaned]
             let kukiw = `*Kak ${pushname}*`
-                let seckrizns = [
+                let sections = [
                 {
 	           title: ' ∫ » Sewa Bot? –––––––·•',
 	           rows: [
-	            {title: "〽️ • Sewa", rowId: `donasi`, descripkrizn: `KLIK UNTUK SEWA BOT`},
-                {title: "📴 • Owner", rowId: `owner`, descripkrizn: `KLIK UNTUK BERTANYA KEPADA OWNER`}
+	            {title: "〽️ • Sewa", rowId: `donasi`, description: `KLIK UNTUK SEWA BOT`},
+                {title: "📴 • Owner", rowId: `owner`, description: `KLIK UNTUK BERTANYA KEPADA OWNER`}
 	            ]
                 },{
                 title: "⚠︎  ∫ » CHANGE MENU BOT « ✧",
                 rows: [
-                {title: "✦  「 Group 」", rowId: `mgroup`, descripkrizn: `╰ ► 👥Fitur Buat Grup, Tapi Hati Hati Admin :v`},
-                {title: "✦  「 Webzone 」", rowId: `mwebzone`, descripkrizn: `╰ ► 📹Cari Film? Sini Tempatnya 🤫`},
-                {title: "✦  「 Downloader 」", rowId: `mdownloader`, descripkrizn: `╰ ► 📥Buat Download Apaan? 🤨`},
-                {title: "✦  「 Search 」", rowId: `msearch`, descripkrizn: `╰ ► 🔍Cari Apa Hayo`},
-                {title: "✦  「 Random 」", rowId: `mrandom`, descripkrizn: `╰ ► ❔Random Moment🗿`},
-                {title: "✦  「 Text Pro 」", rowId: `mtextpro`, descripkrizn: `╰ ► ❇Teksnya Keren Kan?`},
-                {title: "✦  「 Photo Oxy 」", rowId: `mphotooxy`, descripkrizn: `╰ ► ♻️Gabut Amat`},
-                {title: "✦  「 Ephoto 」", rowId: `mephoto`, descripkrizn: `╰ ► 🗳Buat Edit Apaan?`},
-                {title: "✦  「 Fun 」", rowId: `mfun`, descripkrizn: `╰ ► 🔫Buat Fun² Bro`},
-                {title: "✦  「 Primbon 」", rowId: `mprimbon`, descripkrizn: `╰ ► 😂Ngakak`},
-                {title: "✦  「 Convert 」", rowId: `mconvert`, descripkrizn: `╰ ► 🛠Mau Buat Apa?`},
-                {title: "✦  「 Main 」", rowId: `mmain`, descripkrizn: `╰ ► 💾Senjata Admin & Owner`},
-                {title: "✦  「 Database 」", rowId: `mdatabase`, descripkrizn: `╰ ► 📁Engak Ada Apa² Disini`},
-                {title: "✦  「 Anonymous 」", rowId: `manonymous`, descripkrizn: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
-                {title: "✦  「 Voice 」", rowId: `mvoice`, descripkrizn: `╰ ► 🎶Req Lagu Apa Ngab?`},
-                {title: "✦  「 Owner 」", rowId: `mowner`, descripkrizn: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
+                {title: "✦  「 Group 」", rowId: `mgroup`, description: `╰ ► 👥Fitur Buat Grup, Tapi Hati Hati Admin :v`},
+                {title: "✦  「 Webzone 」", rowId: `mwebzone`, description: `╰ ► 📹Cari Film? Sini Tempatnya 🤫`},
+                {title: "✦  「 Downloader 」", rowId: `mdownloader`, description: `╰ ► 📥Buat Download Apaan? 🤨`},
+                {title: "✦  「 Search 」", rowId: `msearch`, description: `╰ ► 🔍Cari Apa Hayo`},
+                {title: "✦  「 Random 」", rowId: `mrandom`, description: `╰ ► ❔Random Moment🗿`},
+                {title: "✦  「 Text Pro 」", rowId: `mtextpro`, description: `╰ ► ❇Teksnya Keren Kan?`},
+                {title: "✦  「 Photo Oxy 」", rowId: `mphotooxy`, description: `╰ ► ♻️Gabut Amat`},
+                {title: "✦  「 Ephoto 」", rowId: `mephoto`, description: `╰ ► 🗳Buat Edit Apaan?`},
+                {title: "✦  「 Fun 」", rowId: `mfun`, description: `╰ ► 🔫Buat Fun² Bro`},
+                {title: "✦  「 Primbon 」", rowId: `mprimbon`, description: `╰ ► 😂Ngakak`},
+                {title: "✦  「 Convert 」", rowId: `mconvert`, description: `╰ ► 🛠Mau Buat Apa?`},
+                {title: "✦  「 Main 」", rowId: `mmain`, description: `╰ ► 💾Senjata Admin & Owner`},
+                {title: "✦  「 Database 」", rowId: `mdatabase`, description: `╰ ► 📁Engak Ada Apa² Disini`},
+                {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
+                {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
+                {title: "✦  「 Owner 」", rowId: `mowner`, description: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
                 ]
                 },{
 	           title: ' ∫ » SUPPORT ME –––––––·•',
 	           rows: [
-	            {title: "🎟 • Donasi", rowId: `donasi`, descripkrizn: `╰ ► 💰 Donasi ♕︎`},
-                {title: "🔴 • Menu", rowId: `menu`, descripkrizn: `╰ ► 📢 Thanks For Subscribe ♕︎`},
-                {title: "📚 • Github", rowId: `sc`, descripkrizn: `╰ ► 🎷 Follow My Github ♕︎`}
+	            {title: "🎟 • Donasi", rowId: `donasi`, description: `╰ ► 💰 Donasi ♕︎`},
+                {title: "🔴 • Menu", rowId: `menu`, description: `╰ ► 📢 Thanks For Subscribe ♕︎`},
+                {title: "📚 • Github", rowId: `sc`, description: `╰ ► 🎷 Follow My Github ♕︎`}
 	]
   },
 ]
-                kriz.sendListMsg(m.chat, kukiw, esce, `*${ucapanWaktu}*`, `Click Here`, seckrizns, fkontak)
+                kriz.sendListMsg(m.chat, kukiw, esce, `*${ucapanWaktu}*`, `Click Here`, sections, fkontak)
             }
             break
             case 'allmenu': {
@@ -1511,14 +1511,14 @@ break
             let ments = [ownernya, me, ini_kangbaned]
                 anu = ``
                 let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'ᴏᴡɴᴇʀ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            kriz.sendMessage(m.chat, { caption: `${anu}`, locakrizn: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: esce, menkrizns: ments})
+            kriz.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: esce, mentions: ments})
             }
             break
 
             default:
                 if (budy.startsWith('~>')) {
                     if (!isCreator) return m.reply(mess.owner)
-                    funckrizn Return(sul) {
+                    function Return(sul) {
                         sat = JSON.stringify(sul, null, 2)
                         bang = util.format(sat)
                             if (sat == undefined) {
