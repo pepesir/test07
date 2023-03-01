@@ -337,7 +337,7 @@ ngen = `
 🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
 `
 message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
- let buttons = [{ buttonId: 'ytmp3', buttonText: { displayText: 'ᴀᴜᴅɪᴏ' }, type: 1 },{ buttonId: 'ytmp4', buttonText: { displayText: 'ᴠɪᴅᴇᴏ' }, type: 1 } }]
+ let buttons = [{ buttonId: 'ytmp3', buttonText: { displayText: 'ᴀᴜᴅɪᴏ' }, type: 1 },{ buttonId: 'ytmp4', buttonText: { displayText: 'ᴠɪᴅᴇᴏ' }, type: 1 } ]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : omlen + (` | Halo ${pushname}`),
