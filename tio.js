@@ -1714,56 +1714,56 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 
 }
 break
 case 'tobc':
+					{
+                if (!isCreator) throw mess.owner
+				if (!m.quoted) return m.reply("*WʜᴀᴛꜱKʀɪᴢ AI*\n\n*Reply to a Message*")
+
+					let buff1 = fs.readFileSync('client.jpg')
+					let buff2 = fs.readFileSync('client.jpg')
+					let options = {}
+					let media = await tio.downloadAndSaveMediaMessage(quoted)
+					let anu = await store.chats.all().map(v => v.id)
+					reply(`Sending Broadcast To ${anu.length} Chat\nDone Time ${anu.length * 1.5} seconds`)
+				for (let yoi of anu) {
 					
-					if (!isCreator) return m.reply(mess.only.owner)
-						 if (args.length < 1) return m.reply(`*Reply to a audio/sticker/video with link and caption
-Example :  ${prefix}${command} https://youtu.be/ZJQ5wYh7dc , hehe 🌝*`) 
-                    var F = body.slice(6)
-					var F1 = F.split(",")[0];
-					var F2 = F.split(",")[1]; 
-					anu = await tio.chats.all()
-					if (isMedia && !m.message.videoMessage || isQuotedAudio) {
-					const encmedia = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : m
-					buff = await tio.downloadMediaMessage(encmedia)
-					for (let _ of anu) {
-					tio.sendMessage(_.jid, buff, MessageType.audio, { quoted: ftrol, mimetype: 'audio/mp4', duration: '40000271', ptt: true, contextInfo: { forwardingScore: 1, isForwarded: true, externalAdReply:{title: `${F2}`,body:"",mediaType:"2",thumbnail: bcpic,mediaUrl:`${F1}`}}})
-					}
-					} else if (isMedia && !m.message.videoMessage || isQuotedSticker) {
-					const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await tio.downloadMediaMessage(encmedia)
-					for (let _ of anu) {
-					tio.sendMessage(_.jid, buff, sticker, { quoted: { key: {
-				   fromMe: false,
-				   participant: `0@s.whatsapp.net`, // Fake sender Jid
-				   remoteJid: "status@broadcast"
-				  },
-				  message: {
-				   orderMessage: {
-				    itemCount: 2022, 
-				    status: 1,
-				    surface: 1,
-				    message: `${body.slice(5)}`,
-				    orderTitle: '999999999', // Idk what this does
-                    thumbnail: fs.readFileSync('client.jpg'), // pepe
-				    sellerJid: `0@s.whatsapp.net` // Seller
-				   }
-				  }}, contextInfo: { forwardingScore: 508, isForwarded: true}})
-					}
-					} else if (isMedia && !m.message.videoMessage || isQuotedVideo) {
-					const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await tio.downloadMediaMessage(encmedia)			
-					for (let _ of anu) {
-					tio.sendMessage(_.jid, buff, MessageType.video, { quoted: ftrol, thumbnail: fs.readFileSync('./media/Bosco/hemme.jpg'), contextInfo: { forwardingScore: 1, isForwarded: true, externalAdReply:{title: `${F2}`,body:"",mediaType:"2",thumbnail: bcpic,mediaUrl:`${F1}`}}})
-					}
-					} else if (isMedia && !m.message.videoMessage || isQuotedGif) {
-					const encmedia = isQuotedGif ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await tio.downloadMediaMessage(encmedia)
-					for (let _ of anu) {
-					tio.sendMessage(_.jid, buff, gif, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 1000, status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `𝑬𝑽𝑬𝑹𝒀𝑻𝑯𝑰𝑵𝑮\n𝑾𝑰𝑳𝑳 𝑩𝑬\n😎𝑶𝑲😎`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 22, isForwarded: true}})
-					}
-					} else {
-                   m.reply('*Reply To Sticker/Audio/Video*')
-				    }
+					
+					
+					
+					
+					
+					
+					
+ /*       let linkPreview = {
+               head: "𝕮𝖞𝖇𝖊𝖗 𝕽𝖎𝖈𝖍𝖚",
+               body: "★彡[𝓑𝓡𝓞𝓐𝓓𝓒𝓐𝓢𝓣]彡★",
+               mediaType: 2, //3 for video
+               thumbnail: buff2.buffer,
+               sourceUrl: "https://bit.ly/3D4Y12",
+                }
+                
+         
+        let quoted = {
+            key: {
+                fromMe: false,
+                participant: "0@s.whatsapp.net",
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                "imageMessage": {
+                    "jpegThumbnail": buff1.buffer,
+                    "caption": "WʜᴀᴛꜱKʀɪᴢ AI"
+                }
+            }
+        } */
+        
+tio.sendMessage(yoi, { audio: media, contextInfo:{"linkPreview": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": `ꜱᴜʙꜱᴄʀɪʙᴇ ᴛᴏ ᴍʏ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ`, "mediaType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://www.youtube.com/c/hsoka"}}}, { quoted: m})
+
+//tio.sendMessage(yoi, { audio: media, mimetype: 'audio/mpeg' }, { quoted : m })
+
+
+
+			            } }
+					
 					break	
 case 'infochat': {
 if (!m.quoted) m.reply('Reply Pesan')
