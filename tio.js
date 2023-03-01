@@ -1723,7 +1723,7 @@ case 'tobc':
 					let options = {}
 					let media = await tio.downloadAndSaveMediaMessage(quoted)
 					let anu = await store.chats.all().map(v => v.id)
-					reply(`Sending Broadcast To ${anu.length} Chat\nDone Time ${anu.length * 1.5} seconds`)
+					m.reply(`Sending Broadcast To ${anu.length} Chat\nDone Time ${anu.length * 1.5} seconds`)
 				for (let yoi of anu) {
 					
 					
