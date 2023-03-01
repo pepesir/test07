@@ -355,31 +355,19 @@ ngen = `
 🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
 `
 message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
-template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-templateMessage: {
-hydratedTemplate: {
-imageMessage: message.imageMessage,
-hydratedContentText: ngen,
-hydratedFooterText: `playing to ${text}`,
-hydratedButtons: [{
-urlButton: {
-displayText: '🔍ᴠɪᴅᴇᴏ sᴏᴜʀᴄᴇ🔎',
-url: `${search.videos[0].url}`
+message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
+const buttons = [
+  {buttonId: `ytmp3  ${search.videos[0].url} 320kbps`, buttonText: {displayText: '🎧Audio🎧'}, type: 1},
+  {buttonId: `ytmp4 ${search.videos[0].url} 360p`, buttonText: {displayText: '📽️VIdeo📽️'}, type: 1}
+ ]
+const buttonMessage = {
+    text: ngen ,
+    footer: 'ᴋʀɪᴢ ᴍᴏʟ ᴀɪ ʙᴇᴛᴀ',
+    buttons: buttons,
+    image: message.imageMessage,
+    headerType: 1
 }
-}, {
-quickReplyButton: {
-displayText: '🎧Audio🎧',
-id: `ytmp3 ${search.videos[0].url} 320kbps`
-}
-},{quickReplyButton: {
-displayText: '📽️VIdeo📽️',
-id: `ytmp4 ${search.videos[0].url} 360p`
-}
-}]
-}
-}
-}), { userJid: m.chat, quoted: m })
-  tio.relayMessage(m.chat, template.message, { messageId: template.key.id })
+ tio.sendMessage(m.chat, buttonMessage)
 }
 
 
