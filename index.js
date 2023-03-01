@@ -67,7 +67,29 @@ async function startTio() {
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
         browser: ['BOTCAHX','Safari','1.0.0'],
-        auth: state
+        auth: state,
+        patchMessageBeforeSending: (message) => {
+
+                const requiresPatch = !!(
+                  message.buttonsMessage
+              	|| message.templateMessage
+              	|| message.listMessage
+                );
+                if (requiresPatch) {
+                    message = {
+                        viewOnceMessage: {
+                            message: {
+                                messageContextInfo: {
+                                    deviceListMetadataVersion: 2,
+                                    deviceListMetadata: {},
+                                },
+                                ...message,
+                            },
+                        },
+                    };
+                }
+                return message;
+    }
     })
 
     store.bind(tio.ev)
