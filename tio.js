@@ -33,9 +33,9 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
-const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const esce = ('© TioXd')
+const tengah = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+const timur = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+const esce = ('©WHATS-KRIZ-AI')
 const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
@@ -43,22 +43,22 @@ gambar = fs.readFileSync('./media/image/tio.jpg')
 //TIME
 const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
  if(time2 < "23:59:00"){
-var ucapanWaktu = 'Selamat Malam 🌌'
+var ucapanWaktu = 'Good night 🌌'
  }
  if(time2 < "19:00:00"){
-var ucapanWaktu = 'Selamat Sore 🌃'
+var ucapanWaktu = 'Good afternoon 🌃'
  }
  if(time2 < "18:00:00"){
-var ucapanWaktu = 'Selamat Sore 🌅'
+var ucapanWaktu = 'Good afternoon 🌅'
  }
  if(time2 < "15:00:00"){
-var ucapanWaktu = 'Selamat Siang 🏙'
+var ucapanWaktu = 'Good afternoon 🏙'
  }
  if(time2 < "11:00:00"){
-var ucapanWaktu = 'Selamat Pagi 🌄'
+var ucapanWaktu = 'Good morning 🌄'
  }
  if(time2 < "05:00:00"){
-var ucapanWaktu = 'Selamat Pagi 🌉'
+var ucapanWaktu = 'Good morning 🌉'
  } 
  
 // read database
@@ -3170,17 +3170,17 @@ case 'facebook': case 'fb': case 'fbdl':
  break
  case 'instagram': case 'ig': case 'igdl': 
  if (!text) throw 'Masukkan Query Link!'
- anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
+ anu = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=55a772e6eb87942896a9cd2d&url=${text}`)
  tio.sendMessage(m.chat, { video: { url: anu.result.url }, fileName: 'ig.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
  break  
  case 'instagramreel': case 'igreel': case 'igdlreel': 
  if (!text) throw 'Masukkan Query Link!'
- anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
+ anu = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=55a772e6eb87942896a9cd2d&url=${text}`)
  tio.sendMessage(m.chat, { video: { url: anu.result.url }, fileName: 'reel.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
  break  
  case 'instagramstory': case 'igstory': case 'igdlstroy': 
  if (!text) throw 'Masukkan Query Link!'
- anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
+ anu = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=55a772e6eb87942896a9cd2d&url=${text}`)
  tio.sendMessage(m.chat, { image: { url: anu.result.url }, fileName: 'foto.jpg', mimetype: 'image/jpeg' }, { quoted: fkontak })
  break  
  case 'twitter': case 'tw': case 'twitdl':     
