@@ -337,31 +337,29 @@ ngen = `
 🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
 `
 message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
-template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-templateMessage: {
-hydratedTemplate: {
-imageMessage: message.imageMessage,
-hydratedContentText: ngen,
-hydratedFooterText: `Playing To ${text}`,
-hydratedButtons: [{
-urlButton: {
-displayText: '🔍ᴠɪᴅᴇᴏ sᴏᴜʀᴄᴇ🔎',
-url: `${search.videos[0].url}`
-}
-}, {
-quickReplyButton: {
-displayText: '🎧Audio🎧',
-id: `ytmp3 ${search.videos[0].url} 320kbps`
-}
-},{quickReplyButton: {
-displayText: '📽️VIdeo📽️',
-id: `ytmp4 ${search.videos[0].url} 360p`
-}
-}]
-}
-}
-}), { userJid: m.chat, quoted: m })
-  tio.relayMessage(m.chat, template.message, { messageId: template.key.id })
+ let buttons = [{ buttonId: 'ytmp3', buttonText: { displayText: 'ᴀᴜᴅɪᴏ' }, type: 1 },{ buttonId: 'ytmp4', buttonText: { displayText: 'ᴠɪᴅᴇᴏ' }, type: 1 } }]
+            let buttonMessage = {
+  document: fs.readFileSync('./media/doc/fake.pptx'),
+  fileName : omlen + (` | Halo ${pushname}`),
+  mimetype: `${filsk}`,
+  fileLength: jumhal,
+  pageCount: jumlha,
+  caption: jawab,
+  footer: esce,
+  buttons: buttons,
+  mentions: ments,
+  headerType: 4,
+  contextInfo:{externalAdReply:{
+  title: 'WʜᴀᴛꜱKʀɪᴢ AI',
+  body: 'ʜᴇʜᴇ❗️', 
+  showAdAttribution: true,
+  thumbnail: thumb,
+  mediaType: 2,
+  mediaUrl: ghme,
+  sourceUrl: webmy
+  }}
+  }
+  tio.relayMessage(m.chat, buttonMessage, {quoted: fkontak})
 }
 
 
@@ -953,7 +951,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             	deploy('hehe')
             	}
             break
-            case 'poll': {
+                        case 'poll': {
 if (!isCreator) return mess.owner
 if (!text) throw `Example : ${prefix + command} Owner Ganteng|Iya|Tidak`
 let poll1 = `${text.split("|")[1]}`
