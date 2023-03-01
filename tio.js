@@ -292,6 +292,24 @@ jumlahharian = `${dataa.value}`
 		setting.status = new Date() * 1
 	    }
 	}
+	const tempButton = async (remoteJid, text, footer, content) => {
+      // const { displayText, url, contentText, footer } = content
+      //send a template message!
+      const templateMessage = {
+        viewOnceMessage: {
+          message: {
+            templateMessage: {
+              hydratedTemplate: {
+                hydratedContentText: text,
+                hydratedContentFooter: footer,
+                hydratedButtons: content,
+              },
+            },
+          },
+        },
+      };
+      const sendMsg = await tio.relayMessage(remoteJid, templateMessage, {});
+    };
 			
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
