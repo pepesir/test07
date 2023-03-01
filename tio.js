@@ -938,7 +938,7 @@ case 'mode': case 'worktype': {
   headerType: 4,
   contextInfo:{externalAdReply:{
   title: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
-  body: 'Don't Spam!', 
+  body: 'Do not Spam!', 
   showAdAttribution: true,
   thumbnail: thumb,
   mediaType: 2,
@@ -1450,7 +1450,7 @@ break
   headerType: 4,
   contextInfo:{externalAdReply:{
   title: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
-  body: 'ᴅᴏɴ'ᴛ ꜱᴘᴀᴍ!', 
+  body: 'ᴅᴏɴᴛ ꜱᴘᴀᴍ!', 
   showAdAttribution: true,
   thumbnail: thumb,
   mediaType: 2,
