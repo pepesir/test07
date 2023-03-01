@@ -324,7 +324,6 @@ jumlahharian = `${dataa.value}`
 if (budy.startsWith("https://youtu")) {
 takes = budy.replace('https://youtube.com/shorts/','').replace('?feature=share','').replace('https://youtube.com/watch?v=','').replace('https://youtu.be/','')   
 let yts = require("yt-search")
-let jawab = `*${ucapanWaktu}*
 let search = await yts(`https://youtu.be/${takes}`)
 ngen = `
  Title : ${search.videos[0].title}
