@@ -1,7 +1,7 @@
 const fs = require('fs')
 const chalk = require('chalk')
 global.owner = ['919633687665']
-global.ownernomer = "919496966726"
+global.ownernomer = "919656459062"
 global.premium = ['919633687665']
 global.packname = 'WʜᴀᴛꜱKʀɪᴢ AI'
 global.author = 'TEAM-TOXIC'
