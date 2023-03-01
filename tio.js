@@ -13,7 +13,7 @@ const xfar = require('xfarr-api')
 const google = require('google-it')
 const { Configuration, OpenAIApi } = require("openai");
 const maker = require('mumaker')
-const { VERSION } = require("../config.js");
+const config = require("../config.js");
 const naztod = require("tod-api")
 const request = require('request');
 const textpro = require('./lib/textpro')
@@ -1428,7 +1428,7 @@ break
 ││ᴡᴏʀᴋ ᴛʏᴘᴇ : ${kriz.public ? 'Public' : `Self`}
 ││ᴘʀᴇꜰɪx : [ᴍᴜʟᴛɪ ᴘʀᴇꜰɪx]
 ││ᴜᴘᴛɪᴍᴇ : ${runtime(process.uptime())}
-││ᴠᴇʀꜱɪᴏɴ : ${VERSION}
+││ᴠᴇʀꜱɪᴏɴ : config.VERSION
 │╰──㋰
 │
 │╭──────────㋰
