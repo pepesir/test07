@@ -316,6 +316,55 @@ jumlahharian = `${dataa.value}`
       return
       }
 
+
+
+
+//Autodownload
+
+if (budy.startsWith("https://youtu")) {
+takes = budy.replace('https://youtube.com/shorts/','').replace('?feature=share','').replace('https://youtube.com/watch?v=','').replace('https://youtu.be/','')   
+let yts = require("yt-search")
+let search = await yts(`https://youtu.be/${takes}`)
+ngen = `
+ Title : ${search.videos[0].title}
+🌹 ᴇxᴛ : Search
+🌹 ɪᴅ : ${search.videos[0].videoId}
+🌹 ᴅᴜʀᴀᴛɪᴏɴ : ${search.videos[0].timestamp}
+🌹 ᴠɪᴇᴡᴇʀs : ${search.videos[0].views}
+🌹 ᴜᴘʟᴏᴀᴅᴇᴅ : ${search.videos[0].ago}
+🌹 ᴀᴜᴛʜᴏʀ : ${search.videos[0].author.name}
+🌹 ᴄʜᴀɴɴᴇʟ : ${search.videos[0].author.url}
+🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
+`
+message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload: tio.waUploadToServer })
+template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+templateMessage: {
+hydratedTemplate: {
+imageMessage: message.imageMessage,
+hydratedContentText: ngen,
+hydratedFooterText: `Playing To ${text}`,
+hydratedButtons: [{
+urlButton: {
+displayText: '🔍ᴠɪᴅᴇᴏ sᴏᴜʀᴄᴇ🔎',
+url: `${search.videos[0].url}`
+}
+}, {
+quickReplyButton: {
+displayText: '🎧Audio🎧',
+id: `ytmp3 ${search.videos[0].url} 320kbps`
+}
+},{quickReplyButton: {
+displayText: '📽️VIdeo📽️',
+id: `ytmp4 ${search.videos[0].url} 360p`
+}
+}]
+}
+}
+}), { userJid: m.chat, quoted: m })
+  tio.relayMessage(m.chat, template.message, { messageId: template.key.id })
+}
+
+
         // Respon Cmd with media
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
         let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
