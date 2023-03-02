@@ -1338,6 +1338,7 @@ break
  break
             case 'list': case 'allmenu': {
             let ownernya = '0@s.whatsapp.net'
+            const date = new Date()
             const os = require('os')
             let me = m.sender
             let ments = [ownernya, me, ini_kangbaned]
