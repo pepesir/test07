@@ -1,5 +1,5 @@
 require('./setting')
-const { default: tioConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
+const { default: krizConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
@@ -62,11 +62,11 @@ if (global.db) setInterval(async () => {
     if (global.db.data) await global.db.write()
   }, 30 * 1000)
 
-async function startTio() {
-    const tio = tioConnect({
+async function startKriz() {
+    const tio = krizConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['BOTCAHX','Safari','1.0.0'],
+        browser: ['WHATSKRIZ','Safari','1.0.0'],
         auth: state,
         patchMessageBeforeSending: (message) => {
 
@@ -92,67 +92,67 @@ async function startTio() {
     }
     })
 
-    store.bind(tio.ev)
+    store.bind(kriz.ev)
     
     // anticall auto block
-    tio.ws.on('CB:call', async (json) => {
+    kriz.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
-    let pa7rick = await tio.sendContact(callerId, global.owner)
-    tio.sendMessage(callerId, { text: `*Sistem otomatis block!*\n*Jangan menelpon bot*!\n*Silahkan Hubungi Owner Untuk Dibuka !*`}, { quoted : pa7rick })
+    let pa7rick = await kriz.sendContact(callerId, global.owner)
+    kriz.sendMessage(callerId, { text: `*Sistem otomatis block!*\n*Jangan menelpon bot*!\n*Silahkan Hubungi Owner Untuk Dibuka !*`}, { quoted : pa7rick })
     await sleep(8000)
-    await tio.updateBlockStatus(callerId, "block")
+    await kriz.updateBlockStatus(callerId, "block")
     }
     })
 
-    tio.ev.on('messages.upsert', async chatUpdate => {
+    kriz.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
         try {
         mek = chatUpdate.messages[0]
         if (!mek.message) return
         mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
         if (mek.key && mek.key.remoteJid === 'status@broadcast') return
-        if (!tio.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+        if (!kriz.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
         m = smsg(tio, mek, store)
-        require("./tio")(tio, m, chatUpdate, store)
+        require("./kriz.js")(kriz, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
     })
     
     // Group Update
-    tio.ev.on('groups.update', async pea => {
+    kriz.ev.on('groups.update', async pea => {
        //console.log(pea)
     // Get Profile Picture Group
        try {
-       ppgc = await tio.profilePictureUrl(pea[0].id, 'image')
+       ppgc = await kriz.profilePictureUrl(pea[0].id, 'image')
        } catch {
        ppgc = 'https://telegra.ph/file/91eca40a7c48c87716d2b.jpg'
        }
        let wm_tiodev = { url : ppgc }
        if (pea[0].announce == true) {
-       tio.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `GROUP MESSAGE`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `GROUP MESSAGE`, wm_tiodev, [])
        } else if(pea[0].announce == false) {
-       tio.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_tiodev, [])
        } else if (pea[0].restrict == true) {
-       tio.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_tiodev, [])
        } else if (pea[0].restrict == false) {
-       tio.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_tiodev, [])
        } else {
-       tio.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup Subject telah diganti menjadi *${pea[0].subject}*`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup Subject telah diganti menjadi *${pea[0].subject}*`, `Group Settings Change Message`, wm_tiodev, [])
      }
     })
 
-    tio.ev.on('group-participants.update', async (anu) => {
+    kriz.ev.on('group-participants.update', async (anu) => {
         console.log(anu)
         try {
-            let metadata = await tio.groupMetadata(anu.id)
+            let metadata = await kriz.groupMetadata(anu.id)
             let participants = anu.participants
             for (let num of participants) {
                 // Get Profile Picture User
                 try {
-                    ppuser = await tio.profilePictureUrl(num, 'image')
+                    ppuser = await kriz.profilePictureUrl(num, 'image')
                 } catch {
                     ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
@@ -169,7 +169,7 @@ async function startTio() {
 
             
                 try {
-                    ppgroup = await tio.profilePictureUrl(anu.id, 'image')
+                    ppgroup = await kriz.profilePictureUrl(anu.id, 'image')
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
@@ -184,13 +184,13 @@ async function startTio() {
                 let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan disalahgunakan!_`
                 let teks4 = `*@${num.split('@')[0]} Demote From*\n*${metadata.subject}*\n_Pangkat kamu telah di turunkan!_`
                 if (anu.action == 'add') {
-                    tio.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: esce, mentions: [num] })
+                    kriz.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: esce, mentions: [num] })
                 } else if (anu.action == 'remove') {
-                    tio.sendMessage(anu.id, { caption: teks2, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butleav, footer: esce, mentions: [num] })
+                    kriz.sendMessage(anu.id, { caption: teks2, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butleav, footer: esce, mentions: [num] })
                 } else if (anu.action == 'promote') {
-                    tio.sendMessage(anu.id, { caption: teks3, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butselamat, footer: esce, mentions: [num] })
+                    kriz.sendMessage(anu.id, { caption: teks3, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butselamat, footer: esce, mentions: [num] })
                 } else if (anu.action == 'demote') {
-                    tio.sendMessage(anu.id, { caption: teks4, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butsebar, footer: esce, mentions: [num] })
+                    kriz.sendMessage(anu.id, { caption: teks4, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butsebar, footer: esce, mentions: [num] })
               }
             }
         } catch (err) {
@@ -199,7 +199,7 @@ async function startTio() {
     })
 	
     // Setting
-    tio.decodeJid = (jid) => {
+    kriz.decodeJid = (jid) => {
         if (!jid) return jid
         if (/:\d+@/gi.test(jid)) {
             let decode = jidDecode(jid) || {}
@@ -207,44 +207,44 @@ async function startTio() {
         } else return jid
     }
     
-    tio.ev.on('contacts.update', update => {
+    kriz.ev.on('contacts.update', update => {
         for (let contact of update) {
-            let id = tio.decodeJid(contact.id)
+            let id = kriz.decodeJid(contact.id)
             if (store && store.contacts) store.contacts[id] = { id, name: contact.notify }
         }
     })
 
-    tio.getName = (jid, withoutContact  = false) => {
-        id = tio.decodeJid(jid)
-        withoutContact = tio.withoutContact || withoutContact 
+    kriz.getName = (jid, withoutContact  = false) => {
+        id = kriz.decodeJid(jid)
+        withoutContact = kriz.withoutContact || withoutContact 
         let v
         if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
             v = store.contacts[id] || {}
-            if (!(v.name || v.subject)) v = tio.groupMetadata(id) || {}
+            if (!(v.name || v.subject)) v = kriz.groupMetadata(id) || {}
             resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
         })
         else v = id === '0@s.whatsapp.net' ? {
             id,
             name: 'WhatsApp'
-        } : id === tio.decodeJid(tio.user.id) ?
-            tio.user :
+        } : id === kriz.decodeJid(kriz.user.id) ?
+            kriz.user :
             (store.contacts[id] || {})
             return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
     }
     
-    tio.sendContact = async (jid, kon, quoted = '', opts = {}) => {
+    kriz.sendContact = async (jid, kon, quoted = '', opts = {}) => {
 	let list = []
 	for (let i of kon) {
 	    list.push({
-	    	displayName: await tio.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await tio.getName(i + '@s.whatsapp.net')}\nFN:${await tio.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET: tioclkp02@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/prm2.0\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	displayName: await kriz.getName(i + '@s.whatsapp.net'),
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await kriz.getName(i + '@s.whatsapp.net')}\nFN:${await kriz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET: tioclkp02@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/prm2.0\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
-	tio.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
+	kriz.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
     }
     
-    tio.setStatus = (status) => {
-        tio.query({
+    kriz.setStatus = (status) => {
+        kriz.query({
             tag: 'iq',
             attrs: {
                 to: '@s.whatsapp.net',
@@ -260,11 +260,11 @@ async function startTio() {
         return status
     }
 	
-    tio.public = true
+    kriz.public = true
 
-    tio.serializeM = (m) => smsg(tio, m, store)
+    kriz.serializeM = (m) => smsg(tio, m, store)
 
-    tio.ev.on('connection.update', async (update) => {
+    kriz.ev.on('connection.update', async (update) => {
 const { connection, lastDisconnect } = update
 try {
 if (connection === 'close') {
@@ -290,14 +290,14 @@ if (connection === 'close') {
 	} else if (reason === DisconnectReason.timedOut) {
 	console.log("Waktu Koneksi Habis, Menyambungkan Ulang...");
 	startTio();
-	} else tio.end(`Unknown DisconnectReason: ${reason}|${connection}`)
+	} else kriz.end(`Unknown DisconnectReason: ${reason}|${connection}`)
 }
 if (update.connection == "connecting" || update.receivedPendingNotifications == "false") {
 lolcatjs.fromString(`Connecting...`)
 }
 if (update.connection == "open" || update.receivedPendingNotifications == "true") {
 	lolcatjs.fromString(`Mengkoneksikan Ke => WhatsApp Web`)
-	lolcatjs.fromString(`Berhasil Tersambung Ke ` + JSON.stringify(tio.user, null, 2))
+	lolcatjs.fromString(`Berhasil Tersambung Ke ` + JSON.stringify(kriz.user, null, 2))
 	global.creator = ['919633687665']
 	let imgown = await getBuffer('https://telegra.ph/file/4ea5b7309bb948e62bc3a.jpg')
 	let imgcrea = await getBuffer('https://telegra.ph/file/b8aa5d61ad7bc8eb90e43.jpg')
@@ -306,9 +306,9 @@ if (update.connection == "open" || update.receivedPendingNotifications == "true"
 	let txtown = `Halo Owner, Bot Telah Berhasil Tersambung Pada Nomer Ini \n\nJika Menemukan Eror, Bug, Atau Ingin Request Fitur Silahkan Hubungi Nomer Tersebut!`
 	let txtcrea = `Script ini telah dipakai oleh\nID: ${global.owner}@s.whatsapp.net`
 	lolcatjs.fromString('Sukses Mengirim Pesan Ke Owner Dan Creator ☑️')
-	tio.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
-        tio.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: global.ownerName })
-        tio.sendContact(global.owner+'@s.whatsapp.net', global.creator)
+	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
+        kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: global.ownerName })
+        kriz.sendContact(global.owner+'@s.whatsapp.net', global.creator)
 	}
 } catch (err) {
 console.log('error di connection.update'+err)
@@ -316,36 +316,36 @@ startTio();
 }
 })
 
-    tio.ev.on('creds.update', saveState)
-      tio.reSize = async (image, width, height) => {
+    kriz.ev.on('creds.update', saveState)
+      kriz.reSize = async (image, width, height) => {
        let jimp = require('jimp')
        var oyy = await jimp.read(image);
        var kiyomasa = await oyy.resize(width, height).getBufferAsync(jimp.MIME_JPEG)
        return kiyomasa
       }
       
-     tio.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
+     kriz.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
       let mime = '';
       let res = await axios.head(url)
       mime = res.headers['content-type']
       if (mime.split("/")[1] === "gif") {
-     return tio.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options}, { quoted: quoted, ...options})
+     return kriz.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options}, { quoted: quoted, ...options})
       }
       let type = mime.split("/")[0]+"Message"
       if(mime === "application/pdf"){
-     return tio.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options}, { quoted: quoted, ...options })
+     return kriz.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options}, { quoted: quoted, ...options })
       }
       if(mime.split("/")[0] === "image"){
-     return tio.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options}, { quoted: quoted, ...options})
+     return kriz.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options}, { quoted: quoted, ...options})
       }
       if(mime.split("/")[0] === "video"){
-     return tio.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options}, { quoted: quoted, ...options })
+     return kriz.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options}, { quoted: quoted, ...options })
       }
       if(mime.split("/")[0] === "audio"){
-     return tio.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options}, { quoted: quoted, ...options })
+     return kriz.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options}, { quoted: quoted, ...options })
       }
       }
-        tio.sendListMsg = (jid, text = '', footer = '', title = '' , butText = '', sects = [], quoted) => {
+        kriz.sendListMsg = (jid, text = '', footer = '', title = '' , butText = '', sects = [], quoted) => {
         let sections = sects
         var listMes = {
         text: text,
@@ -354,26 +354,26 @@ startTio();
         buttonText: butText,
         sections
         }
-        tio.sendMessage(jid, listMes, { quoted: quoted })
+        kriz.sendMessage(jid, listMes, { quoted: quoted })
         }
        
-      tio.send5ButLoc = async (jid , text = '' , footer = '', lok, but = [], options = {}) =>{
-      let bb = await tio.reSize(lok, 300, 300)
-      tio.sendMessage(jid, { location: { jpegThumbnail: bb }, caption: text, footer: footer, templateButtons: but, ...options })
+      kriz.send5ButLoc = async (jid , text = '' , footer = '', lok, but = [], options = {}) =>{
+      let bb = await kriz.reSize(lok, 300, 300)
+      kriz.sendMessage(jid, { location: { jpegThumbnail: bb }, caption: text, footer: footer, templateButtons: but, ...options })
       }
 
-        tio.send5ButMsg = (jid, text = '' , footer = '', but = []) =>{
+        kriz.send5ButMsg = (jid, text = '' , footer = '', but = []) =>{
         let templateButtons = but
         var templateMessage = {
         text: text,
         footer: footer,
         templateButtons: templateButtons
         }
-        tio.sendMessage(jid, templateMessage)
+        kriz.sendMessage(jid, templateMessage)
         }
 
-    tio.send5ButImg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
-        let message = await prepareWAMessageMedia({ image: img }, { upload: tio.waUploadToServer })
+    kriz.send5ButImg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ image: img }, { upload: kriz.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
@@ -384,11 +384,11 @@ startTio();
             }
             }
             }), options)
-            tio.relayMessage(jid, template.message, { messageId: template.key.id })
+            kriz.relayMessage(jid, template.message, { messageId: template.key.id })
     }
 
-    tio.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
-        let message = await prepareWAMessageMedia({ video: vid }, { upload: tio.waUploadToServer })
+    kriz.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: vid }, { upload: kriz.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
@@ -399,10 +399,10 @@ startTio();
             }
             }
             }), options)
-            tio.relayMessage(jid, template.message, { messageId: template.key.id })
+            kriz.relayMessage(jid, template.message, { messageId: template.key.id })
     }
-    tio.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
-        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: tio.waUploadToServer })
+    kriz.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: kriz.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
@@ -413,10 +413,10 @@ startTio();
             }
             }
             }), options)
-            tio.relayMessage(jid, template.message, { messageId: template.key.id })
+            kriz.relayMessage(jid, template.message, { messageId: template.key.id })
     }
 
-    tio.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
+    kriz.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
         let buttonMessage = {
             text,
             footer,
@@ -424,32 +424,32 @@ startTio();
             headerType: 2,
             ...options
         }
-        tio.sendMessage(jid, buttonMessage, { quoted, ...options })
+        kriz.sendMessage(jid, buttonMessage, { quoted, ...options })
     }
     
-    tio.sendText = (jid, text, quoted = '', options) => tio.sendMessage(jid, { text: text, ...options }, { quoted })
+    kriz.sendText = (jid, text, quoted = '', options) => kriz.sendMessage(jid, { text: text, ...options }, { quoted })
 
  
-    tio.sendImage = async (jid, path, caption = '', quoted = '', options) => {
+    kriz.sendImage = async (jid, path, caption = '', quoted = '', options) => {
 	let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
-        return await tio.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })
+        return await kriz.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })
     }
 
 
-    tio.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
+    kriz.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
         let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
-        return await tio.sendMessage(jid, { video: buffer, caption: caption, gifPlayback: gif, ...options }, { quoted })
+        return await kriz.sendMessage(jid, { video: buffer, caption: caption, gifPlayback: gif, ...options }, { quoted })
     }
 
-    tio.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
+    kriz.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
         let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
-        return await tio.sendMessage(jid, { audio: buffer, ptt: ptt, ...options }, { quoted })
+        return await kriz.sendMessage(jid, { audio: buffer, ptt: ptt, ...options }, { quoted })
     }
 
-    tio.sendTextWithMentions = async (jid, text, quoted, options = {}) => tio.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+    kriz.sendTextWithMentions = async (jid, text, quoted, options = {}) => kriz.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
  
-    tio.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+    kriz.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -458,12 +458,12 @@ startTio();
             buffer = await imageToWebp(buff)
         }
 
-        await tio.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+        await kriz.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
         return buffer
     }
 
   
-    tio.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    kriz.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -472,12 +472,12 @@ startTio();
             buffer = await videoToWebp(buff)
         }
 
-        await tio.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+        await kriz.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
         return buffer
     }
 	
  
-    tio.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+    kriz.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
         let quoted = message.msg ? message.msg : message
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -493,7 +493,7 @@ startTio();
         return trueFileName
     }
 
-    tio.downloadMediaMessage = async (message) => {
+    kriz.downloadMediaMessage = async (message) => {
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
         const stream = await downloadContentFromMessage(message, messageType)
@@ -506,8 +506,8 @@ startTio();
      } 
     
   
-    tio.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
-        let types = await tio.getFile(path, true)
+    kriz.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
+        let types = await kriz.getFile(path, true)
            let { mime, ext, res, data, filename } = types
            if (res && res.status !== 200 || file.length <= 65536) {
                try { throw { json: JSON.parse(file.toString()) } }
@@ -527,12 +527,12 @@ startTio();
        else if (/video/.test(mime)) type = 'video'
        else if (/audio/.test(mime)) type = 'audio'
        else type = 'document'
-       await tio.sendMessage(jid, { [type]: { url: pathFile }, caption, mimetype, fileName, ...options }, { quoted, ...options })
+       await kriz.sendMessage(jid, { [type]: { url: pathFile }, caption, mimetype, fileName, ...options }, { quoted, ...options })
        return fs.promises.unlink(pathFile)
        }
 
   
-    tio.copyNForward = async (jid, message, forceForward = false, options = {}) => {
+    kriz.copyNForward = async (jid, message, forceForward = false, options = {}) => {
         let vtype
 		if (options.readViewOnce) {
 			message.message = message.message && message.message.ephemeralMessage && message.message.ephemeralMessage.message ? message.message.ephemeralMessage.message : (message.message || undefined)
@@ -563,11 +563,11 @@ startTio();
                 }
             } : {})
         } : {})
-        await tio.relayMessage(jid, waMessage.message, { messageId:  waMessage.key.id })
+        await kriz.relayMessage(jid, waMessage.message, { messageId:  waMessage.key.id })
         return waMessage
     }
 
-    tio.cMod = (jid, copy, text = '', sender = tio.user.id, options = {}) => {
+    kriz.cMod = (jid, copy, text = '', sender = kriz.user.id, options = {}) => {
         //let copy = message.toJSON()
 		let mtype = Object.keys(copy.message)[0]
 		let isEphemeral = mtype === 'ephemeralMessage'
@@ -588,14 +588,14 @@ startTio();
 		if (copy.key.remoteJid.includes('@s.whatsapp.net')) sender = sender || copy.key.remoteJid
 		else if (copy.key.remoteJid.includes('@broadcast')) sender = sender || copy.key.remoteJid
 		copy.key.remoteJid = jid
-		copy.key.fromMe = sender === tio.user.id
+		copy.key.fromMe = sender === kriz.user.id
 
         return proto.WebMessageInfo.fromObject(copy)
     }
 
 
   
-    tio.getFile = async (PATH, save) => {
+    kriz.getFile = async (PATH, save) => {
         let res
         let data = Buffer.isBuffer(PATH) ? PATH : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await getBuffer(PATH)) : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0)
         //if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer')
@@ -615,10 +615,10 @@ startTio();
 
     }
 
-    return tio
+    return kriz
 }
 
-startTio()
+startKriz()
 
 
 let file = require.resolve(__filename)
