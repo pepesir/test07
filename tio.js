@@ -339,6 +339,18 @@ jumlahharian = `${dataa.value}`
 
 //Autodownload
 
+if (m.text.includes("instagram.com")) {
+	insta(m.text).then(({ url }) => {
+ 
+   try { tio.sendMessage(m.chat , { video : { url : url } } )
+       } catch {
+	       console.log("umm")
+    // tio.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
+    }
+    })
+}
+
+
 if (budy.startsWith("https://youtu")) {
 takes = budy.replace('https://youtube.com/shorts/','').replace('?feature=share','').replace('https://youtube.com/watch?v=','').replace('https://youtu.be/','')   
 let yts = require("yt-search")
