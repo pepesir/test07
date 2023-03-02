@@ -293,7 +293,7 @@ const buttonMessage = {
     image: { url: search.videos[0].thumbnail },
     headerType: 1
 }
- tio.sendMessage(m.chat, buttonMessage)
+ kriz.sendMessage(m.chat, buttonMessage)
 
 }
 
