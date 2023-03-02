@@ -12,6 +12,7 @@ const chalk = require('chalk')
 const yts = require('yt-search')
 const xfar = require('xfarr-api')
 const google = require('google-it')
+const { insta } = require("../lib/scrapers");
 const { Configuration, OpenAIApi } = require("openai");
 const maker = require('mumaker')
 const naztod = require("tod-api")
@@ -264,6 +265,18 @@ jumlahharian = `${dataa.value}`
 
 
 //Autodownload
+
+
+if (m.text.includes("instagram.com")) {
+	insta(m.text).then(({ url }) => {
+ 
+   try { kriz.sendMessage(m.chat , { video : { url : url } } )
+       } catch {
+	       console.log("umm")
+    // kriz.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
+    }
+    })
+
 
 if (budy.startsWith("https://youtu")) {
 takes = budy.replace('https://youtube.com/shorts/','').replace('?feature=share','').replace('https://youtube.com/watch?v=','').replace('https://youtu.be/','')   
