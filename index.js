@@ -63,7 +63,7 @@ if (global.db) setInterval(async () => {
   }, 30 * 1000)
 
 async function startKriz() {
-    const tio = krizConnect({
+    const kriz = krizConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
         browser: ['WHATSKRIZ','Safari','1.0.0'],
