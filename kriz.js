@@ -913,7 +913,7 @@ let acr = new acrcloud({
          case 'tts': {
          	if (!text) throw `Example : ${prefix + command} text`
              let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`)
-             kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:true }, {quoted:m })
+               await kriz.sendMessage(from, { audio: buffer, mimetype: 'audio/mp4', duration: 359996400, ptt: false, contextInfo: { forwardingScore: 9999, externalAdReply: { title: WʜᴀᴛꜱKʀɪᴢ AI, body: hehe, previewType: "PHOTO", thumbnail: client.jpg, sourceUrl: ig.com } }, sendEphemeral: true }, { quoted: m })
          	}
          break
            case 'photo': case 'toimage': case 'toimg': {
