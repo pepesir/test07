@@ -4,6 +4,7 @@ global.owner = ['919633687665','919207759062','919496966726']
 global.ownernomer = ["919633687665","919496966726","919207759062"]
 global.premium = ['919633687665']
 global.packname = 'WʜᴀᴛꜱKʀɪᴢ AI'
+global.ownername = 'KRIZ-SER'
 global.author = 'TEAM-TOXIC'
 global.sessionName = 'session'
 global.jumlha = '999'
