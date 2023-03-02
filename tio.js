@@ -793,6 +793,8 @@ break
             }
             break
 case 'mode': case 'worktype': {
+            let ownernya = '0@s.whatsapp.net'
+            let me = m.sender
             if (!isCreator) throw mess.owner
             let ownernya = '0@s.whatsapp.net'
             let wrt = `ᴄʜᴀɴɢᴇ ᴛʜᴇ ᴡᴏʀᴋɪɴɢ ᴛʏᴘᴇ /n ᴄʟɪᴄᴋɪɴɢ ᴏɴ ɢɪᴠᴇɴ ʙᴜᴛᴛᴏɴ`
@@ -1289,22 +1291,22 @@ break
             let ownernya = '0@s.whatsapp.net'
             let me = m.sender
             let myr = `╭───────────㋰
-│╭──[user info]──㋰
+│╭──[User Info]──㋰
 ││user : ${pushname}
 ││user number : \n││ @${me.split('@')[0]}
 │╰──㋰
 │
-│╭──[bot info]──㋰
-││bot name : ${botname}
-││time : ${date.toLocaleTimeString()}
-││date : ${date.toLocaleDateString('hi')}
-││work type : ${kriz.public ? 'Public' : `Self`}
-││prefix : [multi prefix]
-││uptime : ${runtime(process.uptime())}
+│╭──[Bot Info]──㋰
+││Bot Name : ${botname}
+││Time : ${date.toLocaleTimeString()}
+││Date : ${date.toLocaleDateString('hi')}
+││Worktype : ${kriz.public ? 'Public' : `Self`}
+││Prefix : [multi prefix]
+││Uptime : ${runtime(process.uptime())}
 │╰──㋰
 │
 │╭──────────㋰
-││click the button given below\n││to see menu list.
+││Click the button given below\n││To see menu list.
 │╰──㋰
 ╰───────────㋰`
             let ments = [ownernya, me, ini_kangbaned]
