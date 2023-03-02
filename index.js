@@ -114,7 +114,7 @@ async function startKriz() {
         if (mek.key && mek.key.remoteJid === 'status@broadcast') return
         if (!kriz.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
-        m = smsg(tio, mek, store)
+        m = smsg(kriz, mek, store)
         require("./kriz.js")(kriz, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
@@ -132,15 +132,15 @@ async function startKriz() {
        }
        let wm_tiodev = { url : ppgc }
        if (pea[0].announce == true) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `GROUP MESSAGE`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `GROUP MESSAGE`, wm_krizdev, [])
        } else if(pea[0].announce == false) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_krizdev, [])
        } else if (pea[0].restrict == true) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_krizdev, [])
        } else if (pea[0].restrict == false) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_krizdev, [])
        } else {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup Subject telah diganti menjadi *${pea[0].subject}*`, `Group Settings Change Message`, wm_tiodev, [])
+       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup Subject telah diganti menjadi *${pea[0].subject}*`, `Group Settings Change Message`, wm_krizdev, [])
      }
     })
 
@@ -237,7 +237,7 @@ async function startKriz() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await kriz.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await kriz.getName(i + '@s.whatsapp.net')}\nFN:${await kriz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET: tioclkp02@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/prm2.0\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await kriz.getName(i + '@s.whatsapp.net')}\nFN:${await kriz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET: tioclkp02@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/prm2.0\nitem3.X-ABLabel:Website\nitem4.ADR:;;India;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	kriz.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
@@ -262,7 +262,7 @@ async function startKriz() {
 	
     kriz.public = true
 
-    kriz.serializeM = (m) => smsg(tio, m, store)
+    kriz.serializeM = (m) => smsg(kriz, m, store)
 
     kriz.ev.on('connection.update', async (update) => {
 const { connection, lastDisconnect } = update
@@ -271,25 +271,25 @@ if (connection === 'close') {
 	let reason = new Boom(lastDisconnect?.error)?.output.statusCode
 	if (reason === DisconnectReason.badSession) {
 	console.log(`Bad Session File, Please Delete Session and Scan Again`);
-	startTio()
+	startKriz()
 	} else if (reason === DisconnectReason.connectionClosed) {
 	console.log("Connection closed, reconnecting....");
-	startTio();
+	startKriz();
 	} else if (reason === DisconnectReason.connectionLost) {
 	console.log("Connection Lost from Server, reconnecting...");
-	startTio();
+	startKriz();
 	} else if (reason === DisconnectReason.connectionReplaced) {
 	console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
-	startTio()
+	startKriz()
     } else if (reason === DisconnectReason.loggedOut) {
 	console.log(`Device Logged Out, Please Scan Again And Run.`);
-	startTio();
+	startKriz();
 	} else if (reason === DisconnectReason.restartRequired) {
 	console.log("Restart Required, Restarting...");
-	startTio();
+	startKriz();
 	} else if (reason === DisconnectReason.timedOut) {
 	console.log("Waktu Koneksi Habis, Menyambungkan Ulang...");
-	startTio();
+	startKriz();
 	} else kriz.end(`Unknown DisconnectReason: ${reason}|${connection}`)
 }
 if (update.connection == "connecting" || update.receivedPendingNotifications == "false") {
@@ -305,14 +305,14 @@ if (update.connection == "open" || update.receivedPendingNotifications == "true"
         let butown = [{ buttonId: `owner`, buttonText: { displayText: 'Owner' }, type: 1 }, { buttonId: `ping`, buttonText: { displayText: 'Status Bot' }, type: 1 }]
 	let txtown = `Halo Owner, Bot Telah Berhasil Tersambung Pada Nomer Ini \n\nJika Menemukan Eror, Bug, Atau Ingin Request Fitur Silahkan Hubungi Nomer Tersebut!`
 	let txtcrea = `Script ini telah dipakai oleh\nID: ${global.owner}@s.whatsapp.net`
-	lolcatjs.fromString('Sukses Mengirim Pesan Ke Owner Dan Creator ☑️')
+	lolcatjs.fromString('Successfully Sending Messages To Owners And Creators ☑️')
 	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
         kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: global.ownerName })
         kriz.sendContact(global.owner+'@s.whatsapp.net', global.creator)
 	}
 } catch (err) {
 console.log('error di connection.update'+err)
-startTio();
+startKriz();
 }
 })
 
