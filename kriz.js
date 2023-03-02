@@ -1151,6 +1151,74 @@ break
                 kriz.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
+case 'ytv':  {
+                if (!text) throw `Example : ${prefix + command} ytv `
+                let yts = require("yt-search")
+                let search = await yts(text)
+                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]            
+            
+            let template = await generateWAMessageFromContent
+
+
+
+
+(m.chat, proto.Message.fromObject({
+                listMessage : {
+                    title: `ꜱᴇʟᴇᴄᴛ ᴛʜᴇ Qᴜᴀʟɪᴛʏ ꜰᴏ ᴛʜᴇ ᴠɪᴅᴇᴏ`,
+                    description: `ᴛɪᴛʟᴇ : ${anu.title}
+ᴅᴜʀᴀᴛɪᴏɴ : ${anu.timestamp}
+ᴜᴘʟᴏᴀᴅ At : ${anu.ago}
+ᴀᴜᴛʜᴏʀ : ${anu.author.name}`,
+                    buttonText: "Yt Video",
+                    footerText: `*WʜᴀᴛꜱKʀɪᴢ AI*`,
+                    listType: "SINGLE_SELECT",
+                    sections: [
+{
+"title": `WʜᴀᴛꜱKʀɪᴢ AI`,
+rows: [
+{
+"title": "► 144p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 144p`
+},
+{
+"title": "► 240p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 240p`
+},
+{
+"title": "► 360p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 360p`
+},
+{
+"title": "► 480p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 480p`
+},
+{
+"title": "► 720p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 720p`
+},
+{
+"title": "► 1080p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 1080p`
+},
+{
+"title": "► 1440p",
+"description": `${anu.title}`,
+"rowId": `ytmp4 ${anu.url} 1440p`
+}]
+}],
+          listType: 1
+                }
+            }), {})
+            
+kriz.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+            break
             case 'video': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} 1`
@@ -1271,7 +1339,7 @@ break
 case 'getcase': case 'c': 
  if (!isCreator) return m.reply(mess.owner)
 const getCase = (cases) => {
-return "case"+`'${cases}'`+fs.readFileSync("./tio.js").toString().split('case \''+cases+'\'')[1].split("break")[0]+"break"
+return "case"+`'${cases}'`+fs.readFileSync("./kriz.js").toString().split('case \''+cases+'\'')[1].split("break")[0]+"break"
 }
 m.reply(`${getCase(q)}`)
 .catch((err) => m.reply(mess.error))
