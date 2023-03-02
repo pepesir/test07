@@ -687,9 +687,8 @@ case 'tobc':
             }
         } */
         
-kriz.sendMessage(yoi, { audio: media, contextInfo:{"linkPreview": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": `ꜱᴜʙꜱᴄʀɪʙᴇ ᴛᴏ ᴍʏ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ`, "mediaType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://www.youtube.com/c/hsoka"}}}, { quoted: m})
 
-//kriz.sendMessage(yoi, { audio: media, mimetype: 'audio/mpeg' }, { quoted : m })
+kriz.sendMessage(yoi, { audio: media, mimetype: 'audio/mpeg' }, { quoted : m })
 
 
 
