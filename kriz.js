@@ -292,7 +292,7 @@ const buttons = [
 
 const buttonMessage = {
     text: ngen ,
-    footer: 'ᴋʀɪᴢ ᴍᴏʟ ᴀɪ ʙᴇᴛᴀ',
+    footer: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
     buttons: buttons,
     image: { url: search.videos[0].thumbnail },
     headerType: 1
@@ -421,7 +421,7 @@ break
             }
             break  
             case 'join': {
-                if (!isPremium) throw mess.premime
+                if (!isCreator) throw mess.owner
                 if (!text) throw 'Masukkan Link Group!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 m.reply(mess.wait)
@@ -434,7 +434,7 @@ break
                 await kriz.groupLeave(m.chat).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
             }
             break
-            case 'setowner': {
+          case 'setowner': case 'setownerno': {
                if (!isCreator) throw mess.owner
                if (m.text.includes('@')) return m.reply(`*Invalid!*\n\n*Pake Nomer Woy*\n*Jangan Pakai Tag!*`)
                if (!text) throw `Example : ${prefix + command} 6285875158363`
@@ -487,23 +487,7 @@ break
 		await kriz.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-	    case 'setname': case 'setsubject': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
-                if (!text) throw 'Text ?'
-                await kriz.groupUpdateSubject(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
-            }
-            break
-          case 'setdesc': case 'setdesk': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
-                if (!text) throw 'Text ?'
-                await kriz.groupUpdateDescription(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
-            }
-            break
-          case 'setppbot': {
+          case 'pp': case 'setppbot': {
                 if (!isCreator) throw mess.owner
                 if (!quoted) throw `Send/Reply Image With caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Send/Reply Image With caption ${prefix + command}`
@@ -513,25 +497,6 @@ break
                 m.reply(mess.success)
                 }
                 break
-           case 'setppgroup': case 'setppgrup': case 'setppgc': {
-                if (!m.isGroup) throw mess.group
-                if (!isAdmins) throw mess.admin
-                if (!quoted) throw `Send/Reply Image With caption ${prefix + command}`
-                if (!/image/.test(mime)) throw `Send/Reply Image With caption ${prefix + command}`
-                if (/webp/.test(mime)) throw `Send/Reply Image With caption ${prefix + command}`
-                let media = await kriz.downloadAndSaveMediaMessage(quoted)
-                await kriz.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
-                m.reply(mess.success)
-                }
-                break
-                case 'totag': {
-               if (!m.isGroup) throw mess.group
-               if (!isBotAdmins) throw mess.botAdmin
-               if (!isAdmins) throw mess.admin
-               if (!m.quoted) throw `Message Replies dengan caption ${prefix + command}`
-               kriz.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(a => a.id) })
-               }
-               break
             case 'tagall': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
@@ -552,7 +517,7 @@ break
             kriz.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
-	    case 'style': case 'styletext': {
+	    case 'fancy': case 'style': case 'styletext': {
 	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
 		db.data.users[m.sender].limit -= 1 // -1 limit
 		let { styletext } = require('./lib/scraper')
@@ -581,24 +546,6 @@ break
                     await kriz.sendButtonText(m.chat, buttons, `Mode Group`, kriz.user.name, m)
 
              }
-            }
-            break
-            case 'editinfo': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
-             if (args[0] === 'open'){
-                await kriz.groupSettingUpdate(m.chat, 'unlocked').then((res) => m.reply(`*Sukses Membuka Edit Info Group*`)).catch((err) => m.reply(jsonformat(err)))
-             } else if (args[0] === 'close'){
-                await kriz.groupSettingUpdate(m.chat, 'locked').then((res) => m.reply(`*Sukses Menutup Edit Info Group*`)).catch((err) => m.reply(jsonformat(err)))
-             } else {
-             let buttons = [
-                        { buttonId: 'editinfo open', buttonText: { displayText: 'Open kh?' }, type: 1 },
-                        { buttonId: 'editinfo close', buttonText: { displayText: 'Close kh?' }, type: 1 }
-                    ]
-                    await kriz.sendButtonText(m.chat, buttons, `Mode Edit Info`, kriz.user.name, m)
-
-            }
             }
             break
             case 'antilink': {
@@ -660,6 +607,7 @@ break
                     }).catch((err) => m.reply(jsonformat(err)))
             break
             case 'delete': case 'del': {
+            	if (!isCreator) throw mess.owner
                 if (!m.quoted) throw false
                 let { chat, fromMe, id, isBaileys } = m.quoted
                 if (!isBaileys) throw 'The message was not sent by bot!'
@@ -747,22 +695,7 @@ kriz.sendMessage(yoi, { audio: media, contextInfo:{"linkPreview": {"title": `Wʜ
 
 			            } }
 					
-					break	
-case 'infochat': {
-if (!m.quoted) m.reply('Message Replies')
-let msg = await m.getQuotedObj()
-if (!m.quoted.isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
-let teks = ''
-for (let i of msg.userReceipt) {
-let read = i.readTimestamp
-let unread = i.receiptTimestamp
-let waktu = read ? read : unread
-teks += `⌕ @${i.userJid.split('@')[0]}\n`
-teks += ` ┗━⌕ *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⌕ *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: 'SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'Rules' }, type: 1 }]
-await kriz.sendButtonText(m.chat, buttons, teks, esce, m, {mentions: [i.userJid], quoted: fkontak})
-}}
-break
+					break
             case 'q': case 'quoted': {
         try {
 		if (!m.quoted) return m.reply('Message Repliesnya!!')
@@ -864,7 +797,7 @@ let acr = new acrcloud({
 *𝑹𝒆𝒍𝒆𝒂𝒔𝒆 𝑫𝒂𝒕𝒆:* ${release_date}`
 		fs.unlinkSync(`./${m.sender}.${ext}`)
 		
-     await kriz.sendButtonText(m.chat, button, txt, kriz.user.name, m)
+     await kriz.sendButtonText(m.chat, button, txt, esce, m)
 	//	await m.reply(txt)
 	} else throw 'Reply audio/video!'
 }catch(e){
@@ -1088,46 +1021,7 @@ let acr = new acrcloud({
                 kriz.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
             break
-        case 'google': {
-                if (!text) throw `Example : ${prefix + command} fatih arridho`
-                let google = require('google-it')
-                google({'query': text}).then(res => {
-                let teks = `Google Search From : ${text}\n\n`
-                for (let g of res) {
-                teks += ` *»* *Title* : ${g.title}\n`
-                teks += ` *»* *Description* : ${g.snippet}\n`
-                teks += ` *»* *Link* : ${g.link}\n\n────────────────────────\n\n`
-                } 
-                m.reply(teks)
-                })
-                }
-                break
-        case 'gimage': {
-        	try {
-       if (!text) throw `Example : ${prefix + command} kaori cicak`
-        let gis = require('g-i-s')
-        gis(args.join(" "), async (error, result) => {
-        n = result
-        images = n[Math.floor(Math.random() * n.length)]
-        let buttons = [
-                    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: webin + images.url },
-                    caption: `*-------「 GIMAGE SEARCH 」-------*
- *Query* : ${text}
- *Media Url* : ${images.url}`,
-                    footer: esce,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                kriz.sendMessage(m.chat, buttonMessage, { quoted: m })
-                })
-                } catch (e) {
-		        m.reply(mess.errmor)}
-        }
-        break
-	    case 'play': case 'ytplay': {
+	    case 'song': case 'play': case 'ytplay': {
                 if (!text) throw `Example : ${prefix + command} story wa anime`
                 let yts = require("yt-search")
                 let search = await yts(text)
@@ -1149,7 +1043,7 @@ let acr = new acrcloud({
  *»* Channel : ${anu.author.url}
  *»* Description : ${anu.description}
  *»* Url : ${anu.url}`,
-                    footer: kriz.user.name,
+                    footer: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1305,7 +1199,7 @@ m.reply(`${result4}`)
 kriz.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }).catch ((err) => m.reply(mess.error))
 }
 break  
-case 'tiktok': case 'tt': case 'tiktoknowm': 
+case 'tik': case 'tiktok': case 'tt': case 'tiktoknowm': 
  if (!text) throw 'Enter Query Link!'
  anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/tikok?url=${text}&apikey=Admin`)
  kriz.sendMessage(m.chat, { video: { url: anu.result.video }, fileName: 'tiktok.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
@@ -1315,7 +1209,7 @@ case 'facebook': case 'fb': case 'fbdl':
  anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/fbdown?url=${text}&apikey=Admin`)
  kriz.sendMessage(m.chat, { video: { url: anu.result.Normal_video }, fileName: 'facebook.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
  break
- case 'instagram': case 'ig': case 'igdl': 
+ case 'insta': case 'instagram': case 'ig': case 'igdl': 
  if (!text) throw 'Enter Query Link!'
  anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${text}&apikey=Admin`)
  kriz.sendMessage(m.chat, { video: { url: anu.result.url }, fileName: 'ig.mp4', mimetype: 'video/mp4' }, { quoted: fkontak })
@@ -1399,8 +1293,8 @@ break
             let me = m.sender
             let myr = `╭───────────㋰
 │╭──[User Info]──㋰
-││user : ${pushname}
-││user number : \n││ @${me.split('@')[0]}
+││User : ${pushname}
+││User Number : \n││ @${me.split('@')[0]}
 │╰──㋰
 │
 │╭──[Bot Info]──㋰
@@ -1417,7 +1311,7 @@ break
 │╰──㋰
 ╰───────────㋰`
             let ments = [ownernya, me, ini_kangbaned]
-            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'All Menu' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'Speed' }, type: 1 },{ buttonId: 'simplemenu', buttonText: { displayText: 'List Menu' }, type: 1 }]
+            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : omlen,
@@ -1442,57 +1336,126 @@ break
   kriz.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
   }
  break
-            case 'simplemenu': case 'list': {
+            case 'list': case 'allmenu': {
             let ownernya = '0@s.whatsapp.net'
+            const os = require('os')
             let me = m.sender
             let ments = [ownernya, me, ini_kangbaned]
-            let kukiw = `*Kak ${pushname}*`
-                let sections = [
-                {
-	           title: ' ∫ » Sewa Bot? –––––––·•',
-	           rows: [
-	            {title: "〽️ • Sewa", rowId: `donasi`, description: `KLIK UNTUK SEWA BOT`},
-                {title: "📴 • Owner", rowId: `owner`, description: `KLIK UNTUK BERTANYA KEPADA OWNER`}
-	            ]
-                },{
-                title: "⚠︎  ∫ » CHANGE MENU BOT « ✧",
-                rows: [
-                {title: "✦  「 Group 」", rowId: `mgroup`, description: `╰ ► 👥Fitur Buat Grup, Tapi Hati Hati Admin :v`},
-                {title: "✦  「 Webzone 」", rowId: `mwebzone`, description: `╰ ► 📹Cari Film? Sini Tempatnya 🤫`},
-                {title: "✦  「 Downloader 」", rowId: `mdownloader`, description: `╰ ► 📥Buat Download Apaan? 🤨`},
-                {title: "✦  「 Search 」", rowId: `msearch`, description: `╰ ► 🔍Cari Apa Hayo`},
-                {title: "✦  「 Random 」", rowId: `mrandom`, description: `╰ ► ❔Random Moment🗿`},
-                {title: "✦  「 Text Pro 」", rowId: `mtextpro`, description: `╰ ► ❇Teksnya Keren Kan?`},
-                {title: "✦  「 Photo Oxy 」", rowId: `mphotooxy`, description: `╰ ► ♻️Gabut Amat`},
-                {title: "✦  「 Ephoto 」", rowId: `mephoto`, description: `╰ ► 🗳Buat Edit Apaan?`},
-                {title: "✦  「 Fun 」", rowId: `mfun`, description: `╰ ► 🔫Buat Fun² Bro`},
-                {title: "✦  「 Primbon 」", rowId: `mprimbon`, description: `╰ ► 😂Ngakak`},
-                {title: "✦  「 Convert 」", rowId: `mconvert`, description: `╰ ► 🛠Mau Buat Apa?`},
-                {title: "✦  「 Main 」", rowId: `mmain`, description: `╰ ► 💾Senjata Admin & Owner`},
-                {title: "✦  「 Database 」", rowId: `mdatabase`, description: `╰ ► 📁Engak Ada Apa² Disini`},
-                {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
-                {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
-                {title: "✦  「 Owner 」", rowId: `mowner`, description: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
-                ]
-                },{
-	           title: ' ∫ » SUPPORT ME –––––––·•',
-	           rows: [
-	            {title: "🎟 • Donasi", rowId: `donasi`, description: `╰ ► 💰 Donasi ♕︎`},
-                {title: "🔴 • Menu", rowId: `menu`, description: `╰ ► 📢 Thanks For Subscribe ♕︎`},
-                {title: "📚 • Github", rowId: `sc`, description: `╰ ► 🎷 Follow My Github ♕︎`}
-	]
-  },
-]
-                kriz.sendListMsg(m.chat, kukiw, esce, `*${ucapanWaktu}*`, `Click Here`, sections, fkontak)
-            }
-            break
-            case 'allmenu': {
-            let ownernya = '0@s.whatsapp.net'
-            let me = m.sender
-            let ments = [ownernya, me, ini_kangbaned]
-                anu = ``
+             let funda = `╭━━━[ ${botname} ]━━━✤
+╽╭─────────✤
+┃│Owner : ${global.ownername}
+┃│User : ${pushname}
+┃│Runtime :\n┃│${runtime(process.uptime())}
+┃│Worktype : ${kriz.public ? 'Public' : `Self`}
+┃│Prefix : [multi prefix]
+┃│Date : ${date.toLocaleDateString('hi')}
+┃│Time : ${date.toLocaleTimeString()}
+┃│Platform : ${os.platform()}
+┃│Ram :\n┃│${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+╿╰─────────✤
+╰━━━━━━━━━━━━━✤
+╭━━━━━━━━━━━━━✵
+╽╭──────────❉
+┃│⌜Owner⌟
+┃╰┬─────────❉
+┃━┤1).getcase
+┃   │2).worktype
+┃   │3).setmenu
+┃   │4).join
+┃   │5).leave
+┃   │6).pp
+┃   │7).block
+┃   │8).unblock
+┃   │9).tobc
+┃   │10).bcgc
+┃   │11).bc
+┃   │12).chat
+┃   │13).react
+┃   │14).setownerno
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Whatsapp⌟
+┃╰┬─────────❉
+┃━┤1).jid
+┃   │2).del
+┃   │3).quoted
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Misc⌟
+┃╰┬─────────❉
+┃━┤1).find
+┃   │2).tts
+┃   │3).attp
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Group⌟
+┃╰┬─────────❉
+┃━┤1).antilink
+┃   │2).promote
+┃   │3).demote
+┃   │4).add
+┃   │5).kick
+┃   │6).mute
+┃   │7).invite
+┃   │8).revoke
+┃   │9).tagall
+┃   │10).tag
+┃   │11).left
+┃   │12).join
+┃   │13).group
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Short Link⌟
+┃╰┬─────────❉
+┃━┤1).tinyurl
+┃   │2).bitly
+┃   │3).cuttly
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Info⌟
+┃╰┬─────────❉
+┃━┤1).ping
+┃   │2).menu
+┃   │3).list
+┃   │4).runtime
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Converter⌟
+┃╰┬─────────❉
+┃━┤1).photo
+┃   │2).fancy
+┃   │3).url
+┃   │4).mp3
+┃   │5).sticker
+┃   │6).qr
+┃   │7).mp4
+┃   │8).take
+┃   │9).gif
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Downloader⌟
+┃╰┬─────────❉
+┃━┤1).insta
+┃   │2).fb
+┃   │3).tik
+┃   │4).play
+┃   │5).video
+┃   │6).mediafire
+┃   │7).ss
+┃   │8).yts
+┃   │9).ytv
+┃   │10).tw
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Chat-GPT⌟
+┃╰┬─────────❉
+┃━┤1).ai
+┃   │2).aiimg
+╿   ╰─────────❉
+╰━━━━━━━━━━━━━✵
+`
                 let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'ᴏᴡɴᴇʀ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            kriz.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: esce, mentions: ments})
+            kriz.sendMessage(m.chat, { caption: FancyRandom(funda), location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: esce, mentions: ments})
             }
             break
 
