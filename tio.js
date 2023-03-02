@@ -267,15 +267,6 @@ jumlahharian = `${dataa.value}`
 //Autodownload
 
 
-if (m.text.includes("instagram.com")) {
-	insta(m.text).then(({ url }) => {
- 
-   try { kriz.sendMessage(m.chat , { video : { url : url } } )
-       } catch {
-	       console.log("umm")
-    // kriz.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
-    }
-    })
 
 
 if (budy.startsWith("https://youtu")) {
