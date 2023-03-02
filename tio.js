@@ -3,6 +3,7 @@ const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  
 const fs = require('fs')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
 const os = require('os')
+const { FancyRandom } = require ("abu-bot");
 const util = require('util')
 const path = require('path')
 const hx = require('hxz-api')
@@ -1295,22 +1296,22 @@ break
             let ownernya = '0@s.whatsapp.net'
             let me = m.sender
             let myr = `╭───────────㋰
-│╭──[ᴜꜱᴇʀ ɪɴꜰᴏ]──㋰
-││ᴜꜱᴇʀ : ${pushname}
-││ᴜꜱᴇʀ ɴᴜᴍʙᴇʀ : \n││ @${me.split('@')[0]}
+│╭──[user info]──㋰
+││user : ${pushname}
+││user number : \n││ @${me.split('@')[0]}
 │╰──㋰
 │
-│╭──[ʙᴏᴛ ɪɴꜰᴏ]──㋰
-││ʙᴏᴛ ɴᴀᴍᴇ : ${botname}
-││ᴅᴀᴛᴇ : ${date.toLocaleTimeString()}
-││ᴛɪᴍᴇ : ${date.toLocaleDateString('hi')}
-││ᴡᴏʀᴋ ᴛʏᴘᴇ : ${kriz.public ? 'Public' : `Self`}
-││ᴘʀᴇꜰɪx : [ᴍᴜʟᴛɪ ᴘʀᴇꜰɪx]
-││ᴜᴘᴛɪᴍᴇ : ${runtime(process.uptime())}
+│╭──[bot info]──㋰
+││bot name : ${botname}
+││time : ${date.toLocaleTimeString()}
+││date : ${date.toLocaleDateString('hi')}
+││work type : ${kriz.public ? 'Public' : `Self`}
+││prefix : [multi prefix]
+││uptime : ${runtime(process.uptime())}
 │╰──㋰
 │
 │╭──────────㋰
-││ᴄʟɪᴄᴋ ʙᴜᴛᴛᴏɴ ɢɪᴠᴇɴ ʙᴇʟᴏᴡ\n││ᴛᴏ ꜱᴇᴇ ᴍᴇɴᴜ ʟɪꜱᴛ.
+││click the button given below\n││to see menu list.
 │╰──㋰
 ╰───────────㋰`
             let ments = [ownernya, me, ini_kangbaned]
@@ -1321,7 +1322,7 @@ break
   mimetype: `${filsk}`,
   fileLength: jumhal,
   pageCount: jumlha,
-  caption: myr,
+  caption: FancyRandom(myr),
   footer: esce,
   buttons: buttons,
   mentions: ments,
