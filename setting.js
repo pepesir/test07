@@ -9,7 +9,7 @@ global.sessionName = 'session'
 global.jumlha = '999'
 global.jumhal = '100000000000000'
 global.jumlah = '1000000000'
-global.prefa = ['','!','.','#','&']
+global.prefa = ['','!','.','#','&','/']
 global.sp = ''
 global.mess = {
     success: '✅Done',
@@ -20,7 +20,7 @@ global.mess = {
     group: 'Features Used Only For Groups!',
     private: 'Features Used Only For Private Chat!',
     bot: 'Special Features for Bot Number Users',
-    wait: 'Loading...',
+    wait: '_Wait a minute..._',
     error: 'Error!',
     errapi: 'Error Maybe Invalid Apikey!',
     errmor: 'System Error Errors',
@@ -30,12 +30,12 @@ global.limitawal = {
     premium: "Infinity",
     free: 100
 }
-global.thumb = fs.readFileSync('./media/image/tio.jpg')
-global.faall = fs.readFileSync('./media/image/fake.jpg')
-global.mygit = 'https://github.com/BOTCAHX'
-global.webmy = 'https://api.botcahx.biz.id'
-global.ghme = 'https://github.com/BOTCAHX'
-global.gcbot = "https://api.botcahx.biz.id"
+global.thumb = fs.readFileSync('./media/image/kriz.jpg')
+global.faall = fs.readFileSync('./media/image/kriz.jpg')
+global.mygit = 'https://whats-kriz-ai-com.vercel.app/'
+global.webmy = 'https://whats-kriz-ai-com.vercel.app/'
+global.ghme = 'https://whats-kriz-ai-com.vercel.app/'
+global.gcbot = "https://whats-kriz-ai-com.vercel.app/"
 global.botname = '*WʜᴀᴛꜱKʀɪᴢ AI*'
 global.omlen = '*©WʜᴀᴛꜱKʀɪᴢ AI*'
 global.weem = '*WʜᴀᴛꜱKʀɪᴢ AI*'
