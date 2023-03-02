@@ -796,7 +796,7 @@ case 'mode': case 'worktype': {
             let me = m.sender
             if (!isCreator) throw mess.owner
             let ownernya = '0@s.whatsapp.net'
-            let wrt = `ᴄʜᴀɴɢᴇ ᴛʜᴇ ᴡᴏʀᴋɪɴɢ ᴛʏᴘᴇ /n ᴄʟɪᴄᴋɪɴɢ ᴏɴ ɢɪᴠᴇɴ ʙᴜᴛᴛᴏɴ`
+            let wrt = `ᴄʜᴀɴɢᴇ ᴛʜᴇ ᴡᴏʀᴋɪɴɢ ᴛʏᴘᴇ/nᴄʟɪᴄᴋɪɴɢ ᴏɴ ɢɪᴠᴇɴ ʙᴜᴛᴛᴏɴ`
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'public', buttonText: { displayText: 'ᴘᴜʙʟɪᴄ' }, type: 1 },{ buttonId: 'self', buttonText: { displayText: 'ᴘʀɪᴠᴀᴛᴇ' }, type: 1 }]
             let buttonMessage = {
@@ -1301,11 +1301,11 @@ break
 ││Date : ${date.toLocaleDateString('hi')}
 ││Worktype : ${kriz.public ? 'Public' : `Self`}
 ││Prefix : [multi prefix]
-││Uptime : ${runtime(process.uptime())}
+││Uptime :\n││ ${runtime(process.uptime())}
 │╰──㋰
 │
 │╭──────────㋰
-││Click the button given below\n││To see menu list.
+││Click the button given\n││below\nTo see\n││menu list.
 │╰──㋰
 ╰───────────㋰`
             let ments = [ownernya, me, ini_kangbaned]
