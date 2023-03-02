@@ -831,6 +831,46 @@ case 'mode': case 'worktype': {
       "ᴘᴏɴɢ! " + (end - start) + " ᴍs")
        }
       break
+case 'find' :{
+
+let acrcloud = require('acrcloud')
+let acr = new acrcloud({
+	host: 'identify-eu-west-1.acrcloud.com',
+	access_key: 'c816ad50a2bd6282e07b90447d93c38c',
+	access_secret: 'ZpYSwmCFpRovcSQBCFCe1KArX7xt8DTkYx2XKiIP'
+})
+	try{
+	let q = m.quoted ? m.quoted : m
+	let mime = (q.msg || q).mimetype || ''
+	if (/audio|video/.test(mime)) {
+		let media = await q.download()
+		let ext = mime.split('/')[1]
+		fs.writeFileSync(`./${m.sender}.${ext}`, media)
+		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
+		let { code, msg } = res.status
+		if (code !== 0) throw msg
+		let { title, artists, album, genres, release_date } = res.metadata.music[0]
+		let button = [
+                    {buttonId: `ytmp3 ${title}`, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
+                ]
+		let txt = `*𝑻𝒊𝒕𝒍𝒆:* ${title}
+
+*𝑨𝒓𝒕𝒊𝒔𝒕𝒔:* ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
+
+*𝑨𝒍𝒃𝒖𝒎:* ${album.name || ''}
+
+*𝑮𝒆𝒏𝒓𝒆𝒔:* ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
+
+*𝑹𝒆𝒍𝒆𝒂𝒔𝒆 𝑫𝒂𝒕𝒆:* ${release_date}`
+		fs.unlinkSync(`./${m.sender}.${ext}`)
+		
+     await kriz.sendButtonText(m.chat, button, txt, kriz.user.name, m)
+	//	await m.reply(txt)
+	} else throw 'Reply audio/video!'
+}catch(e){
+    m.reply(`${e}`)
+  }}
+       break
             case 'speedtest': {
             m.reply('Testing Speed...')
             let cp = require('child_process')
