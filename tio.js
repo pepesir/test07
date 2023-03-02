@@ -793,7 +793,6 @@ break
             }
             break
 case 'mode': case 'worktype': {
-            let ownernya = '0@s.whatsapp.net'
             let me = m.sender
             if (!isCreator) throw mess.owner
             let ownernya = '0@s.whatsapp.net'
