@@ -159,9 +159,7 @@ kriz.readMessages([m.key])
       	await console.log(chalk.black(chalk.bgRed('[ CMD ]')), chalk.black(chalk.bgGreen(new Date)), chalk.white(chalk.bgBlue(isCmd ? body : m.mtype || body.slice(0, 20))) + '\n' + chalk.black(chalk.bgCyan('[ ~> from ]')), chalk.black(chalk.bgWhite(pushname)), chalk.black(chalk.bgYellow(m.sender)) + '\n' + chalk.black(chalk.bgMagentaBright('[ ~> in ]')), chalk.black(chalk.bgYellow(m.isGroup ? pushname : 'Private Chat')), chalk.black(chalk.bgCyan(m.chat)))
 		  console.log('\n')      
             }               
-//Premium Exp
-prem.expiredCheck(tio, m, premium);
-                
+
 //sticker url
 const sendStickerFromUrl = async(to, url) => {
                 var names = Date.now() / 10000;
