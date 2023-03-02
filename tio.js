@@ -1305,7 +1305,7 @@ break
 │╰──㋰
 │
 │╭──────────㋰
-││Click the button given\n││below\nTo see\n││menu list.
+││Click the button given\n││below to see\n││menu list.
 │╰──㋰
 ╰───────────㋰`
             let ments = [ownernya, me, ini_kangbaned]
