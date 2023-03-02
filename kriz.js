@@ -913,7 +913,7 @@ let acr = new acrcloud({
          case 'tts': { 
                   if (!text) throw `Example : ${prefix + command} text` 
               let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`) 
-              kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:true , contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https:"}}}, { quoted: m})
+              kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:false , contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI"}}}, { quoted: m})
                   } 
           break
            case 'photo': case 'toimage': case 'toimg': {
@@ -950,7 +950,8 @@ let acr = new acrcloud({
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            kriz.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg', fileName: `ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ.mp3`}, { quoted : m })
+            kriz.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg', fileName: `ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ.mp3`,contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI"}}}, { quoted: m})
+                  }  { quoted : m })
             }
             break
             case 'gif': {
