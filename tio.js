@@ -41,7 +41,7 @@ const esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
 const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
-gambar = fs.readFileSync('./media/image/tio.jpg')
+gambar = fs.readFileSync('./media/image/kriz.jpg')
 
 module.exports = kriz = async (kriz, m, chatUpdate, store) => {
     try {
