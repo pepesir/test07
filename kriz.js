@@ -910,12 +910,12 @@ let acr = new acrcloud({
            await kriz.sendMedia(m.chat, `https://api.botcahx.biz.id/api/maker/attp?text=${text}&apikey=Admin`, 'attp.webp', '', m, { asSticker: true })
          }
            break
-         case 'tts': {
-         	if (!text) throw `Example : ${prefix + command} text`
-             let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`)
-               await kriz.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mp4', duration: 359996400, ptt: false, contextInfo: { forwardingScore: 9999, externalAdReply: { title: WʜᴀᴛꜱKʀɪᴢ AI, body: hehe, previewType: "PHOTO", thumbnail: client.jpg, sourceUrl: ig.com } }, sendEphemeral: true }, { quoted: m })
-         	}
-         break
+         case 'tts': { 
+                  if (!text) throw `Example : ${prefix + command} text` 
+              let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`) 
+              kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:true , contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https:"}}}, { quoted: m})
+                  } 
+          break
            case 'photo': case 'toimage': case 'toimg': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Reply sticker with caption *${prefix + command}*`
