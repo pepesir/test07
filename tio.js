@@ -13,7 +13,6 @@ const xfar = require('xfarr-api')
 const google = require('google-it')
 const { Configuration, OpenAIApi } = require("openai");
 const maker = require('mumaker')
-const config = require("../config.js");
 const naztod = require("tod-api")
 const request = require('request');
 const textpro = require('./lib/textpro')
