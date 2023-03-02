@@ -849,9 +849,9 @@ let acr = new acrcloud({
 		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
 		let { code, msg } = res.status
 		if (code !== 0) throw msg
-		let { title, artists, album, genres, release_date } = res.metadata.music[0]
+		let { url, title, artists, album, genres, release_date } = res.metadata.music[0]
 		let button = [
-                    {buttonId: `ytmp3 ${title}`, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
+                    {buttonId: `ytmp3 ${url}`, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
                 ]
 		let txt = `*𝑻𝒊𝒕𝒍𝒆:* ${title}
 
