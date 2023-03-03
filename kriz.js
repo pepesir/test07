@@ -488,7 +488,7 @@ case 'hehe': {
                     let buffer = fs.readFileSync(media)
      
                     if (/audio/.test(mime)) {
-                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "VIDEO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://youtube.com/@pepesir5306"}}},  { quoted : ftroli })
+                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "VIDEO","thumbnailUrl": `https://youtube.com/@pepesir5306`,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://youtube.com/@pepesir5306"}}},  { quoted : ftroli })
                     } else {
                     m.reply(`*Send reply AudioYou Want to Broadcast With Caption* ${prefix + command}`)
                     }
