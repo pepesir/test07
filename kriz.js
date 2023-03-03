@@ -680,8 +680,8 @@ case 'tobc': {
                     if (/audio/.test(mime)) {
                     kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{
         externalAdReply:{
-            title: WʜᴀᴛꜱKʀɪᴢ AI ʙʀᴏᴀᴅᴄᴀꜱᴛ❗️,
-            body: ʜᴇʜᴇ,
+            title:enthada fear ayo nee,
+            body: WʜᴀᴛꜱKʀɪᴢ AI,
             thumbnail: fs.readFileSync(`client.jpg`),
             mediaType:2,
             mediaUrl:instagram.com,
