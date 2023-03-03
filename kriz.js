@@ -69,7 +69,7 @@ module.exports = kriz = async (kriz, m, chatUpdate, store) => {
         const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
 	   
 	
-	/ Push Message To Console
+	// Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
 
