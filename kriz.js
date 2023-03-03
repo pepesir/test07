@@ -634,12 +634,12 @@ case 'bc': case 'broadcast': case 'bcall': {
 if (!isCreator) throw mess.owner
 if (!text) throw `Which text?\nExample : ${prefix + command} WHATS-KRIZ-AI`
 let anu = await store.chats.all().map(v => v.id)
-m.reply(`Send Broadcast To ${anu.length} Chat\Time's up ${anu.length * 1.5} detik`)
+m.reply(`Send Broadcast To ${anu.length} Chat\Time's up ${anu.length * 1.5} seconds`)
 		for (let yoi of anu) {
 		await sleep(1500)
 		let txt = `${text}`
 		let buttons = [{ buttonId: 'list', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            await kriz.sendButtonText(yoi, buttons, txt, esce, m, {quoted: ftroli})
+            await kriz.sendButtonText(yoi, buttons, txt, esce, m, {quoted: fgclink})
 		}
 		m.reply('_Broadcast Success!_')
 }
@@ -648,7 +648,7 @@ case 'tobc': {
                 if (!isCreator) throw mess.owner
                 if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
                 let anu = await store.chats.all().map(v => v.id)
-                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "120363028882306777@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                 m.reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
                 for (let i of anu) {
                     await sleep(1500)
@@ -657,7 +657,7 @@ case 'tobc': {
                     let buffer = fs.readFileSync(media)
      
                     if (/audio/.test(mime)) {
-                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "VIDEO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://youtube.com/@pepesir5306"}}},  { quoted : fgclink })
+                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "VIDEO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://youtube.com/@pepesir5306"}}},  { quoted : ftroli })
                     } else {
                     m.reply(`*Send reply Audio You Want to Broadcast With Caption* ${prefix + command}`)
                     }
