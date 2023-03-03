@@ -174,10 +174,10 @@ async function startKriz() {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
                 
-                let butwel = [{ buttonId: 'menu', buttonText: { displayText: 'Welcome' }, type: 1 }]
-                let butleav = [{ buttonId: 'menu', buttonText: { displayText: 'Selamat Tinggal' }, type: 1 }]
-                let butselamat = [{ buttonId: 'menu', buttonText: { displayText: 'Selamat!' }, type: 1 }]
-                let butsebar = [{ buttonId: 'menu', buttonText: { displayText: 'Sabar' }, type: 1 }]
+                let butwel = [{ buttonId: 'xxdjdj', buttonText: { displayText: 'Welcome' }, type: 1 }]
+                let butleav = [{ buttonId: 'mkdkkdu', buttonText: { displayText: 'Goodbye' }, type: 1 }]
+                let butselamat = [{ buttonId: 'meneujdjeu', buttonText: { displayText: 'Congrats' }, type: 1 }]
+                let butsebar = [{ buttonId: 'mejejdnu', buttonText: { displayText: 'Be patient' }, type: 1 }]
                 let esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
                 let teks1 = `Helo @${num.split('@')[0]}*\n*Welcome to the group*\n*${metadata.subject}*\n*Don't Forget the Intro.*\n_~Admin_`
                 let teks2 = `*Goodbye @${num.split('@')[0]}*\n*Rest in peace*\n_~Admin_`
