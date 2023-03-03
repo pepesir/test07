@@ -689,10 +689,9 @@ externalAdReply:{
 		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
-},
 
-    },{quoted:ftoko})
-    
+    },
+},{quoted:ftoko})
                     } else if (/video/.test(mime)) {
                     let junn = `*WʜᴀᴛꜱKʀɪᴢ AI ʙʀᴏᴀᴅᴄᴀꜱᴛ*${text ? '\n\n' + text : ''}`
                     kriz.sendMessage(i, {video: buffer, caption: `${junn}`,
@@ -706,9 +705,9 @@ externalAdReply:{
 		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
-},
 
-    },quoted:ftoko})
+    },
+},{quoted:ftoko})
     
                   } else  if (/audio/.test(mime)) {
                     kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
