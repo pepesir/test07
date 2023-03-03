@@ -676,17 +676,48 @@ case 'tobc': {
                     
                     let media = await kriz.downloadAndSaveMediaMessage(quoted)
                     let buffer = fs.readFileSync(media)
-     
-                    if (/audio/.test(mime)) {
+                    
+                        if (/webp/.test(mime)) {
+                    kriz.sendMessage(i, { sticker: { url: media,
+contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'ʜᴇy ʙɪᴛᴄʜ ɪᴛ'ꜱ ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		mediaType: 2,
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		showAdAttribution: true
+        }
+
+    }, { quoted: ftoko })
+    
+                    } else if (/video/.test(mime)) {
+                    let junn = `*WʜᴀᴛꜱKʀɪᴢ AI ʙʀᴏᴀᴅᴄᴀꜱᴛ*${text ? '\n\n' + text : ''}`
+                    kriz.sendMessage(i, {video: buffer, caption: `${junn}`,
+contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'ʜᴇy ʙɪᴛᴄʜ ɪᴛ'ꜱ ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		mediaType: 2,
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		showAdAttribution: true
+        }
+
+    }, { quoted: ftoko })
+    
+                  } else  if (/audio/.test(mime)) {
                     kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
 contextInfo:{
 externalAdReply:{
  title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'hehe',
+		body: 'ʜᴇy ʙɪᴛᴄʜ ɪᴛ'ꜱ ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
 		mediaType: 2,
 		thumbnail: fs.readFileSync(`client.jpg`),
 		mediaUrl: 'https://www.instagram.com/p/heehe', 
-		sourceUrl: 'https://wa.me/919544951258?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
 
@@ -788,7 +819,7 @@ let acr = new acrcloud({
 		if (code !== 0) throw msg
 		let { url, title, artists, album, genres, release_date } = res.metadata.music[0]
 		let button = [
-                    {buttonId: `ytmp3 ${url} `, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
+                    {buttonId: `play ${url} `, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
                 ]
 		let txt = `*𝑻𝒊𝒕𝒍𝒆:* ${title}
 
@@ -1062,7 +1093,7 @@ if (!isLinks2) return m.reply(`Ugly link`)
 m.reply(mess.wait)
 anu = await ytMp4(`${q}`)
 titlenyaa = `SUCCESSFUL TITLE OBTAINED\n\Title : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDescription : ${anu.desc}\n\PLEASE WAIT IS SENDING MEDIA`
-kriz.sendMessage(m.chat, { image: { url: anu.thumb }, caption: `${titlenyaa}`}, { quoted: ftoko })
+
 kriz.sendMessage(m.chat, { audio: { url: anu.result }, mimetype: 'audio/mpeg', fileName: `${anu.title}.mp3` }, { quoted: ftroli })
 break
 case 'ytmp4':
@@ -1072,7 +1103,7 @@ if (!isLinks) return m.reply(`Ugly link`)
 m.reply(mess.wait)
 anu = await ytMp4(`${q}`)
 titlenyaa = `SUCCESSFUL TITLE OBTAINED\n\Title : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDescription : ${anu.desc}\n\nPLEASE WAIT IS SENDING MEDIA`
-kriz.sendMessage(m.chat, { image: { url: anu.thumb }, caption: `${titlenyaa}`}, { quoted: ftoko })
+
 kriz.sendMessage(m.chat, { video: { url: anu.result }, mimetype: 'video/mp4', fileName: `${anu.title}.mp4` }, { quoted: ftroli })
 break
 	 
