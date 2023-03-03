@@ -363,11 +363,11 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 	}
 
 	options.linkPreview = {
-		title: ' 𝞛𝞓𝙎𝞙 𝙎𝞝𝗥💖 ',
-		body: 'Made by mask 𝐰𝐢𝐭𝐡 ❤️💫',
+		title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'hehe',
 		mediaType: 2,
-		thumbnail: image2,
-		mediaUrl: 'https://www.instagram.com/p/heehe', // insta link for video 
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
 		sourceUrl: 'https://wa.me/919544951258?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
 	}
@@ -678,13 +678,16 @@ case 'tobc': {
                     let buffer = fs.readFileSync(media)
      
                     if (/audio/.test(mime)) {
-                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{
-        externalAdReply:{
-            title:enthada fear ayo nee,
-            body: WʜᴀᴛꜱKʀɪᴢ AI,
-            thumbnail: fs.readFileSync(`client.jpg`),
-            mediaType:2,
-            mediaUrl:instagram.com,
+                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
+contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'hehe',
+		mediaType: 2,
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
+		sourceUrl: 'https://wa.me/919544951258?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		showAdAttribution: true
         }
 
     },
