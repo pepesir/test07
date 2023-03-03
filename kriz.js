@@ -689,8 +689,9 @@ externalAdReply:{
 		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
+},
 
-    }, { quoted: ftoko })
+    }, {quoted: ftroli})
     } else {
                     m.reply(`*Send reply stick You Want to Broadcast With Caption* ${prefix + command}`)
                     }
@@ -728,7 +729,7 @@ externalAdReply:{
         }
 
     },
-},{quoted:ftoko})
+},{quoted:ftroli})
                     } else {
                     m.reply(`*Send reply Audio You Want to Broadcast With Caption* ${prefix + command}`)
                     }
