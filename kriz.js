@@ -708,7 +708,7 @@ externalAdReply:{
         }
 },
 
-    },{quoted:ftoko})
+    },quoted:ftoko})
     
                   } else  if (/audio/.test(mime)) {
                     kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
