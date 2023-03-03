@@ -171,7 +171,7 @@ const sendStickerFromUrl = async(to, url) => {
                     });
                 };
                 download(url, './database/stick' + names + '.png', async function () {
-                    console.log('selesai');
+                    console.log('finished');
                     let filess = './database/stick' + names + '.png'
                     let asw = './database/stick' + names + '.webp'
                     exec(`ffmpeg -i ${filess} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${asw}`, (err) => {
@@ -194,13 +194,13 @@ const sendStickerFromUrl = async(to, url) => {
              }
              
              //Fake
-	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'tio', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${weem}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
 		const ftextt = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})}, message: { "extendedTextMessage": {"text":`${weem}`, "title": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
         const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${weem}`, "description": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "1000000000000000000", "retailerId": `${weem}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
 		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`${weem}`, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${weem}`, "caption": `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "120363028882306777@g.us","inviteCode": "m","groupName": `${weem}`, "caption": `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${weem}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${weem}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${weem}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": `${weem}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
@@ -422,7 +422,7 @@ break
             break  
             case 'join': {
                 if (!isCreator) throw mess.owner
-                if (!text) throw 'Masukkan Link Group!'
+                if (!text) throw 'Enter Link Groups!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 m.reply(mess.wait)
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
@@ -436,11 +436,11 @@ break
             break
           case 'setowner': case 'setownerno': {
                if (!isCreator) throw mess.owner
-               if (m.text.includes('@')) return m.reply(`*Invalid!*\n\n*Pake Nomer Woy*\n*Jangan Pakai Tag!*`)
-               if (!text) throw `Example : ${prefix + command} 6285875158363`
+               if (m.text.includes('@')) return m.reply(`*Invalid!*\n\n*Use Number*\n*Don't Use Tags!*`)
+               if (!text) throw `Example : ${prefix + command} 919961857267`
               global.owner = text
               global.ownernomer = text
-              m.reply(`Owner berhasil diubah menjadi\n\n *»* Owner : ${global.owner}\n *»* OwnerNumber : ${global.ownernomer}`)
+              m.reply(`Owner successfully changed to\n\n Owner : ${global.owner}\n OwnerNumber : ${global.ownernomer}`)
             }
             break
 	case 'kick': {
@@ -475,28 +475,6 @@ break
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-case 'hehe': {
-                if (!isCreator) throw mess.owner
-                if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
-                let anu = await store.chats.all().map(v => v.id)
-                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                m.reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
-                for (let i of anu) {
-                    await sleep(1500)
-                    
-                    let media = await kriz.downloadAndSaveMediaMessage(quoted)
-                    let buffer = fs.readFileSync(media)
-     
-                    if (/audio/.test(mime)) {
-                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "mediaType": 2,"thumbnailUrl": `https://instagram.com`,"thumbnail": fs.readFileSync(`client.jpg`),"mediaUrl": 'https://www.instagram.com/p/he,"showAdAttribution": true,"sourceUrl": "https://instagram.com"}}},  { quoted : ftroli })
-                    } else {
-                    m.reply(`*Send reply AudioYou Want to Broadcast With Caption* ${prefix + command}`)
-                    }
-                    await fs.unlinkSync(media)
-                    }
-                m.reply(` *Send Broadcast To* ${anu.length} *Chats*`)
-            }
-            break
         case 'block': {
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
@@ -525,7 +503,7 @@ case 'hehe': {
                 if (!isAdmins) throw mess.admin
                 let teks = `══✪〘 *Tag All* 〙✪══
  
-                ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
+                ➲ *Message : ${q ? q : 'blank'}*\n\n`
                 for (let mem of participants) {
                 teks += ` *»* @${mem.id.split('@')[0]}\n`
                 }
@@ -543,11 +521,11 @@ case 'hehe': {
 	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
 		db.data.users[m.sender].limit -= 1 // -1 limit
 		let { styletext } = require('./lib/scraper')
-		if (!text) throw 'Masukkan Query text!'
+		if (!text) throw 'Enter Query text!'
                 let anu = await styletext(text)
-                let teks = `Srtle Text From ${text}\n\n`
+                let teks = `Style Text From ${text}\n\n`
                 for (let i of anu) {
-                    teks += ` *»* *${i.name}* : ${i.result}\n\n`
+                    teks += `${i.name} : ${i.result}\n\n`
                 }
                 m.reply(teks)
 	    }
@@ -557,13 +535,13 @@ case 'hehe': {
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (args[0] === 'close'){
-                    await kriz.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`*Sukses Menutup Group*`)).catch((err) => m.reply(jsonformat(err)))
+                    await kriz.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`_Success Closing Group!_`)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'open'){
-                    await kriz.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`*Sukses Membuka Group*`)).catch((err) => m.reply(jsonformat(err)))
+                    await kriz.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`_Success Opens Group!_`)).catch((err) => m.reply(jsonformat(err)))
                 } else {
                 let buttons = [
-                        { buttonId: 'group open', buttonText: { displayText: 'Open kh?' }, type: 1 },
-                        { buttonId: 'group close', buttonText: { displayText: 'Close kh?' }, type: 1 }
+                        { buttonId: 'group open', buttonText: { displayText: 'ᴏᴘᴇɴ' }, type: 1 },
+                        { buttonId: 'group close', buttonText: { displayText: 'ᴄʟᴏꜱᴇ' }, type: 1 }
                     ]
                     await kriz.sendButtonText(m.chat, buttons, `Mode Group`, kriz.user.name, m)
 
@@ -575,17 +553,17 @@ case 'hehe': {
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (args[0] === "on") {
-                if (db.data.chats[m.chat].antilink) return m.reply(`*Sudah Aktif kak Sebelumnya*`)
+                if (db.data.chats[m.chat].antilink) return m.reply(`_Already active!_`)
                 db.data.chats[m.chat].antilink = true
-                m.reply(`*Antilink Sekarang Aktif !*`)
+                m.reply(`_Antilink Now Active !_`)
                 } else if (args[0] === "off") {
-                if (!db.data.chats[m.chat].antilink) return m.reply(`*Sudah Tidak Aktif Sebelumnya*`)
+                if (!db.data.chats[m.chat].antilink) return m.reply(`_Previously Inactive!_`)
                 db.data.chats[m.chat].antilink = false
-                m.reply(`*Antilink Sekarang Tidak Aktif !*`)
+                m.reply(`_Antilink is Now Inactive !_`)
                 } else {
                  let buttons = [
-                        { buttonId: 'antilink on', buttonText: { displayText: 'On' }, type: 1 },
-                        { buttonId: 'antilink off', buttonText: { displayText: 'Off' }, type: 1 }
+                        { buttonId: 'antilink on', buttonText: { displayText: 'ᴏɴ' }, type: 1 },
+                        { buttonId: 'antilink off', buttonText: { displayText: 'ᴏꜰꜰ' }, type: 1 }
                     ]
                     await kriz.sendButtonText(m.chat, buttons, `Mode Antilink`, kriz.user.name, m)
                 }
@@ -596,17 +574,17 @@ case 'hehe': {
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (args[0] === "on") {
-                if (db.data.chats[m.chat].mute) return m.reply(`Sudah Aktif Sebelumnya`)
+                if (db.data.chats[m.chat].mute) return m.reply(`Previously Active`)
                 db.data.chats[m.chat].mute = true
                 m.reply(`${kriz.user.name} telah di mute di group ini !`)
                 } else if (args[0] === "off") {
-                if (!db.data.chats[m.chat].mute) return m.reply(`Sudah Tidak Aktif Sebelumnya`)
+                if (!db.data.chats[m.chat].mute) return m.reply(`Previously Inactive`)
                 db.data.chats[m.chat].mute = false
                 m.reply(`${kriz.user.name} telah di unmute di group ini !`)
                 } else {
                  let buttons = [
-                        { buttonId: 'mute on', buttonText: { displayText: 'On' }, type: 1 },
-                        { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
+                        { buttonId: 'mute on', buttonText: { displayText: 'ᴏɴ' }, type: 1 },
+                        { buttonId: 'mute off', buttonText: { displayText: 'ᴏꜰꜰ' }, type: 1 }
                     ]
                     await kriz.sendButtonText(m.chat, buttons, `Mute Bot`, kriz.user.name, m)
                 }
@@ -625,7 +603,7 @@ case 'hehe': {
                 if (!isAdmins) throw mess.admin
                 await kriz.groupRevokeInvite(m.chat)
                     .then(res => {
-                        m.reply(`Sukses Menyetel Ulang, Tautan Undangan Grup ${groupMetadata.subject}`)
+                        m.reply(`Reset Successfully, Group Invite Link ${groupMetadata.subject}`)
                     }).catch((err) => m.reply(jsonformat(err)))
             break
             case 'delete': case 'del': {
@@ -638,90 +616,61 @@ case 'hehe': {
             break
             case 'bcgc': case 'bcgroup': {
 if (!isCreator) throw mess.owner
-if (!text) throw `Text mana?\n\nExample : ${prefix + command} fatih-san`
+if (!text) throw `Which text?\nExample : ${prefix + command} WHATS-KRIZ-AI`
 let getGroups = await kriz.groupFetchAllParticipating()
 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
 let anu = groups.map(v => v.id)
-m.reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1.5} detik`)
+m.reply(`Send Broadcast To ${anu.length} Group Chat End Time ${anu.length * 1.5} second`)
 for (let i of anu) {
 await sleep(1500)
-let txt = `「 Broadcast Bot 」\n\n${text}`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: 'SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'Rules' }, type: 1 }]
-await kriz.sendButtonText(i, buttons, txt, esce, m, {quoted: fkontak})
+let txt = `${text}`
+let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'ᴍᴇɴᴜ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
+await kriz.sendButtonText(i, buttons, txt, esce, m, {quoted: ftroli})
 }
-m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
+m.reply(`Successfully Sending Broadcast To ${anu.length} Group`)
 }
 break
 case 'bc': case 'broadcast': case 'bcall': {
 if (!isCreator) throw mess.owner
-if (!text) throw `Text mana?\n\nExample : ${prefix + command} fatih-san`
+if (!text) throw `Which text?\nExample : ${prefix + command} WHATS-KRIZ-AI`
 let anu = await store.chats.all().map(v => v.id)
-m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
+m.reply(`Send Broadcast To ${anu.length} Chat\Time's up ${anu.length * 1.5} detik`)
 		for (let yoi of anu) {
 		await sleep(1500)
-		let txt = `「 Broadcast Bot 」\n\n${text}`
-		let buttons = [{ buttonId: 'donasi', buttonText: { displayText: 'SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'Rules' }, type: 1 }]
-            await kriz.sendButtonText(yoi, buttons, txt, esce, m, {quoted: fkontak})
+		let txt = `${text}`
+		let buttons = [{ buttonId: 'list', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
+            await kriz.sendButtonText(yoi, buttons, txt, esce, m, {quoted: ftroli})
 		}
-		m.reply('Sukses Broadcast')
+		m.reply('_Broadcast Success!_')
 }
 break
-case 'tobc':
-					{
+case 'tobc': {
                 if (!isCreator) throw mess.owner
-				if (!m.quoted) return m.reply("*WʜᴀᴛꜱKʀɪᴢ AI*\n\n*Reply to a Message*")
-
-					let buff1 = fs.readFileSync('client.jpg')
-					let buff2 = fs.readFileSync('client.jpg')
-					let options = {}
-					let media = await kriz.downloadAndSaveMediaMessage(quoted)
-					let anu = await store.chats.all().map(v => v.id)
-					m.reply(`Sending Broadcast To ${anu.length} Chat\nDone Time ${anu.length * 1.5} seconds`)
-				for (let yoi of anu) {
-					
-					
-					
-					
-					
-					
-					
-					
- /*       let linkPreview = {
-               head: "𝕮𝖞𝖇𝖊𝖗 𝕽𝖎𝖈𝖍𝖚",
-               body: "★彡[𝓑𝓡𝓞𝓐𝓓𝓒𝓐𝓢𝓣]彡★",
-               mediaType: 2, //3 for video
-               thumbnail: buff2.buffer,
-               sourceUrl: "https://bit.ly/3D4Y12",
-                }
-                
-         
-        let quoted = {
-            key: {
-                fromMe: false,
-                participant: "0@s.whatsapp.net",
-                remoteJid: "status@broadcast"
-            },
-            message: {
-                "imageMessage": {
-                    "jpegThumbnail": buff1.buffer,
-                    "caption": "ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ"
-                }
+                if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
+                let anu = await store.chats.all().map(v => v.id)
+                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                m.reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    
+                    let media = await kriz.downloadAndSaveMediaMessage(quoted)
+                    let buffer = fs.readFileSync(media)
+     
+                    if (/audio/.test(mime)) {
+                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "VIDEO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://youtube.com/@pepesir5306"}}},  { quoted : fgclink })
+                    } else {
+                    m.reply(`*Send reply Audio You Want to Broadcast With Caption* ${prefix + command}`)
+                    }
+                    await fs.unlinkSync(media)
+                    }
+                m.reply(` *Send Broadcast To* ${anu.length} *Chats*`)
             }
-        } */
-        
-
-kriz.sendMessage(yoi, { audio: media, mimetype: 'audio/mpeg' }, { quoted : m })
-
-
-
-			            } }
-					
-					break
+            break
             case 'q': case 'quoted': {
         try {
 		if (!m.quoted) return m.reply('Message Repliesnya!!')
 		let wokwol = await kriz.serializeM(await m.getQuotedObj())
-		if (!wokwol.quoted) return m.reply('Pesan Yang anda reply tidak mengandung reply')
+		if (!wokwol.quoted) return m.reply('The message you are replying to does not contain a reply')
 		await wokwol.quoted.copyNForward(m.chat, true)
 		} catch (e) {
 		    m.reply(mess.errmor)}
@@ -805,7 +754,7 @@ let acr = new acrcloud({
 		if (code !== 0) throw msg
 		let { url, title, artists, album, genres, release_date } = res.metadata.music[0]
 		let button = [
-                    {buttonId: `ytmp3 ${url}`, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
+                    {buttonId: `ytmp3 ${url} `, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
                 ]
 		let txt = `*𝑻𝒊𝒕𝒍𝒆:* ${title}
 
@@ -891,38 +840,38 @@ let acr = new acrcloud({
             break
 
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
-            if (!quoted) throw `*Balas Video/Image Dengan caption* ${prefix + command}`
+            if (!quoted) throw `*Reply Video/Image With caption* ${prefix + command}`
             m.reply(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
                 let encmedia = await kriz.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return m.reply('*Maksimal 10 detik!*')
+                if ((quoted.msg || quoted).seconds > 11) return m.reply('_Maximum 10 seconds!_')
                 let media = await quoted.download()
                 let encmedia = await kriz.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
-                throw `*Kirim Gambar/Video Dengan caption* ${prefix + command}\nDurasi *Video 1-9 Detik*`
+                throw `_Reply to photo or video!_`
                 }
             }
             break
             case 'stikerwm': case 'stickerwm': case 'swm': case 'stickergifwm': case 'sgifwm': case 'take': case 'wm': {
-                let [teks1, teks2] = text.split`|`
-                if (!teks1) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
-                if (!teks2) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
+                let [teks1, teks2] = text.split`,`
+                if (!teks1) throw `Reply to sticker ${prefix + command} WHATS-KRIZ-AI,TOXIC-KICHU`
+                if (!teks2) throw `Reply to sticker ${prefix + command} WHATS-KRIZ-AI,TOXIC-KICHU`
             	m.reply(mess.wait)
                 if (/image/.test(mime)) {
                     let media = await kriz.downloadMediaMessage(qmsg)
                     let encmedia = await kriz.sendImageAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
                     await fs.unlinkSync(encmedia)
                 } else if (/video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
+                    if ((quoted.msg || quoted).seconds > 11) return m.reply('Maximum 10 seconds!')
                     let media = await kriz.downloadMediaMessage(qmsg)
                     let encmedia = await kriz.sendVideoAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
                     await fs.unlinkSync(encmedia)
                 } else {
-                    throw `Kirim Gambar/Video Dengan caption ${prefix + command}\nDurasi Video 1-9 Detik`
+                    throw `Send Images/Videos With caption ${prefix + command}\nVideo Duration 1-9 Seconds`
                 }
             }
             break
@@ -934,11 +883,11 @@ let acr = new acrcloud({
          case 'tts': { 
                   if (!text) throw `Example : ${prefix + command} text` 
               let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`) 
-              kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:false , contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI"}}}, { quoted: m})
+              kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:false , contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": `https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI`,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI"}}}, { quoted: m})
                   } 
           break
            case 'photo': case 'toimage': case 'toimg': {
-                if (!quoted) throw 'Reply Image'
+                if (!quoted) throw 'Reply sticker'
                 if (!/webp/.test(mime)) throw `Reply sticker with caption *${prefix + command}*`
                 m.reply(mess.wait)
                 let media = await kriz.downloadAndSaveMediaMessage(quoted)
@@ -953,7 +902,7 @@ let acr = new acrcloud({
             }
             break
 	        case 'mp4': case 'tomp4': case 'tovideo': {
-                if (!quoted) throw 'Reply Image'
+                if (!quoted) throw 'Reply animated sticker'
                 if (!/webp/.test(mime)) throw `Reply sticker with caption *${prefix + command}*`
                 m.reply(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
@@ -1038,7 +987,7 @@ let acr = new acrcloud({
                 let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
                 let no = 1
                 for (let i of search.all) {
-                    teks += ` *»* No : ${no++}\n *»* Type : ${i.type}\n *»* Video ID : ${i.videoId}\n *»* Title : ${i.title}\n *»* Views : ${i.views}\n *»* Duration : ${i.timestamp}\n *»* Upload At : ${i.ago}\n *»* Author : ${i.author.name}\n *»* Url : ${i.url}\n\n─────────────────\n\n`
+                    teks += `No : ${no++}\nType : ${i.type}\nVideo ID : ${i.videoId}\nTitle : ${i.title}\nViews : ${i.views}\nDuration : ${i.timestamp}\nUpload At : ${i.ago}\nAuthor : ${i.author.name}\nUrl : ${i.url}\n\n─────────────────\n\n`
                 }
                 kriz.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
@@ -1073,22 +1022,22 @@ let acr = new acrcloud({
             }
             break
 case 'ytmp3':
-if (!text) throw `Example : ${prefix + command} Link Nya`
+if (!text) throw `Example : ${prefix + command} yt link`
 let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-if (!isLinks2) return m.reply(`Linknya Jelek`)
+if (!isLinks2) return m.reply(`Ugly link`)
 m.reply(mess.wait)
 anu = await ytMp4(`${q}`)
-titlenyaa = `TITLE BERHASIL DI DAPATKAN\n\nJudul : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDeskripsi : ${anu.desc}\n\nMOHON TUNGGU SEDANG MENGIRIM MEDIA`
+titlenyaa = `SUCCESSFUL TITLE OBTAINED\n\Title : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDescription : ${anu.desc}\n\PLEASE WAIT IS SENDING MEDIA`
 kriz.sendMessage(m.chat, { image: { url: anu.thumb }, caption: `${titlenyaa}`}, { quoted: ftoko })
 kriz.sendMessage(m.chat, { audio: { url: anu.result }, mimetype: 'audio/mpeg', fileName: `${anu.title}.mp3` }, { quoted: ftroli })
 break
 case 'ytmp4':
-if (!text) throw `Example : ${prefix + command} Link Nya`
+if (!text) throw `Example : ${prefix + command} yt link`
 let isLinks= args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-if (!isLinks) return m.reply(`Linknya Jelek`)
+if (!isLinks) return m.reply(`Ugly link`)
 m.reply(mess.wait)
 anu = await ytMp4(`${q}`)
-titlenyaa = `TITLE BERHASIL DI DAPATKAN\n\nJudul : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDeskripsi : ${anu.desc}\n\nMOHON TUNGGU SEDANG MENGIRIM MEDIA`
+titlenyaa = `SUCCESSFUL TITLE OBTAINED\n\Title : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDescription : ${anu.desc}\n\nPLEASE WAIT IS SENDING MEDIA`
 kriz.sendMessage(m.chat, { image: { url: anu.thumb }, caption: `${titlenyaa}`}, { quoted: ftoko })
 kriz.sendMessage(m.chat, { video: { url: anu.result }, mimetype: 'video/mp4', fileName: `${anu.title}.mp4` }, { quoted: ftroli })
 break
@@ -1099,11 +1048,11 @@ break
                 if (!m.quoted) return m.reply('Message Replies')
                 if (!m.quoted.isBaileys) throw `Can Only Reply To Messages From Bots`
 		let urls = quoted.text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))
-                if (!urls) throw `Mungkin pesan yang anda reply tidak mengandung result ytsearch`
+                if (!urls) throw `Maybe the message you replied to didn't contain the ytsearch results`
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(urls[text - 1], quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                kriz.sendImage(m.chat, media.thumb, ` *»* Title : ${media.title}\n *»* File Size : ${media.filesizeF}\n *»* Url : ${urls[text - 1]}\n *»* Ext : MP3\n *»* Resolusi : ${args[1] || '128kbps'}`, m)
+                kriz.sendImage(m.chat, media.thumb, `Title : ${media.title}\n File Size : ${media.filesizeF}\n Url : ${urls[text - 1]}\n Ext : MP3\n Resolution : ${args[1] || '128kbps'}`, m)
                 kriz.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
@@ -1203,7 +1152,7 @@ case 'bitly': {
 case 'cuttly': {
             	if (!text) throw 'Enter Query Link!'
                 let cuttly = await fetchJson(`https://api.botcahx.biz.id/api/linkshort/cuttly?link=${text}&apikey=Admin`)
-                kriz.sendMessage(m.chat, { text: cuttly.result.shortLink + `\nHere!`}, { quoted: fdoc })
+                kriz.sendMessage(m.chat, { text: cuttly.result + `\nHere!`}, { quoted: fdoc })
             }
             break
             case 'mediafire': {
