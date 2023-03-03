@@ -682,7 +682,7 @@ if (!isCreator) throw mess.owner
 contextInfo:{
 externalAdReply:{
  title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ʜᴇy ʙɪᴛᴄʜ ɪᴛ'ꜱ ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
 		mediaType: 2,
 		thumbnail: fs.readFileSync(`client.jpg`),
 		mediaUrl: 'https://www.instagram.com/p/heehe', 
