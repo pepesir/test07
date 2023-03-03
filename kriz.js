@@ -12,7 +12,7 @@ const chalk = require('chalk')
 const yts = require('yt-search')
 const xfar = require('xfarr-api')
 const google = require('google-it')
-const { insta } = require('./lib/insta')
+
 const { Configuration, OpenAIApi } = require("openai");
 const { insta } = require("../lib/scrapers");
 const maker = require('mumaker')
