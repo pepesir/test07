@@ -298,7 +298,7 @@ lolcatjs.fromString(`Connecting to whatsapp...`)
 if (update.connection == "open" || update.receivedPendingNotifications == "true") {
 	lolcatjs.fromString(`Connect To => WhatsApp Web`)
 	lolcatjs.fromString(`Successfully Connected To ` + JSON.stringify(kriz.user, null, 2))
-	global.creator = [+919496966726']
+	global.creator = ['919496966726']
 	let imgown = await getBuffer('https://telegra.ph/file/4ea5b7309bb948e62bc3a.jpg')
 	let imgcrea = await getBuffer('https://telegra.ph/file/b8aa5d61ad7bc8eb90e43.jpg')
 	let butcrea = [{ buttonId: `owner`, buttonText: { displayText: 'Owner' }, type: 1 }, { buttonId: `ping`, buttonText: { displayText: 'Status Bot' }, type: 1 }]
