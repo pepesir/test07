@@ -665,8 +665,8 @@ m.reply(`Send Broadcast To ${anu.length} Chat\Time's up ${anu.length * 1.5} seco
 		m.reply('_Broadcast Success!_')
 }
 break
-case 'tobc': {
-                if (!isCreator) throw mess.owner
+case 'bcs': {
+if (!isCreator) throw mess.owner
                 if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
                 let anu = await store.chats.all().map(v => v.id)
                 let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "120363028882306777@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
@@ -682,7 +682,7 @@ case 'tobc': {
 contextInfo:{
 externalAdReply:{
  title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		body: 'ʜᴇy ʙɪᴛᴄʜ ɪᴛ'ꜱ ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
 		mediaType: 2,
 		thumbnail: fs.readFileSync(`client.jpg`),
 		mediaUrl: 'https://www.instagram.com/p/heehe', 
@@ -690,31 +690,36 @@ externalAdReply:{
 		showAdAttribution: true
         }
 
-    },
-},{quoted:ftoko})
-                    } else if (/video/.test(mime)) {
-                    let junn = `*WʜᴀᴛꜱKʀɪᴢ AI ʙʀᴏᴀᴅᴄᴀꜱᴛ*${text ? '\n\n' + text : ''}`
-                    kriz.sendMessage(i, {video: buffer, caption: `${junn}`,
-contextInfo:{
-externalAdReply:{
- title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
-		mediaType: 2,
-		thumbnail: fs.readFileSync(`client.jpg`),
-		mediaUrl: 'https://www.instagram.com/p/heehe', 
-		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
-		showAdAttribution: true
-        }
+    }, { quoted: ftoko })
+    } else {
+                    m.reply(`*Send reply stick You Want to Broadcast With Caption* ${prefix + command}`)
+                    }
+                    await fs.unlinkSync(media)
+                    }
+                m.reply(` *Send Broadcast To* ${anu.length} *Chats*`)
+            }
+            break
 
-    },
-},{quoted:ftoko})
+case 'tobc': {
+                if (!isCreator) throw mess.owner
+                if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
+                let anu = await store.chats.all().map(v => v.id)
+                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "120363028882306777@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                m.reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    
+                    let media = await kriz.downloadAndSaveMediaMessage(quoted)
+                    let buffer = fs.readFileSync(media)
+                    
+                        
     
-                  } else  if (/audio/.test(mime)) {
+                   if (/audio/.test(mime)) {
                     kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
 contextInfo:{
 externalAdReply:{
  title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		body: 'ʜᴇy ʙɪᴛᴄʜ ɪᴛ'ꜱ ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
 		mediaType: 2,
 		thumbnail: fs.readFileSync(`client.jpg`),
 		mediaUrl: 'https://www.instagram.com/p/heehe', 
