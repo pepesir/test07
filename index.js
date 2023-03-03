@@ -306,8 +306,8 @@ if (update.connection == "open" || update.receivedPendingNotifications == "true"
 	let txtown = `Hello owner, The bot has successfully connected to this number \n\nIf you find an error, bug, or want to request a feature, please contact this number!`
 	let txtcrea = `This script has been used by\nID: ${global.owner}@s.whatsapp.net`
 	lolcatjs.fromString('Connected to whatsapp and message send.')
-	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ })
-        kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ })
+	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
+        kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: global.ownerName })
         kriz.sendContact(global.owner+'@s.whatsapp.net', global.creator)
 	}
 } catch (err) {
