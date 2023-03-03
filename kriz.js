@@ -689,6 +689,7 @@ externalAdReply:{
 		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
+},
 
     },{quoted:ftoko})
     
@@ -705,6 +706,7 @@ externalAdReply:{
 		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
+},
 
     },{quoted:ftoko})
     
