@@ -690,7 +690,7 @@ externalAdReply:{
 		showAdAttribution: true
         }
 
-    }, { quoted: ftoko })
+    },{quoted:ftoko})
     
                     } else if (/video/.test(mime)) {
                     let junn = `*WʜᴀᴛꜱKʀɪᴢ AI ʙʀᴏᴀᴅᴄᴀꜱᴛ*${text ? '\n\n' + text : ''}`
@@ -706,7 +706,7 @@ externalAdReply:{
 		showAdAttribution: true
         }
 
-    }, { quoted: ftoko })
+    },{quoted:ftoko})
     
                   } else  if (/audio/.test(mime)) {
                     kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
