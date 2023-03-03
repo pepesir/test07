@@ -14,6 +14,7 @@ const xfar = require('xfarr-api')
 const google = require('google-it')
 const { insta } = require('./lib/insta')
 const { Configuration, OpenAIApi } = require("openai");
+const { insta } = require("../lib/scrapers");
 const maker = require('mumaker')
 const naztod = require("tod-api")
 const request = require('request');
@@ -48,12 +49,14 @@ gambar = fs.readFileSync('./media/image/kriz.jpg')
 module.exports = kriz = async (kriz, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
-        var budy = (typeof m.text == 'string' ? m.text : '')
+         var budy = typeof m.text == "string" ? m.text : "";
         var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
+        let text = (q = args.join(" "));
         const arg = body.substring(body.indexOf(" ") + 1);
+        const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
         const pushname = m.pushName || "No Name"
         const botNumber = await kriz.decodeJid(kriz.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -64,7 +67,12 @@ module.exports = kriz = async (kriz, m, chatUpdate, store) => {
         const qmsg = (quoted.msg || quoted)
         const isMedia = /image|video|sticker|audio/.test(mime)
         const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
-	    
+	   
+	
+	/ Push Message To Console
+    let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
+
+
         // Group
         const groupMetadata = m.isGroup ? await kriz.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -212,13 +220,14 @@ const url = 'https://www.instagram.com/reel/CXK49yFLtJ_/?utm_source=ig_web_copy_
 if (m.text.includes("https://www.instagram.com")) {
 	instagramdl(m.text).then(({ url }) => {
  
-   try { client.sendMessage(m.chat , { video : { url : url } } )
+   try { kriz.sendMessage(m.chat , { video : { url : url } } )
        } catch {
 	       console.log("umm")
     // kriz.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
     }
     })
 }
+
   
 	// reset limit every 12 hours
         let cron = require('node-cron')
