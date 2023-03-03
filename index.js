@@ -99,7 +99,7 @@ async function startKriz() {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
     let pa7rick = await kriz.sendContact(callerId, global.owner)
-    kriz.sendMessage(callerId, { text: `*Sistem otomatis block!*\n*Jangan menelpon bot*!\n*Silahkan Hubungi Owner Untuk Dibuka !*`}, { quoted : pa7rick })
+    kriz.sendMessage(callerId, { text: `*System automatically blocks!*\n*Don't call bots*!\n*Please contact the owner to open it!*`}, { quoted : pa7rick })
     await sleep(8000)
     await kriz.updateBlockStatus(callerId, "block")
     }
@@ -130,17 +130,17 @@ async function startKriz() {
        } catch {
        ppgc = 'https://telegra.ph/file/91eca40a7c48c87716d2b.jpg'
        }
-       let wm_tiodev = { url : ppgc }
+       let wm_krizdev = { url : ppgc }
        if (pea[0].announce == true) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `GROUP MESSAGE`, wm_krizdev, [])
+       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup has been closed by admin, Now only admin can send messages.`, `GROUP MESSAGE`, wm_krizdev, [])
        } else if(pea[0].announce == false) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_krizdev, [])
+       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup has been opened by admin, Now participants can send messages.`, `Group Settings Change Message`, wm_krizdev, [])
        } else if (pea[0].restrict == true) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_krizdev, [])
+       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup info has been restricted, Now only admin can edit group info.`, `Group Settings Change Message`, wm_krizdev, [])
        } else if (pea[0].restrict == false) {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_krizdev, [])
+       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup info has been opened, Now participants can edit group info.`, `Group Settings Change Message`, wm_krizdev, [])
        } else {
-       kriz.send5ButImg(pea[0].id, `「 *Group Settings Change* 」\n\nGroup Subject telah diganti menjadi *${pea[0].subject}*`, `Group Settings Change Message`, wm_krizdev, [])
+       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup Subject has been changed to *${pea[0].subject}*`, `Group Settings Change Message`, wm_krizdev, [])
      }
     })
 
@@ -178,11 +178,11 @@ async function startKriz() {
                 let butleav = [{ buttonId: 'menu', buttonText: { displayText: 'Selamat Tinggal' }, type: 1 }]
                 let butselamat = [{ buttonId: 'menu', buttonText: { displayText: 'Selamat!' }, type: 1 }]
                 let butsebar = [{ buttonId: 'menu', buttonText: { displayText: 'Sabar' }, type: 1 }]
-                let esce = ('© TioXd')
-                let teks1 = `*Halo @${num.split('@')[0]}*\n*Selamat Datang Di Grup*\n*${metadata.subject}*\n*Jangan Lupa Intro.*\n_~Admin_`
-                let teks2 = `*Selamat Tinggal @${num.split('@')[0]}*\n*Semoga Tenang Di Alam Sana*\n_~Admin_`
-                let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan disalahgunakan!_`
-                let teks4 = `*@${num.split('@')[0]} Demote From*\n*${metadata.subject}*\n_Pangkat kamu telah di turunkan!_`
+                let esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
+                let teks1 = `Helo @${num.split('@')[0]}*\n*Welcome to the group*\n*${metadata.subject}*\n*Don't Forget the Intro.*\n_~Admin_`
+                let teks2 = `*Goodbye @${num.split('@')[0]}*\n*Rest in peace*\n_~Admin_`
+                let teks3 = `*@${num.split('@')[0]} Promoted From*\n*${metadata.subject}*\n_You promoted as admin!._\n_~Don't abuse it!_`
+                let teks4 = `*@${num.split('@')[0]} Demoted From*\n*${metadata.subject}*\n_Your demoted as group member!_`
                 if (anu.action == 'add') {
                     kriz.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: esce, mentions: [num] })
                 } else if (anu.action == 'remove') {
@@ -237,7 +237,7 @@ async function startKriz() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await kriz.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await kriz.getName(i + '@s.whatsapp.net')}\nFN:${await kriz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET: tioclkp02@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/prm2.0\nitem3.X-ABLabel:Website\nitem4.ADR:;;India;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await kriz.getName(i + '@s.whatsapp.net')}\nFN:${await kriz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Mobile\nitem2.EMAIL;type=INTERNET: kawshiksubash06467@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/krishn4_d4s\nitem3.X-ABLabel:Website\nitem4.ADR:;;India;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	kriz.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
@@ -293,25 +293,25 @@ if (connection === 'close') {
 	} else kriz.end(`Unknown DisconnectReason: ${reason}|${connection}`)
 }
 if (update.connection == "connecting" || update.receivedPendingNotifications == "false") {
-lolcatjs.fromString(`Connecting...`)
+lolcatjs.fromString(`Connecting to whatsapp...`)
 }
 if (update.connection == "open" || update.receivedPendingNotifications == "true") {
-	lolcatjs.fromString(`Mengkoneksikan Ke => WhatsApp Web`)
-	lolcatjs.fromString(`Berhasil Tersambung Ke ` + JSON.stringify(kriz.user, null, 2))
-	global.creator = ['919633687665']
+	lolcatjs.fromString(`Connect To => WhatsApp Web`)
+	lolcatjs.fromString(`Successfully Connected To ` + JSON.stringify(kriz.user, null, 2))
+	global.creator = [+919496966726']
 	let imgown = await getBuffer('https://telegra.ph/file/4ea5b7309bb948e62bc3a.jpg')
 	let imgcrea = await getBuffer('https://telegra.ph/file/b8aa5d61ad7bc8eb90e43.jpg')
 	let butcrea = [{ buttonId: `owner`, buttonText: { displayText: 'Owner' }, type: 1 }, { buttonId: `ping`, buttonText: { displayText: 'Status Bot' }, type: 1 }]
-        let butown = [{ buttonId: `owner`, buttonText: { displayText: 'Owner' }, type: 1 }, { buttonId: `ping`, buttonText: { displayText: 'Status Bot' }, type: 1 }]
-	let txtown = `Halo Owner, Bot Telah Berhasil Tersambung Pada Nomer Ini \n\nJika Menemukan Eror, Bug, Atau Ingin Request Fitur Silahkan Hubungi Nomer Tersebut!`
-	let txtcrea = `Script ini telah dipakai oleh\nID: ${global.owner}@s.whatsapp.net`
-	lolcatjs.fromString('Successfully Sending Messages To Owners And Creators ☑️')
-	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
-        kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: global.ownerName })
+        let butown = [{ buttonId: `ping`, buttonText: { displayText: 'ping' }, type: 1 }, { buttonId: `ping`, buttonText: { displayText: 'Status Bot' }, type: 1 }]
+	let txtown = `Hello owner, The bot has successfully connected to this number \n\nIf you find an error, bug, or want to request a feature, please contact this number!`
+	let txtcrea = `This script has been used by\nID: ${global.owner}@s.whatsapp.net`
+	lolcatjs.fromString('Connected to whatsapp and message send.')
+	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ })
+        kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ })
         kriz.sendContact(global.owner+'@s.whatsapp.net', global.creator)
 	}
 } catch (err) {
-console.log('error di connection.update'+err)
+console.log('error in connection.update'+err)
 startKriz();
 }
 })
