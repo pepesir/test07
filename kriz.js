@@ -37,11 +37,11 @@ const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 
-const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
-const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
-const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const tengah = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const timur = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+const hariini = moment.tz('Asia/Kolkata ').format('dddd, DD MMMM YYYY')
+const hariiini = moment.tz('Asia/Kolkata ').format('DD MMMM YYYY')
+const barat = moment.tz('Asia/Kolkata ').format('HH:mm:ss')
+const tengah = moment.tz('Asia/Kolkata ').format('HH:mm:ss')
+const timur = moment.tz('Asia/Kolkata ').format('HH:mm:ss')
 const esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
 const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
@@ -247,7 +247,7 @@ if (m.text.includes("https://www.instagram.com")) {
             console.log('Reseted Limit')
         }, {
             scheduled: true,
-            timezone: "Asia/Jakarta"
+            timezone: "Asia/Kolkata "
         })
         
         // total hit
@@ -255,7 +255,7 @@ if (m.text.includes("https://www.instagram.com")) {
 if (isCmd) {
 data = await fetchJson('https://api.countapi.xyz/hit/kriz.com/visits')
 jumlahcmd = `${data.value}`
-dataa = await fetchJson(`https://api.countapi.xyz/hit/kriz.com${moment.tz('Asia/Jakarta').format('DDMMYYYY')}/visits`)
+dataa = await fetchJson(`https://api.countapi.xyz/hit/kriz.com${moment.tz('Asia/Kolkata ').format('DDMMYYYY')}/visits`)
 jumlahharian = `${dataa.value}`
 }
 	// auto set bio
@@ -1141,8 +1141,8 @@ break
             break
 case 'ytv':  {
                 if (!text) throw `Example : ${prefix + command} ytv `
-                let yts = require("yt-search")
-                let search = await yts(text)
+                 let { ytv } = require('./lib/y2mate')
+                let search = await ytv(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]            
             
             hehe = `
