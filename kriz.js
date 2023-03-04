@@ -800,7 +800,7 @@ case 'status' : {
 let { result} = await getJson ('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
 let mask = result[Math.floor(Math.random()*result.length)]
 const buttons = [
-  {buttonId: ${prefix} 'status', buttonText: {displayText: 'next'}, type: 1}]
+  {buttonId:  'status', buttonText: {displayText: 'next'}, type: 1}]
 
 const buttonMessage = {
     video: {url: mask},
