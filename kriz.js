@@ -12,9 +12,7 @@ const chalk = require('chalk')
 const yts = require('yt-search')
 const xfar = require('xfarr-api')
 const google = require('google-it')
-
 const { Configuration, OpenAIApi } = require("openai");
-
 const { insta } = require('./lib/scrapers')
 const maker = require('mumaker')
 const naztod = require("tod-api")
@@ -36,7 +34,6 @@ const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
-
 const hariini = moment.tz('Asia/Kolkata').format('dddd, DD MMMM YYYY')
 const hariiini = moment.tz('Asia/Kolkata').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Kolkata').format('HH:mm:ss')
@@ -47,7 +44,6 @@ const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/kriz.jpg')
-
 module.exports = kriz = async (kriz, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
@@ -272,7 +268,7 @@ jumlahharian = `${dataa.value}`
         let me = m.sender
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`_@${me.split('@')[0]} kicked from this group!_ `)
+        m.reply(`_ @${me.split('@')[0]} kicked from this group!_ `)
         if (!isBotAdmins) return m.reply(`_Bot is not an admin to kick!_`)
         let gclink = (`https://chat.whatsapp.com/`+await kriz.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
@@ -515,11 +511,13 @@ break
 	}
 	break
 	case 'promote': {
+                let me = m.sender
+                const prmsg = `_ @${me.split('@')[0]} promoted as admin!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kriz.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		kriz.sendMessage(m.chat, { text: prmsg }, {quoted: ftroli})
 	}
 	break
 	case 'demote': {
