@@ -1222,7 +1222,7 @@ case 'true' : {
             const kriztrue = await fetchJson(`https://outrageous-fish-dress.cyclic.app/api/other/truecaller?number=${args[0]}`)
 const msg = `╭╼━━⌜𝙽𝚄𝙼𝙱𝙴𝚁 𝙸𝙽𝙵𝙾⌟━━╾
 ╽
-┃ɴᴀᴍᴇ : ${nima.data.data[0].name}
+┃ɴᴀᴍᴇ : ${kriztrue.data.data[0].name}
 ┃ᴀᴄᴄᴇꜱꜱ : ${kriztrue.data.data[0].access}
 ┃ꜱᴄᴏʀᴇ : ${kriztrue.data.data[0].score}
 ┃ᴇ164 : ${kriztrue.data.data[0].phones[0].e164Format}
