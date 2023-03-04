@@ -120,11 +120,7 @@ async function startKriz() {
             console.log(err)
         }
     })
-    
-    // Group Update
-    kriz.ev.on('groups.update', async pea => {
-       //console.log(pea)
- 
+     
 	
     // Setting
     kriz.decodeJid = (jid) => {
