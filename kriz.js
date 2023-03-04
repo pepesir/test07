@@ -1104,67 +1104,31 @@ case 'ytv':  {
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]            
             
-            let template = await generateWAMessageFromContent
-
-
-
-
-(m.chat, proto.Message.fromObject({
-                listMessage : {
-                    title: `ꜱᴇʟᴇᴄᴛ ᴛʜᴇ Qᴜᴀʟɪᴛʏ ꜰᴏ ᴛʜᴇ ᴠɪᴅᴇᴏ`,
-                    description: `ᴛɪᴛʟᴇ : ${anu.title}
+            hehe = `
+ ᴛɪᴛʟᴇ : ${anu.title}
 ᴅᴜʀᴀᴛɪᴏɴ : ${anu.timestamp}
 ᴜᴘʟᴏᴀᴅ At : ${anu.ago}
-ᴀᴜᴛʜᴏʀ : ${anu.author.name}`,
-                    buttonText: "Yt Video",
-                    footerText: `*WʜᴀᴛꜱKʀɪᴢ AI*`,
-                    listType: "SINGLE_SELECT",
-                    sections: [
-{
-"title": `WʜᴀᴛꜱKʀɪᴢ AI`,
-rows: [
-{
-"title": "► 144p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 144p`
-},
-{
-"title": "► 240p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 240p`
-},
-{
-"title": "► 360p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 360p`
-},
-{
-"title": "► 480p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 480p`
-},
-{
-"title": "► 720p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 720p`
-},
-{
-"title": "► 1080p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 1080p`
-},
-{
-"title": "► 1440p",
-"description": `${anu.title}`,
-"rowId": `ytmp4 ${anu.url} 1440p`
-}]
-}],
-          listType: 1
-                }
-            }), {})
-            
-kriz.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
+ᴀᴜᴛʜᴏʀ : ${anu.author.name}
+`
+
+const buttons = [
+  {buttonId: `ytmp4 ${anu.url} 144p`, buttonText: {displayText: '144p'}, type: 1},
+  {buttonId: `ytmp4 ${anu.url} 360p`, buttonText: {displayText: '360p'}, type: 1},
+    {buttonId: `ytmp4 ${anu.url} 480p`, buttonText: {displayText: '480p'}, type: 1},
+      {buttonId: `ytmp4 ${anu.url} 720p`, buttonText: {displayText: '720p'}, type: 1},
+        {buttonId: `ytmp4 ${anu.url} 1080p`, buttonText: {displayText: '1080p'}, type: 1},
+]
+
+const buttonMessage = {
+    text: hehe ,
+    footer: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
+    buttons: buttons,
+    image: { url: search.videos[0].thumbnail },
+    headerType: 1
+}
+ kriz.sendMessage(m.chat, buttonMessage)
+
+}
             break
             case 'video': {
                 let { ytv } = require('./lib/y2mate')
