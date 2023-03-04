@@ -269,16 +269,17 @@ jumlahharian = `${dataa.value}`
 	}
 			
 	  // Anti Link
+        let me = m.sender
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`「 *ANTI LINK* 」\n\n*Kamu terdeteksi mengirim link group*, *maaf kamu akan di kick‼️,yang mau juga silahkan kirim link‼️*`)
-        if (!isBotAdmins) return m.reply(`*Bot aja bukan admin anj*`)
+        m.reply(`_@${me.split('@')[0]} kicked from this group!_ `)
+        if (!isBotAdmins) return m.reply(`_Bot is not an admin to kick!_`)
         let gclink = (`https://chat.whatsapp.com/`+await kriz.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
-        if (isgclink) return m.reply(`*maaf gak jadi, karena kamu ngirim link group ini*`)
-        if (isAdmins) return m.reply(`*maaf kamu admin*`)
-        if (isCreator) return m.reply(`*maaf kamu owner bot ku*`)
+        if (isgclink) return m.reply(`_This link is this group link!_`)
+        if (isAdmins) return m.reply(`_Link is send by group admin!_`)
+        if (isCreator) return m.reply(`_Link is send by bot owner!_`)
         kriz.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
@@ -305,14 +306,14 @@ let yts = require("yt-search")
 let search = await yts(`https://youtu.be/${takes}`)
 ngen = `
  Title : ${search.videos[0].title}
-🌹 ᴇxᴛ : Search
-🌹 ɪᴅ : ${search.videos[0].videoId}
-🌹 ᴅᴜʀᴀᴛɪᴏɴ : ${search.videos[0].timestamp}
-🌹 ᴠɪᴇᴡᴇʀs : ${search.videos[0].views}
-🌹 ᴜᴘʟᴏᴀᴅᴇᴅ : ${search.videos[0].ago}
-🌹 ᴀᴜᴛʜᴏʀ : ${search.videos[0].author.name}
-🌹 ᴄʜᴀɴɴᴇʟ : ${search.videos[0].author.url}
-🌹 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
+ᴇxᴛ : Search
+ɪᴅ : ${search.videos[0].videoId}
+ᴅᴜʀᴀᴛɪᴏɴ : ${search.videos[0].timestamp}
+ᴠɪᴇᴡᴇʀs : ${search.videos[0].views}
+ᴜᴘʟᴏᴀᴅᴇᴅ : ${search.videos[0].ago}
+ᴀᴜᴛʜᴏʀ : ${search.videos[0].author.name}
+ᴄʜᴀɴɴᴇʟ : ${search.videos[0].author.url}
+ᴅᴇsᴄʀɪᴘᴛɪᴏɴ : ${search.videos[0].description}
 `
 
 const buttons = [
@@ -946,11 +947,6 @@ let acr = new acrcloud({
                 }
             }
             break
-	       case 'attp': {
-           if (!text) throw `Example : ${prefix + command} text`
-           await kriz.sendMedia(m.chat, `https://api.botcahx.biz.id/api/maker/attp?text=${text}&apikey=Admin`, 'attp.webp', '', m, { asSticker: true })
-         }
-           break
          case 'tts': { 
                   if (!text) throw `Example : ${prefix + command} text` 
               let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`) 
@@ -1220,6 +1216,27 @@ m.reply(`${result4}`)
 kriz.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }).catch ((err) => m.reply(mess.error))
 }
 break  
+case 'true' : {
+
+            if(!text && !text.startsWith("+")) return reply('_Please Give Correct Format number_ \n_Example : ${prefix}true +9199XXXXXX_')
+            const kriztrue = await fetchJson(`https://outrageous-fish-dress.cyclic.app/api/other/truecaller?number=${args[0]}`)
+const msg = `╭╼━━⌜𝙽𝚄𝙼𝙱𝙴𝚁 𝙸𝙽𝙵𝙾⌟━━╾
+╽
+┃ɴᴀᴍᴇ : ${nima.data.data[0].name}
+┃ᴀᴄᴄᴇꜱꜱ : ${kriztrue.data.data[0].access}
+┃ꜱᴄᴏʀᴇ : ${kriztrue.data.data[0].score}
+┃ᴇ164 : ${kriztrue.data.data[0].phones[0].e164Format}
+┃ɴᴀᴛɪᴏɴᴀʟ : ${kriztrue.data.data[0].phones[0].nationalFormat}
+┃ᴅɪᴀʟɪɴɢ ᴄᴏᴅᴇ : ${kriztrue.data.data[0].phones[0].dialingCode}
+┃ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ : ${kriztrue.data.data[0].phones[0].countryCode}
+┃ᴛɪᴍᴇ ᴢᴏɴᴇ : ${kriztrue.data.data[0].addresses[0].timeZone}
+┃ᴄᴏᴍᴘᴀɴʏ : ${kriztrue.data.data[0].phones[0].carrier}
+╿ᴛʏᴘᴇ ${kriztrue.data.data[0].phones[0].type}
+╰╼━━━━━━━━━━━━╾`
+
+kriz.sendMessage(m.chat, { text: msg }, {quoted: ftroli})
+            }
+            break
 case 'tik': case 'tiktok': case 'tt': case 'tiktoknowm': 
  if (!text) throw 'Enter Query Link!'
  anu = await fetchJson(`https://api.botcahx.biz.id/api/dowloader/tikok?url=${text}&apikey=Admin`)
@@ -1407,7 +1424,11 @@ break
 ┃╰┬─────────❉
 ┃━┤1).find
 ┃   │2).tts
-┃   │3).attp
+┃   ╰─────────❉
+┃╭──────────❉
+┃│⌜Search⌟
+┃╰┬─────────❉
+┃━┤1).true
 ┃   ╰─────────❉
 ┃╭──────────❉
 ┃│⌜Group⌟
