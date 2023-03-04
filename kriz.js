@@ -204,29 +204,6 @@ const sendStickerFromUrl = async(to, url) => {
 
 //mention
 
-       kriz.sendMessage( 
-    ownernya,  
-    {  
-     audio: { 
-      url : `https://l.top4top.io/m_23176dky20.mp3` 
-     },  
-     ptt:true,
-mimetype: 'audio/mp4', 
-     ptt: true, 
-     sendEphemeral: true 
-contextInfo:{
-externalAdReply:{
- title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
-		mediaType: 2,
-		thumbnail: fs.readFileSync(`client.jpg`),
-		mediaUrl: 'https://www.instagram.com/p/heehe', 
-		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
-		showAdAttribution: true
-        }
-
-    },
-},{quoted:ftroli})
              
              //Fake
 	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
