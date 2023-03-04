@@ -54,6 +54,7 @@ module.exports = kriz = async (kriz, m, chatUpdate, store) => {
          var budy = typeof m.text == "string" ? m.text : "";
         var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
+const { type } = kriz
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         let text = (q = args.join(" "));
