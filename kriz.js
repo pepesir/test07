@@ -165,7 +165,22 @@ for (let anju of audionye){
 if (budy === anju){
 
 let buffer = fs.readFileSync(`./media/audio/${anju}.mp3`)
-kriz.sendMessage(from, {audio: buffer, mimetype: 'audio/mp4'}, {quoted: {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})},message: { "extendedTextMessage": {"text": `${pushname} \n「 audio 」 ${anju}`,"title": `Hmm`,'jpegThumbnail': fs.readFileSync('client.jpg')}}}})
+kriz.sendMessage(m.chat, {audio: buffer, mimetype: 'audio/mp4',
+
+contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		mediaType: 2,
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		showAdAttribution: true
+        }
+
+    },
+},{quoted:ftroli})
+
 }
 }
 
