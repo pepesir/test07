@@ -14,7 +14,8 @@ const xfar = require('xfarr-api')
 const google = require('google-it')
 
 const { Configuration, OpenAIApi } = require("openai");
-const { insta } = require('./lib/insta')
+
+const { insta } = require('./lib/scrapers')
 const maker = require('mumaker')
 const naztod = require("tod-api")
 const request = require('request');
