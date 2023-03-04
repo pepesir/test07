@@ -124,78 +124,7 @@ async function startKriz() {
     // Group Update
     kriz.ev.on('groups.update', async pea => {
        //console.log(pea)
-    // Get Profile Picture Group
-       try {
-       ppgc = await kriz.profilePictureUrl(pea[0].id, 'image')
-       } catch {
-       ppgc = 'https://telegra.ph/file/91eca40a7c48c87716d2b.jpg'
-       }
-       let wm_krizdev = { url : ppgc }
-       if (pea[0].announce == true) {
-       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup has been closed by admin, Now only admin can send messages.`, `GROUP MESSAGE`, wm_krizdev, [])
-       } else if(pea[0].announce == false) {
-       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup has been opened by admin, Now participants can send messages.`, `Group Settings Change Message`, wm_krizdev, [])
-       } else if (pea[0].restrict == true) {
-       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup info has been restricted, Now only admin can edit group info.`, `Group Settings Change Message`, wm_krizdev, [])
-       } else if (pea[0].restrict == false) {
-       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup info has been opened, Now participants can edit group info.`, `Group Settings Change Message`, wm_krizdev, [])
-       } else {
-       kriz.send5ButImg(pea[0].id, `⌜𝐆𝚪𝚯𝐔𝚸 𝐒𝚵𝚻𝚻𝚰𝚴𝐆𝐒 𝐂𝚮𝚫𝚴𝐆𝚵𝐃⌟\n\nGroup Subject has been changed to *${pea[0].subject}*`, `Group Settings Change Message`, wm_krizdev, [])
-     }
-    })
-
-    kriz.ev.on('group-participants.update', async (anu) => {
-        console.log(anu)
-        try {
-            let metadata = await kriz.groupMetadata(anu.id)
-            let participants = anu.participants
-            for (let num of participants) {
-                // Get Profile Picture User
-                try {
-                    ppuser = await kriz.profilePictureUrl(num, 'image')
-                } catch {
-                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
-                
-            
-         const reSize = async(buffer, ukur1, ukur2) => {
-             return new Promise(async(resolve, reject) => {
-             let jimp = require('jimp')
-             var baper = await jimp.read(buffer);
-             var ab = await baper.resize(ukur1, ukur2).getBufferAsync(jimp.MIME_JPEG)
-             resolve(ab)
-             })
-             }
-
-            
-                try {
-                    ppgroup = await kriz.profilePictureUrl(anu.id, 'image')
-                } catch {
-                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
-                
-              
-                let butselamat = [{ buttonId: 'meneujdjeu', buttonText: { displayText: 'Congrats' }, type: 1 }]
-                let butsebar = [{ buttonId: 'mejejdnu', buttonText: { displayText: 'Be patient' }, type: 1 }]
-                let esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
-                let teks1 = `Helo @${num.split('@')[0]}*\n*Welcome to the group*\n*${metadata.subject}*\n*Don't Forget the Intro.*\n_~Admin_`
-                let teks2 = `*Goodbye @${num.split('@')[0]}*\n*Rest in peace*\n_~Admin_`
-                let teks3 = `*@${num.split('@')[0]} Promoted From*\n*${metadata.subject}*\n_You promoted as admin!._\n_~Don't abuse it!_`
-                let teks4 = `*@${num.split('@')[0]} Demoted From*\n*${metadata.subject}*\n_Your demoted as group member!_`
-                if (anu.action == 'add') {
-                    kriz.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: esce, mentions: [num] })
-                } else if (anu.action == 'remove') {
-                    kriz.sendMessage(anu.id, { caption: teks2, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butleav, footer: esce, mentions: [num] })
-                } else if (anu.action == 'promote') {
-                    kriz.sendMessage(anu.id, { caption: teks3, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butselamat, footer: esce, mentions: [num] })
-                } else if (anu.action == 'demote') {
-                    kriz.sendMessage(anu.id, { caption: teks4, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butsebar, footer: esce, mentions: [num] })
-              }
-            }
-        } catch (err) {
-            console.log(err)
-        }
-    })
+ 
 	
     // Setting
     kriz.decodeJid = (jid) => {
@@ -306,7 +235,6 @@ if (update.connection == "open" || update.receivedPendingNotifications == "true"
 	let txtcrea = `This script has been used by\nID: ${global.owner}@s.whatsapp.net`
 	lolcatjs.fromString('Connected to whatsapp and message send.')
 	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
-        kriz.sendMessage(global.creator+'@s.whatsapp.net', { image: imgcrea, caption: txtcrea, buttons: butown, footer: global.ownerName })
         kriz.sendContact(global.owner+'@s.whatsapp.net', global.creator)
 	}
 } catch (err) {
