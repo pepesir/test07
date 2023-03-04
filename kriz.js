@@ -796,6 +796,24 @@ case 'mode': case 'worktype': {
   kriz.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
   }
  break
+case 'status' : {
+let { result} = await getJson ('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
+let mask = result[Math.floor(Math.random()*result.length)]
+const buttons = [
+  {buttonId: ${prefix} 'status', buttonText: {displayText: 'next'}, type: 1}]
+
+const buttonMessage = {
+    video: {url: mask},
+    caption: "*Random Malayalam Status*",
+    footer: 'hehe',
+    buttons: buttons,
+    headerType: 4
+}
+
+kriz.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
+}
+break
+
             case 'ping': {
     const start = new Date().getTime();
     await m.reply("ᴘɪɴɢ!");
