@@ -20,6 +20,7 @@ const maker = require('mumaker')
 const naztod = require("tod-api")
 const request = require('request');
 const textpro = require('./lib/textpro')
+const audionye = JSON.parse(fs.readFileSync('./media/vn.json'))
 const { bochil, instagramdl } = require('@bochilteam/scraper')
 const { mediafireDl } = require('./lib/mediafire.js')
 const dfrply = fs.readFileSync('client.jpg')
@@ -62,7 +63,7 @@ module.exports = kriz = async (kriz, m, chatUpdate, store) => {
         const botNumber = await kriz.decodeJid(kriz.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
-        
+        const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
         const quoted = m.quoted ? m.quoted : m
         const mime = (quoted.msg || quoted).mimetype || ''
         const qmsg = (quoted.msg || quoted)
@@ -156,6 +157,17 @@ kriz.readMessages([m.key])
 kriz.sendPresenceUpdate('recording', m.chat)
 kriz.readMessages([m.key])
 }**/
+
+
+//AUTO RESPON VN
+for (let anju of audionye){
+if (budy === anju){
+
+let buffer = fs.readFileSync(`./media/audio/${anju}.mp3`)
+kriz.sendMessage(from, {audio: buffer, mimetype: 'audio/mp4'}, {quoted: {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})},message: { "extendedTextMessage": {"text": `${pushname} \n「 audio 」 ${anju}`,"title": `Hmm`,'jpegThumbnail': fs.readFileSync('client.jpg')}}}})
+}
+}
+
 
 
         if (m.text.includes('🗿')) {
@@ -954,6 +966,18 @@ let acr = new acrcloud({
                 await fs.unlinkSync(media)
             }
             break
+            case 'addvn':{
+if (!isCreator) return m.reply (mess.owner)
+if (!isQuotedAudio) return m.reply('Reply vnnya')
+if (!quoted) return m.reply('Nama audionya apa')
+let delb = await kriz.downloadAndSaveMediaMessage(quoted)
+audionye.push(quoted)
+await fse.copy(delb,`./media/audio/${q}.mp3`)
+fs.writeFileSync('./media/vn.json', JSON.stringify(audionye))
+fs.unlinkSync(delb)
+m.reply(`Sukses Menambahkan Audio\nCek dengan cara ${prefix}listvn`)
+}
+break  
            case 'mp3': case 'tomp3': {
             if (/document/.test(mime)) throw `_Reply to audio or video..!_`
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `_Reply to audio or video..!_`
@@ -1112,11 +1136,13 @@ case 'ytv':  {
 `
 
 const buttons = [
+  {buttonId: `ytmp3 ${anu.url} `, buttonText: {displayText: 'ᴀᴜᴅɪᴏ'}, type: 1},
   {buttonId: `ytmp4 ${anu.url} 144p`, buttonText: {displayText: '144p'}, type: 1},
   {buttonId: `ytmp4 ${anu.url} 360p`, buttonText: {displayText: '360p'}, type: 1},
     {buttonId: `ytmp4 ${anu.url} 480p`, buttonText: {displayText: '480p'}, type: 1},
       {buttonId: `ytmp4 ${anu.url} 720p`, buttonText: {displayText: '720p'}, type: 1},
-        {buttonId: `ytmp4 ${anu.url} 1080p`, buttonText: {displayText: '1080p'}, type: 1},
+        {buttonId: `ytmp4 ${anu.url} 1080p`, buttonText: {displayText: '1080p'}, type: 1}
+        
 ]
 
 const buttonMessage = {
