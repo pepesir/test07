@@ -235,6 +235,7 @@ if (update.connection == "open" || update.receivedPendingNotifications == "true"
 	let txtcrea = `This script has been used by\nID: ${global.owner}@s.whatsapp.net`
 	lolcatjs.fromString('Connected to whatsapp and message send.')
 	kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
+        kriz.sendMessage(global.owner+'@s.whatsapp.net', { image: imgown, caption: txtown, buttons: butcrea, footer: global.ownerName })
         kriz.sendContact(global.owner+'@s.whatsapp.net', global.creator)
 	}
 } catch (err) {
