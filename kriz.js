@@ -1218,7 +1218,7 @@ kriz.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0
 break  
 case 'true' : {
 
-            if(!text && !text.startsWith("+")) return reply('_Please Give Correct Format number_ \n_Example : ${prefix}true +9199XXXXXX_')
+            if(!text && !text.startsWith("+")) return m.reply('_Please Give Correct Format number_ \n_Example : ${prefix}true +9199XXXXXX_')
             const kriztrue = await fetchJson(`https://outrageous-fish-dress.cyclic.app/api/other/truecaller?number=${args[0]}`)
 const msg = `╭╼━━⌜𝙽𝚄𝙼𝙱𝙴𝚁 𝙸𝙽𝙵𝙾⌟━━╾
 ╽
@@ -1231,7 +1231,7 @@ const msg = `╭╼━━⌜𝙽𝚄𝙼𝙱𝙴𝚁 𝙸𝙽𝙵𝙾⌟━━�
 ┃ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ : ${kriztrue.data.data[0].phones[0].countryCode}
 ┃ᴛɪᴍᴇ ᴢᴏɴᴇ : ${kriztrue.data.data[0].addresses[0].timeZone}
 ┃ᴄᴏᴍᴘᴀɴʏ : ${kriztrue.data.data[0].phones[0].carrier}
-╿ᴛʏᴘᴇ ${kriztrue.data.data[0].phones[0].type}
+╿ᴛʏᴘᴇ : ${kriztrue.data.data[0].phones[0].type}
 ╰╼━━━━━━━━━━━━╾`
 
 kriz.sendMessage(m.chat, { text: msg }, {quoted: ftroli})
