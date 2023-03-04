@@ -1135,25 +1135,22 @@ break
             break
 case 'ytv':  {
                 if (!text) throw `Example : ${prefix + command} ytv `
-                let  ytv  = require('./lib/y2mate')
-                let search = await ytv(text)
+                let yts = require("yt-search")
+                let search = await yts(text)
                 
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]            
             
             hehe = `
  ᴛɪᴛʟᴇ : ${anu.title}
 ᴅᴜʀᴀᴛɪᴏɴ : ${anu.timestamp}
-ᴜᴘʟᴏᴀᴅ At : ${anu.ago}
+ᴜᴘʟᴏᴀᴅ ᴀᴛ : ${anu.ago}
 ᴀᴜᴛʜᴏʀ : ${anu.author.name}
 `
 
 const buttons = [
   {buttonId: `ytmp3 ${anu.url} `, buttonText: {displayText: 'ᴀᴜᴅɪᴏ'}, type: 1},
-  {buttonId: `ytmp4 ${anu.url} 144p`, buttonText: {displayText: '144p'}, type: 1},
-  {buttonId: `ytmp4 ${anu.url} 360p`, buttonText: {displayText: '360p'}, type: 1},
-    {buttonId: `ytmp4 ${anu.url} 480p`, buttonText: {displayText: '480p'}, type: 1},
-      {buttonId: `ytmp4 ${anu.url} 720p`, buttonText: {displayText: '720p'}, type: 1},
-        {buttonId: `ytmp4 ${anu.url} 1080p`, buttonText: {displayText: '1080p'}, type: 1}
+  {buttonId: `ytmp4 ${anu.url} 1080p`, buttonText: {displayText: 'ᴠɪᴅᴇᴏ'}, type: 1}
+
         
 ]
 
