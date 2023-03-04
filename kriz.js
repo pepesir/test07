@@ -968,7 +968,7 @@ let acr = new acrcloud({
             }
             break
             case 'addvn':{
-if (!isCreator) return m.reply (mess.owner)
+if (!isCreator) throw mess.owner
 if (!isQuotedAudio) return m.reply('Reply vnnya')
 if (!quoted) return m.reply('Nama audionya apa')
 let delb = await kriz.downloadAndSaveMediaMessage(quoted)
