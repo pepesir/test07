@@ -160,29 +160,6 @@ kriz.readMessages([m.key])
 }**/
 
 
-//AUTO RESPON VN
-for (let anju of audionye){
-if (budy === anju){
-
-let buffer = fs.readFileSync(`./media/audio/${anju}.mp3`)
-kriz.sendMessage(m.chat, {audio: buffer, mimetype: 'audio/mp4',
-
-contextInfo:{
-externalAdReply:{
- title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
-		mediaType: 2,
-		thumbnail: fs.readFileSync(`client.jpg`),
-		mediaUrl: 'https://www.instagram.com/p/heehe', 
-		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
-		showAdAttribution: true
-        }
-
-    },
-},{quoted:ftroli})
-
-}
-}
 
 
 
@@ -433,6 +410,30 @@ options.audiowave = [99,0,99,0,99]
 		await kriz.forwardMessage(jid, m.quoted_message, options)
 	}
 break
+//AUTO RESPON VN
+for (let anju of audionye){
+if (budy === anju){
+
+let buffer = fs.readFileSync(`./media/audio/${anju}.mp3`)
+kriz.sendMessage(m.chat, {audio: buffer, mimetype: 'audio/mp4',
+
+contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		mediaType: 2,
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		showAdAttribution: true
+        }
+
+    },
+},{quoted:ftroli})
+
+}
+}
+
 case 'jid':
 m.reply(m.chat)
 break
