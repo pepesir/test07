@@ -1,4 +1,5 @@
 require('./setting')
+const config = require('./config.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
@@ -1395,7 +1396,7 @@ break
             const { MENU_MEDIA } = require('./config.js')
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            const image = ${MENU_MEDIA}
+            const image = config.MENU_MEDIA
 	const type = image.endsWith('mp4') ? 'video' : 'image'
 	const buttonMessage = {
 		[type]: {
