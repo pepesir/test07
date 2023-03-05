@@ -1,6 +1,6 @@
 require('./setting')
 const config = require('./config.js')
-const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
+const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType, parsedJid } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
 const os = require('os')
@@ -45,7 +45,7 @@ const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/kriz.jpg')
-module.exports = kriz = async (kriz, m, chatUpdate, store) => {
+module.exports = kriz = async (kriz, m, match, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
          var budy = typeof m.text == "string" ? m.text : "";
@@ -535,8 +535,9 @@ break
 	}
 	break
 	case 'promote': {
+                let jid = parsedJid(match);
                 let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')
-                const prmsg = `_ @${user.split('@')[0]} promoted as admin!_`
+                const prmsg = `_@${jid[0].split("@")[0]} promoted as admin!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
