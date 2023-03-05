@@ -754,7 +754,7 @@ externalAdReply:{
 		mediaType: 2,
 		thumbnail: fs.readFileSync(`client.jpg`),
 		mediaUrl: 'https://www.instagram.com/p/heehe', 
-		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴋʀɪᴢ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
 		showAdAttribution: true
         }
 
