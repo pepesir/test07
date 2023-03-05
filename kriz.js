@@ -536,7 +536,7 @@ break
 	break
 	case 'promote': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const prmsg = `_ @${user.split('@')[0]} promoted as admin!_`
+                const prmsg = `_ @${user[0].split('@')[0]} promoted as admin!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
