@@ -216,7 +216,7 @@ const sendStickerFromUrl = async(to, url) => {
 
 if (mentionaudio){ 
 if (mentionaudio === true) return
-if (budy.includes(`@${global.ownernomer}`)){
+if (budy.includes(`@${global.premium}`)){
 kriz.sendMessage(m.chat, mentionaudiofile, audio, { thumbnail: dfrply, sendEphemeral: true, quoted: m, mimetype: 'audio/mp4', duration: 40000271, ptt: true, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: `WʜᴀᴛꜱKʀɪᴢ AI`,body:"",previewType:"PHOTO",thumbnail:dfrply,sourceUrl:`https://wa.me/919633687665?text=Hi bro`}}})
 }
 }
