@@ -797,7 +797,7 @@ case 'mode': case 'worktype': {
   }
  break
 case 'status' : {
-let { result} = await getJson ('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
+let { result} = await getJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
 let mask = result[Math.floor(Math.random()*result.length)]
 const buttons = [
   {buttonId:  'status', buttonText: {displayText: 'next'}, type: 1}]
