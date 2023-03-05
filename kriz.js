@@ -229,7 +229,7 @@ getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async functio
 if (audio) {
 return kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: m })
 }
-})
+
 
              
              //Fake
