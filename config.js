@@ -9,6 +9,7 @@ module.exports = {
   VERSION: require('./package.json').version,
   SESSION_ID:process.env.SESSION_ID || " ",
   BRANCH: "master",
+  MENU_MEDIA: process.env.MENUTYPE || "https://i.imgur.com/9WOLsb9.png",
   PACKNAME: process.env.PACKNAME || "WHATS-KRIZ-AI",
   AUTHOR: process.env.AUTHOR || "TEAM-TOXIC",
   HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || " ",
