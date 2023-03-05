@@ -24,7 +24,8 @@ const { bochil, instagramdl } = require('@bochilteam/scraper')
 const { mediafireDl } = require('./lib/mediafire.js')
 const dfrply = fs.readFileSync('client.jpg')
 const bcpic = fs.readFileSync('client.jpg')
-const { EmojiAPI } = require("emoji-api")
+const { EmojiAPI } = require("emoji-api"
+const mentionaudiofile = fs.readFileSync('./media/mention.mp3') 
 const emoji = new EmojiAPI()
 const { exec, spawn, execSync } = require("child_process")
 const keyopenai = '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'
@@ -211,6 +212,13 @@ const sendStickerFromUrl = async(to, url) => {
 
 
 //mention
+
+if (mentionaudio){ 
+if (mentionaudio === true) return
+if (budy.includes(`@${global.ownernomer}`)){
+kriz.sendMessage(m.chat, mentionaudiofile, audio, { thumbnail: dfrply, sendEphemeral: true, quoted: m, mimetype: 'audio/mp4', duration: 40000271, ptt: true, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: `${setting.fake}`,body:"",previewType:"PHOTO",thumbnail:dfrply,sourceUrl:`https://wa.me/919633687665?text=Hi bro`}}})
+}
+}
 
              
              //Fake
