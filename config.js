@@ -12,6 +12,8 @@ module.exports = {
   MENU_MEDIA: process.env.MENUTYPE || "https://i.imgur.com/9WOLsb9.png",
   PACKNAME: process.env.PACKNAME || "WHATS-KRIZ-AI",
   AUTHOR: process.env.AUTHOR || "TEAM-TOXIC",
+  BOTNAME: process.env.BOTNAME || "WHATS-KRIZ-AI",
+  OWNERNAME: process.env.OWNERNAME || "KRIZ-SER",
   HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || " ",
   HEROKU_API_KEY: process.env.HEROKU_API_KEY || " ",
 };
