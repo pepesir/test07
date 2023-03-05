@@ -540,7 +540,8 @@ break
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
-		await kriz.groupParticipantsUpdate(m.chat, { text: prmsg })
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		await kriz.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply('ɴᴜᴍʙᴇʀ ᴘʀᴏᴍᴏᴛᴇᴅ')).catch((err) => m.reply(`𝘌𝘳𝘳𝘰𝘳 𝘖𝘤𝘤𝘶𝘳𝘳𝘦𝘥!))
 	}
 	break
 	case 'demote': {
