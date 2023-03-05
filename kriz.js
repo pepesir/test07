@@ -230,9 +230,8 @@ if (isLink) m.chat.message[Object.keys(m.chat.message)[0]].caption = ""
 }
 await kriz.forwardMessage(target,m.chat,{contextInfo:{isForwarded:false}})
 }
-}
-})
-}
+
+
 
 
 //mention
