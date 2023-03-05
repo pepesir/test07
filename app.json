@@ -10,7 +10,7 @@
             "description": "Please enter SESSION ID.",
             "required": true
         },
-    "MENU_TYPE": {
+    "MENU_MEDIA": {
       "description": "Add url for menu image/video.",
       "required": true,
       "value": "https://i.imgur.com/9WOLsb9.png"
