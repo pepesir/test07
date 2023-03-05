@@ -518,20 +518,26 @@ break
             }
             break
 	case 'kick': {
+                let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                const kmsg = `_ @${user[0].split('@')[0]} kicked from this group!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kriz.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await kriz.groupParticipantsUpdate(m.chat, [users], 'remove')
+                m.reply(kmsg)
 	}
 	break
 
 	case 'add': {
+                let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                const addmsg = `_ @${user[0].split('@')[0]} added to this group!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kriz.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await kriz.groupParticipantsUpdate(m.chat, [users], 'add')
+                m.reply(addmsg)
 	}
 	break
 	case 'promote': {
@@ -546,23 +552,32 @@ break
 	}
 	break
 	case 'demote': {
+                let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                const dmmsg = `_ @${user[0].split('@')[0]} demoted as member!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kriz.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await kriz.groupParticipantsUpdate(m.chat, [users], 'demote')
+                m.reply(dmmsg)
 	}
 	break
         case 'block': {
+                let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                const blckmsg = `_ @${user[0].split('@')[0]} blocked!_`
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kriz.updateBlockStatus(users, 'block').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await kriz.updateBlockStatus(users, 'block')
+                m.reply(blckmsg)
 	}
 	break
         case 'unblock': {
+                let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                const unbmsg = `_ @${user[0].split('@')[0]} unblocked!_`
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kriz.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await kriz.updateBlockStatus(users, 'unblock')
+                m.reply(unbmsg)
 	}
 	break
           case 'pp': case 'setppbot': {
