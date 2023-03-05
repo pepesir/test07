@@ -703,6 +703,8 @@ case 'tobc': {
                 if (!isCreator) throw mess.owner
                 if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
                 let anu = await store.chats.all().map(v => v.id)
+let duration = 19998000
+let waveform = Array.from({length: 15}, () => Math.floor(Math.random() * 100)); // use this for fancy: [0,99,0,99,0,99]
                 let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "120363028882306777@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                 m.reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
                 for (let i of anu) {
@@ -714,7 +716,7 @@ case 'tobc': {
                         
     
                    if (/audio/.test(mime)) {
-                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true,
+                    kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg', ptt:true, waveform,
 contextInfo:{
 externalAdReply:{
  title: ' WʜᴀᴛꜱKʀɪᴢ AI',
