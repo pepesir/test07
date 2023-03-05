@@ -535,9 +535,8 @@ break
 	}
 	break
 	case 'promote': {
-                let jid = parsedJid(match);
-                let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')
-                const prmsg = `_@${jid[0].split("@")[0]} promoted as admin!_`
+                let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                const prmsg = `_ @${user.split('@')[0]} promoted as admin!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
