@@ -202,7 +202,37 @@ const sendStickerFromUrl = async(to, url) => {
              var ab = await baper.resize(ukur1, ukur2).getBufferAsync(jimp.MIME_JPEG)
              resolve(ab)
              })
-             }
+
+            }
+
+//autoforward
+
+var source = "120363028882306777@g.us" // Messages' source (SPLIT WITH COMMAS)
+var target = "120363041867200946@g.us" // Messages will be sent here! (SPLIT WITH COMMAS)
+let types = [
+   "video",
+   "image",
+ //  "extendedText", // remove first 2 slashes to forward large text
+ //  "conversation",  // remove first 2 slashes to forward text
+   "audio"
+]
+// =========================================================================
+// ======================== END OF EDITABLES ===============================
+// =========================================================================
+
+if (source.split(",").includes(m.chat)){
+let mtp = Object.keys(m.chat.message)[0].replace("Message","")
+if (types.includes(mtp)){
+if (m.chat.message[Object.keys(m.chat.message)[0]].caption){
+let caption = m.chat.message[Object.keys(m.data.message)[0]].caption
+var isLink = (/(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/gi).test(caption)
+if (isLink) m.chat.message[Object.keys(m.chat.message)[0]].caption = ""
+}
+await kriz.forwardMessage(target,m.chat,{contextInfo:{isForwarded:false}})
+}
+}
+})
+
 
 //mention
 
@@ -518,35 +548,7 @@ break
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-case 'autoforward' : {
-let source = "120363028882306777@g.us" // Messages' source (SPLIT WITH COMMAS)
-let target = "120363041867200946@g.us" // Messages will be sent here! (SPLIT WITH COMMAS)
-let types = [
-   "video",
-   "image",
- //  "extendedText", // remove first 2 slashes to forward large text
- //  "conversation",  // remove first 2 slashes to forward text
-   "audio"
-]
-// =========================================================================
-// ======================== END OF EDITABLES ===============================
-// =========================================================================
 
-if (source.split(",").includes(m.jid)){
-let mtp = Object.keys(m.chat.message)[0].replace("Message","")
-if (types.includes(mtp)){
-if (m.chat.message[Object.keys(m.chat.message)[0]].caption){
-let caption = m.chat.message[Object.keys(m.data.message)[0]].caption
-var isLink = (/(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/gi).test(caption)
-if (isLink) m.chat.message[Object.keys(m.chat.message)[0]].caption = ""
-}
-await client.forwardMessage(target,m.chat,{contextInfo:{isForwarded:false}})
-}
-}
-}
-     
-
-break
 	case 'add': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
