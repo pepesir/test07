@@ -14,6 +14,7 @@ global.packname = config.PACKNAME
 global.ownername = config.OWNERNAME
 global.author = config.AUTHOR
 global.sessionName = 'session'
+global.mentionaudio = 'true'
 global.jumlha = '999'
 global.jumhal = '100000000000000'
     
