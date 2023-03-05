@@ -16,11 +16,11 @@ global.author = config.AUTHOR
 global.sessionName = 'session'
 global.jumlha = '999'
 global.jumhal = '100000000000000'
-     "ownermention": "919633687665", 
-     "mentiontext": true,
-     "mentionaudio": true,
-     "mentionsticker": false,
-     "mentiontxt": "*𝐌𝐞𝐧𝐭𝐢𝐨𝐧 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐫...🔍*\n\n```sᴏʀʀʏ ғʀɪᴇɴᴅ ɪ ᴀᴍ sᴛɪʟʟ ʟɪᴛᴛʟᴇ ʙᴜsʏ ᴀᴛ ᴛʜɪs ᴍᴏᴍᴇɴᴛ....🎁```\n\n_sᴏ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ sᴏᴍᴇ ᴍɪɴᴜᴛᴇs...☮︎_\n\n*[ᴀɴʏ ᴜʀɢᴇɴᴛ ᴍᴀᴛᴛᴇʀ ᴄᴏɴᴛᴀᴄᴛ me  ᴏɴ👇]*\n\n╭─| *⏤͟͞ꪶ⛧͢ᴋʀɪᴢ ꜱᴇʀ✠* ─\n│ ᪥ wa.me/+299586888 ✔︎\n│ ᪥ wa.me/+917736622139 ✔︎\n│ ᪥ wa.me/+18072343114 ✔︎\n╰───────────────────",
+     "ownermention" = "919633687665", 
+     "mentiontext" = true,
+     "mentionaudio" = true,
+     "mentionsticker" = false,
+     "mentiontxt" = "*𝐌𝐞𝐧𝐭𝐢𝐨𝐧 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐫...🔍*\n\n```sᴏʀʀʏ ғʀɪᴇɴᴅ ɪ ᴀᴍ sᴛɪʟʟ ʟɪᴛᴛʟᴇ ʙᴜsʏ ᴀᴛ ᴛʜɪs ᴍᴏᴍᴇɴᴛ....🎁```\n\n_sᴏ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ sᴏᴍᴇ ᴍɪɴᴜᴛᴇs...☮︎_\n\n*[ᴀɴʏ ᴜʀɢᴇɴᴛ ᴍᴀᴛᴛᴇʀ ᴄᴏɴᴛᴀᴄᴛ me  ᴏɴ👇]*\n\n╭─| *⏤͟͞ꪶ⛧͢ᴋʀɪᴢ ꜱᴇʀ✠* ─\n│ ᪥ wa.me/+299586888 ✔︎\n│ ᪥ wa.me/+917736622139 ✔︎\n│ ᪥ wa.me/+18072343114 ✔︎\n╰───────────────────",
 global.jumlah = '1000000000'
 global.prefa = ['','!','.','#','&','/']
 global.sp = ''
