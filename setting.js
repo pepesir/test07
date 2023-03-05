@@ -39,7 +39,7 @@ global.ghme = 'https://whats-kriz-ai-com.vercel.app/'
 global.gcbot = "https://whats-kriz-ai-com.vercel.app/"
 global.botname = '*WʜᴀᴛꜱKʀɪᴢ AI*'
 global.omlen = '*©WʜᴀᴛꜱKʀɪᴢ AI*'
-global.weem = '*WʜᴀᴛꜱKʀɪᴢ AI*'
+global.weem = 'WʜᴀᴛꜱKʀɪᴢ AI'
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 	fs.unwatchFile(file)
