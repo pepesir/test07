@@ -234,7 +234,19 @@ if (m.text.includes("https://www.instagram.com")) {
     })
 }
 
-  
+//Auto insta story downloader by toxic kichu 
+//const url = 'https://instagram.com/stories/alxn_.m10/3051079339207797718?igshid=MDJmNzVkMjY='
+if (m.text.includes("https://www.instagram.com/stories")) {
+	insta(m.text).then(({ url }) => {
+ 
+   try { kriz.sendMessage(m.chat , { video : { url : url } } )
+       } catch {
+	       console.log("umm")
+    // kriz.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
+    }
+    })
+}
+
 	// reset limit every 12 hours
         let cron = require('node-cron')
         cron.schedule('00 12 * * *', () => {
