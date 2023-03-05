@@ -1,6 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
-const config = require('./config.js)
+const config = require('./config.js')
 global.owner = ['919633687665','919207759062','919496966726']
 global.ownernomer = ["919633687665","919496966726","919207759062"]
 global.premium = ['919633687665']
