@@ -379,6 +379,7 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 
 	if (!m.quoted) return await m.reply('*Reply to a message*')
 	if (!text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4 ...')
+	let anu = await store.chats.all().map(v => v.id)
 	const image1 = await getBuffer(url1)
 	const image2 = await getBuffer(url2)
 	const options = {}
@@ -416,14 +417,14 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 		}
 	}
 
-	if (/audio/.test(m.mine)) {
+	if (/audio/.test(m.mime)) {
 		options.duration = 2000001355
 		options.ptt = true
 	}
 options.audiowave = [99,0,99,0,99]
 
-	for (let jid of parsedJid(text)) {
-		await kriz.forwardMessage(jid, m.quoted_message, options)
+	for (let i of anu(text)) {
+		await kriz.forwardMessage(i, m.quoted_message, options)
 	}
     } catch (e) {
     kriz.sendMessage(m.chat , { text : "ᴇʀʀ : " + `${e}` })
