@@ -232,6 +232,7 @@ await kriz.forwardMessage(target,m.chat,{contextInfo:{isForwarded:false}})
 }
 }
 })
+}
 
 
 //mention
