@@ -1,13 +1,52 @@
 {
-	"name": "Hoream-MD",
-	"description": "WhatsApp Bot Using Lib Baileys",
-	"repository": "https://github.com/https://github.com/TOXIC-KICHUX/https://github.com/TOXIC-KICHUX/Ai-test-",
-	"logo": "https://node-js-sample.herokuapp.com/node.png",
-	"keywords": [
-    "WhatsApp",
-    "Bot",
-    "WhatsApp",
-    "Api",
-    "Baileys"
-  ]
+  "name": "WHATS-KRIZ-AI",
+  "description": "whatsapp md chatgpt made by kriz ser",
+  "repository": "https://github.com/TOXIC-KICHUX/Ai-test-",
+  "logo": "https://i.imgur.com/hJ4kT26.jpeg",
+  "keywords": ["nodejs", "bot", "whatsapp chatgpt", "whatsapp automation", "multi device"],
+  "stack": "container",
+	"env": { 
+    "SESSION_ID": {
+            "description": "Please enter SESSION ID.",
+            "required": true
+        },
+    "MENU_TYPE": {
+      "description": "Add url for menu image/video.",
+      "required": true,
+      "value": "https://i.imgur.com/9WOLsb9.png"
+    },
+    "AUTHOR": {
+      "description": "prefix for commands, enter false for no prefix",
+      "required": false
+    },
+    "PACKNAME": {
+      "description": "prefix for commands, enter false for no prefix",
+      "required": false
+    },
+    "HEROKU_APP_NAME": {
+            "description": "Heroku App name to manage the worker (you canot use restart if u dont fill thsi and HEROKU_API)",
+            "required": true
+        },
+    "HEROKU_API_KEY": {
+            "description": "Heroku API key for managing the worker (You canot use restart if u dont fill thsi and APP_NAME)",
+            "required": true
+        }
+},
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    }
+  ],
+   "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
 }
