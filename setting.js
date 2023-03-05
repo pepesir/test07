@@ -1,12 +1,18 @@
 const fs = require('fs')
 const chalk = require('chalk')
 const config = require('./config.js')
+const {
+BOTNAME,
+AUTHOR,
+PACKNAME,
+OWNERNAME,
+} = require('./config.js')
 global.owner = ['919633687665','919207759062','919496966726']
 global.ownernomer = ["919633687665","919496966726","919207759062"]
 global.premium = ['919633687665']
-global.packname = 'config.PACKNAME'
-global.ownername = 'config.OWNERNAME'
-global.author = 'config.AUTHOR'
+global.packname = '${PACKNAME}'
+global.ownername = '${OWNERNAME}'
+global.author = '${AUTHOR}'
 global.sessionName = 'session'
 global.jumlha = '999'
 global.jumhal = '100000000000000'
@@ -38,7 +44,7 @@ global.mygit = 'https://whats-kriz-ai-com.vercel.app/'
 global.webmy = 'https://whats-kriz-ai-com.vercel.app/'
 global.ghme = 'https://whats-kriz-ai-com.vercel.app/'
 global.gcbot = "https://whats-kriz-ai-com.vercel.app/"
-global.botname = 'config.BOTNAME'
+global.botname = '${BOTNAME}'
 global.omlen = '©WʜᴀᴛꜱKʀɪᴢ AI'
 global.weem = 'WʜᴀᴛꜱKʀɪᴢ AI'
 let file = require.resolve(__filename)
