@@ -1392,14 +1392,15 @@ break
 ││Click the button given\n││below to see\n││menu list.
 │╰──㋰
 ╰───────────㋰`
+            const { MENU_MEDIA } = require('./config.js)
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : omlen,
-  mimetype: `${filsk}`,
-  fileLength: jumhal,
-  pageCount: jumlha,
+            const image = ${MENU_MEDIA}
+	const type = image.endsWith('mp4') ? 'video' : 'image'
+	const buttonMessage = {
+		[type]: {
+			url: image
+		},
   caption: FancyRandom(myr),
   footer: esce,
   buttons: buttons,
