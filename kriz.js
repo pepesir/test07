@@ -800,17 +800,17 @@ case 'status' : {
 let { result} = await getJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
 let mask = result[Math.floor(Math.random()*result.length)]
 const buttons = [
-  {buttonId:  'status', buttonText: {displayText: 'next'}, type: 1}]
+  {buttonId:  'status', buttonText: {displayText: 'ɴᴇxᴛ'}, type: 1}]
 
 const buttonMessage = {
     video: {url: mask},
     caption: "*Random Malayalam Status*",
-    footer: 'hehe',
+    footer: '*WʜᴀᴛꜱKʀɪᴢ AI*',
     buttons: buttons,
     headerType: 4
 }
 
-kriz.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
+kriz.sendMessage(m.chat, buttonMessage, {quoted: ftoko})
 }
 break
 
