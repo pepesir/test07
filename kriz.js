@@ -284,10 +284,10 @@ jumlahharian = `${dataa.value}`
 	}
 			
 	  // Anti Link
-        let me = m.sender
+        let user = m.mention[0]
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`_ @${me.split('@')[0]} kicked from this group!_ `)
+        m.reply(`_ @${user.split('@')[0]} kicked from this group!_ `)
         if (!isBotAdmins) return m.reply(`_Bot is not an admin to kick!_`)
         let gclink = (`https://chat.whatsapp.com/`+await kriz.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
