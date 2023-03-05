@@ -12,16 +12,28 @@
         },
     "MENU_MEDIA": {
       "description": "Add url for menu image/video.",
-      "required": true,
+      "required": false,
       "value": "https://i.imgur.com/9WOLsb9.png"
     },
+    "OWNERNAME": {
+      "description": "Add owner name.",
+      "required": false,
+      "value": "KRIZ-SER"
+    },
+    "BOTNAME": {
+      "description": "Add bot name.",
+      "required": false,
+      "value": "WHATS-KRIZ-AI"
+    },
     "AUTHOR": {
-      "description": "prefix for commands, enter false for no prefix",
-      "required": false
+      "description": "Add sticker author name.",
+      "required": false,
+      "value": "TEAM-TOXIC"
     },
     "PACKNAME": {
-      "description": "prefix for commands, enter false for no prefix",
-      "required": false
+      "description": "Add sticker packname.",
+      "required": false,
+      "value": "WHATS-KRIZ-AI"
     },
     "HEROKU_APP_NAME": {
             "description": "Heroku App name to manage the worker (you canot use restart if u dont fill thsi and HEROKU_API)",
