@@ -214,12 +214,22 @@ const sendStickerFromUrl = async(to, url) => {
 
 //mention
 
-if (mentionaudio){ 
-if (mentionaudio === true) return
-if (budy.includes(`@${global.premium}`)){
-kriz.sendMessage(m.chat, mentionaudiofile, audio, { thumbnail: dfrply, sendEphemeral: true, quoted: m, mimetype: 'audio/mp4', duration: 40000271, ptt: true, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: `WʜᴀᴛꜱKʀɪᴢ AI`,body:"",previewType:"PHOTO",thumbnail:dfrply,sourceUrl:`https://wa.me/919633687665?text=Hi bro`}}})
-}
-}
+const {SUDO} = require('global.owner');
+var duration = 19998000
+var audios = `https://i.imgur.com/5PoNdG5.mp4,https://i.imgur.com/Y8s8hTJ.mp4,https://i.imgur.com/80ZpjQV.mp4,https://i.imgur.com/VXOOJS5.mp4`;
+const {getAudioBufferFromLink,skbuffer} = require('raganork-bot')
+const {readFileSync} = require('fs')
+
+
+var jids = audios.split(',').filter(link => link.includes('mp4'));
+try {var men = m.mention[0].split('@')[0]} catch {return;}
+if (m.mention && m.mention[0] && SUDO.includes(men)) {
+var waveform = Array.from({length: 15}, () => Math.floor(Math.random() * 100)); // use this for fancy: [0,99,0,99,0,99]
+getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async function(audio) {
+if (audio) {
+return kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: m })}
+})}
+}));
 
              
              //Fake
