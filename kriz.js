@@ -1392,7 +1392,7 @@ break
 ││Click the button given\n││below to see\n││menu list.
 │╰──㋰
 ╰───────────㋰`
-            const { MENU_MEDIA } = require('./config.js)
+            const { MENU_MEDIA } = require('./config.js')
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
             const image = ${MENU_MEDIA}
