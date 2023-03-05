@@ -535,12 +535,11 @@ break
 	}
 	break
 	case 'promote': {
-                let me = m.sender
-                const prmsg = `_ @${me.split('@')[0]} promoted as admin!_`
+                let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')
+                const prmsg = `_ @${user.split('@')[0]} promoted as admin!_`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
-		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+                if (!isAdmins) throw mess.admin		
 		kriz.sendMessage(m.chat, { text: prmsg }, {quoted: ftroli})
 	}
 	break
