@@ -479,7 +479,7 @@ break
             break
             case 'runtime': case 'tes': {
             	let lowq = `Runtime : ${runtime(process.uptime())}`
-                kriz.sendMessage(m.chat, { text: lowq }, {quoted: fkontak})
+                kriz.sendMessage(m.chat, { text: lowq })
                 kriz.setStatus(`${kriz.user.name} | Runtime : ${runtime(process.uptime())}`)
             	}
             break
@@ -540,7 +540,7 @@ break
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
-		kriz.sendMessage(m.chat, { text: prmsg }, {quoted: ftroli})
+		await kriz.groupParticipantsUpdate(m.chat, { text: prmsg })
 	}
 	break
 	case 'demote': {
