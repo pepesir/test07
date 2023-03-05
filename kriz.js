@@ -529,6 +529,7 @@ await client.forwardMessage(target,m.chat,{contextInfo:{isForwarded:false}})
 }
 })
 }
+break
 	case 'add': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
