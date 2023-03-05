@@ -493,14 +493,6 @@ break
                 kriz.sendMessage(m.chat, reactionMessage)
             }
             break  
-case ' vv' :{
-if (!m.reply_m.image && !m.reply_m.video)
-			return await kriz.send('*reply to a vieOnce image or video*')
-		await forwardOrBroadCast(m.chat, message, { viewOnce: false })
-	}
-)
-}
-break
             case 'join': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw 'Enter Link Groups!'
@@ -585,11 +577,9 @@ break
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-                let teks = `══✪〘 *Tag All* 〙✪══
- 
-                ➲ *Message : ${q ? q : 'blank'}*\n\n`
+                let teks = `╭╼━━⌜𝚃𝚊𝚐 𝚊𝚕𝚕⌟━━╾\n╽`
                 for (let mem of participants) {
-                teks += ` *»* @${mem.id.split('@')[0]}\n`
+                teks += `┃👥 @${mem.id.split('@')[0]}\n┃`
                 }
                 kriz.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
