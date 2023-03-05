@@ -284,10 +284,10 @@ jumlahharian = `${dataa.value}`
 	}
 			
 	  // Anti Link
-        let user = m.mention[0]
+        let me = m.sender
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`_ @${user.split('@')[0]} kicked from this group!_ `)
+        m.reply(`_ @${me.split('@')[0]} kicked from this group!_ `)
         if (!isBotAdmins) return m.reply(`_Bot is not an admin to kick!_`)
         let gclink = (`https://chat.whatsapp.com/`+await kriz.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
@@ -493,6 +493,14 @@ break
                 kriz.sendMessage(m.chat, reactionMessage)
             }
             break  
+case ' vv' :{
+if (!m.reply_m.image && !m.reply_m.video)
+			return await kriz.send('*reply to a vieOnce image or video*')
+		await forwardOrBroadCast(m.chat, message, { viewOnce: false })
+	}
+)
+}
+break
             case 'join': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw 'Enter Link Groups!'
