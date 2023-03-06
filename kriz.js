@@ -318,7 +318,8 @@ jumlahharian = `${dataa.value}`
    const mb = global.mbody
    const msurl = global.msurl
    const mmurl = global.mmurl
-   if (txt.includes("919207759062")) {
+   const ownerno = global.ownernomer
+   if (txt.includes(ownerno)) {
 	   const audio = audios[Math.floor(Math.random() * audios.length)]
            const Audio = await jslbuffer(audio)
            let image1 = await jslbuffer(logo)
@@ -783,19 +784,7 @@ m.reply(`Send Broadcast To ${anu.length} Chat\Time's up ${anu.length * 1.5} seco
 		await sleep(1500)
 		let txt = `${text}`
 		let buttons = [{ buttonId: 'list', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            await kriz.sendButtonText(yoi, buttons, txt, esce, m, contextInfo:{
-externalAdReply:{
- title: ' WʜᴀᴛꜱKʀɪᴢ AI',
-		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
-		mediaType: 2,
-		thumbnail: logo,
-		mediaUrl: 'https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI', 
-		sourceUrl: 'https://github.com/',
-		showAdAttribution: true
-        }
-
-    },
-},{quoted:ftroli})
+            await kriz.sendButtonText(yoi, buttons, txt, esce, m, {quoted: fgclink})
 		}
 		m.reply('_Broadcast Success!_')
 }
