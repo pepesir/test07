@@ -12,6 +12,7 @@ const axios = require('axios')
 const chalk = require('chalk')
 const yts = require('yt-search')
 const xfar = require('xfarr-api')
+const { toAudio } = require('./lib/converter')
 const google = require('google-it')
 const { Configuration, OpenAIApi } = require("openai");
 const { insta } = require('./lib/scrapers')
@@ -1126,7 +1127,6 @@ break
             if (!quoted) throw `_Reply to audio or video..!_`
             m.reply(mess.wait)
             let media = await quoted.download()
-            let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
             kriz.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg', fileName: `ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ.mp3`,contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI"}}}, { quoted: m})
                  
