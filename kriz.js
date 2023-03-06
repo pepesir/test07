@@ -4,7 +4,7 @@ const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  
 const fs = require('fs')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
 const os = require('os')
-const { FancyRandom } = require ("abu-bot");
+const { FancyRandom, jslbuffer } = require ("abu-bot");
 const util = require('util')
 const path = require('path')
 const hx = require('hxz-api')
@@ -436,23 +436,6 @@ options.audiowave = [99,0,99,0,99]
     }
 break
 
-case 'mention': {
-const {SUDO} = require('./config.js')
-var duration = 19998000
-var audios = `https://i.imgur.com/5PoNdG5.mp4,https://i.imgur.com/Y8s8hTJ.mp4,https://i.imgur.com/80ZpjQV.mp4,https://i.imgur.com/VXOOJS5.mp4`;
-const {getAudioBufferFromLink,skbuffer} = require('raganork-bot')
-const {readFileSync} = require('fs')
-var jids = audios.split(',').filter(link => link.includes('mp4'));
-try {var men = m.mention[0].split('@')[0]} catch {return;}
-if (m.mention && m.mention[0] && SUDO.includes(men)) {
-var waveform = Array.from({length: 15}, () => Math.floor(Math.random() * 100)); // use this for fancy: [0,99,0,99,0,99]
-getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async function(audio) {
-if (audio) {
-kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: ftroli })
-}
-}
-}
-break
 case 'jid':
 m.reply(m.chat)
 break
@@ -595,7 +578,7 @@ break
                 if (!isAdmins) throw mess.admin
                 let teks = `╭╼━━⌜𝚃𝚊𝚐 𝚊𝚕𝚕⌟━━╾\n╽`
                 for (let mem of participants) {
-                teks += `┃👥 @${mem.id.split('@')[0]}\n┃`
+                teks += `\n┃👥 @${mem.id.split('@')[0]}\n┃`
                 }
                 kriz.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
@@ -747,6 +730,8 @@ let waveform =  [0,99,0,99,0,99]
                 for (let i of anu) {
                     await sleep(1500)
                     
+                    const thumb = global.adbcimage
+                    let logo = await jslbuffer(thumb)
                     let media = await kriz.downloadAndSaveMediaMessage(quoted)
                     let buffer = fs.readFileSync(media)
                     
@@ -759,9 +744,9 @@ externalAdReply:{
  title: ' WʜᴀᴛꜱKʀɪᴢ AI',
 		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
 		mediaType: 2,
-		thumbnail: fs.readFileSync(`client.jpg`),
-		mediaUrl: 'https://www.instagram.com/p/heehe', 
-		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴋʀɪᴢ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		thumbnail: logo,
+		mediaUrl: 'https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI', 
+		sourceUrl: 'https://github.com/',
 		showAdAttribution: true
         }
 
