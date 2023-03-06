@@ -621,7 +621,7 @@ if (!isCreator) return m.reply(mess.owner)
 try {
 let evaled = await eval(q)
 if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
-await setReply(evaled)
+await m.reply(evaled)
 } catch (err) {
 await m.reply(String(err))
 }
