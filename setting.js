@@ -17,6 +17,7 @@ global.adbcimage = config.BCAUDIO_IMAGE
 global.sessionName = 'session'
 global.mentionaudio = 'true'
 global.jumlha = '999'
+global.jumlah = '1000000000'
 global.jumhal = '100000000000000'
     
 global.prefa = ['','!','.','#','&','/']
