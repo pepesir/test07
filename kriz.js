@@ -442,17 +442,14 @@ var duration = 19998000
 var audios = `https://i.imgur.com/5PoNdG5.mp4,https://i.imgur.com/Y8s8hTJ.mp4,https://i.imgur.com/80ZpjQV.mp4,https://i.imgur.com/VXOOJS5.mp4`;
 const {getAudioBufferFromLink,skbuffer} = require('raganork-bot')
 const {readFileSync} = require('fs')
-
-
 var jids = audios.split(',').filter(link => link.includes('mp4'));
 try {var men = m.mention[0].split('@')[0]} catch {return;}
 if (m.mention && m.mention[0] && SUDO.includes(men)) {
 var waveform = Array.from({length: 15}, () => Math.floor(Math.random() * 100)); // use this for fancy: [0,99,0,99,0,99]
 getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async function(audio) {
 if (audio) {
-return kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: ftroli })
+kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: ftroli })
 }
-
 break
 case 'jid':
 m.reply(m.chat)
@@ -519,47 +516,47 @@ break
             break
 	case 'kick': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const kmsg = `_ @${user[0].split('@')[0]} kicked from this group!_`
+                const kmsg = `@${user[0].split('@')[0]} kicked from this group!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'remove')
-                m.reply(kmsg)
+                m.reply(_kmsg_)
 	}
 	break
 
 	case 'add': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const addmsg = `_ @${user[0].split('@')[0]} added to this group!_`
+                const addmsg = `@${user[0].split('@')[0]} added to this group!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'add')
-                m.reply(addmsg)
+                m.reply(_addmsg_)
 	}
 	break
 	case 'promote': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const prmsg = `_ @${user[0].split('@')[0]} promoted as admin!_`
+                const prmsg = `@${user[0].split('@')[0]} promoted as admin!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'promote')
-                m.reply(prmsg)
+                m.reply(_prmsg_)
 	}
 	break
 	case 'demote': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const dmmsg = `_ @${user[0].split('@')[0]} demoted as member!_`
+                const dmmsg = `@${user[0].split('@')[0]} demoted as member!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'demote')
-                m.reply(dmmsg)
+                m.reply(_dmmsg_)
 	}
 	break
         case 'block': {
