@@ -436,14 +436,12 @@ options.audiowave = [99,0,99,0,99]
     }
 break
 
-
+case 'mention': {
 const SUDO = require('./config.js')
 var duration = 19998000
 var audios = `https://i.imgur.com/5PoNdG5.mp4,https://i.imgur.com/Y8s8hTJ.mp4,https://i.imgur.com/80ZpjQV.mp4,https://i.imgur.com/VXOOJS5.mp4`;
 const {getAudioBufferFromLink,skbuffer} = require('raganork-bot')
 const {readFileSync} = require('fs')
-
-case 'mention': {
 var jids = audios.split(',').filter(link => link.includes('mp4'));
 try {var men = m.mention[0].split('@')[0]} catch {return;}
 if (m.mention && m.mention[0] && SUDO.includes(men)) {
