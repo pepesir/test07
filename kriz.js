@@ -777,12 +777,25 @@ case 'bc': case 'broadcast': case 'bcall': {
 if (!isCreator) throw mess.owner
 if (!text) throw `Which text?\nExample : ${prefix + command} WHATS-KRIZ-AI`
 let anu = await store.chats.all().map(v => v.id)
+let logo = await jslbuffer(thumb)
 m.reply(`Send Broadcast To ${anu.length} Chat\Time's up ${anu.length * 1.5} seconds`)
 		for (let yoi of anu) {
 		await sleep(1500)
 		let txt = `${text}`
 		let buttons = [{ buttonId: 'list', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            await kriz.sendButtonText(yoi, buttons, txt, esce, m, {quoted: fgclink})
+            await kriz.sendButtonText(yoi, buttons, txt, esce, m, contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		mediaType: 2,
+		thumbnail: logo,
+		mediaUrl: 'https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI', 
+		sourceUrl: 'https://github.com/',
+		showAdAttribution: true
+        }
+
+    },
+},{quoted:ftroli})
 		}
 		m.reply('_Broadcast Success!_')
 }
