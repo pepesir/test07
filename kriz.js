@@ -44,7 +44,6 @@ const timur = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const esce = ('©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ')
 const ini_kangbaned = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
-const sudo = ownernomer
 let mentionaudio = global.mentionaudio
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/kriz.jpg')
@@ -215,7 +214,7 @@ const sendStickerFromUrl = async(to, url) => {
 
 //mention
 
-const SUDO = sudo
+const SUDO = require('./config.js')
 var duration = 19998000
 var audios = `https://i.imgur.com/5PoNdG5.mp4,https://i.imgur.com/Y8s8hTJ.mp4,https://i.imgur.com/80ZpjQV.mp4,https://i.imgur.com/VXOOJS5.mp4`;
 const {getAudioBufferFromLink,skbuffer} = require('raganork-bot')
