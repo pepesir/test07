@@ -7,8 +7,8 @@ AUTHOR,
 PACKNAME,
 OWNERNAME,
 } = require('./config.js')
-global.owner = ['919633687665','919207759062','919496966726']
-global.ownernomer = ["919633687665","919496966726","919207759062"]
+global.owner = ['919633687665','919207759062','919496966726','919656459062']
+global.ownernomer = ["919633687665","919496966726","919207759062","919656459062"]
 global.premium = ['919633687665']
 global.packname = config.PACKNAME
 global.ownername = config.OWNERNAME
