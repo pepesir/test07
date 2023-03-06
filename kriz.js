@@ -1,5 +1,6 @@
 require('./setting')
 const config = require('./config.js')
+const simple = require('./lib/simple.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
