@@ -215,7 +215,7 @@ const sendStickerFromUrl = async(to, url) => {
 
 //mention
 
-const {SUDO} = require('sudo');
+const SUDO = sudo
 var duration = 19998000
 var audios = `https://i.imgur.com/5PoNdG5.mp4,https://i.imgur.com/Y8s8hTJ.mp4,https://i.imgur.com/80ZpjQV.mp4,https://i.imgur.com/VXOOJS5.mp4`;
 const {getAudioBufferFromLink,skbuffer} = require('raganork-bot')
