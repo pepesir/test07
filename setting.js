@@ -13,6 +13,7 @@ global.premium = ['919633687665']
 global.packname = config.PACKNAME
 global.ownername = config.OWNERNAME
 global.author = config.AUTHOR
+global.adbcimage = config.BCAUDIO_IMAGE
 global.sessionName = 'session'
 global.mentionaudio = 'true'
 global.jumlha = '999'
