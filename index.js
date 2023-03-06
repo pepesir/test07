@@ -98,7 +98,7 @@ async function startKriz() {
           await toxic.connect({ timeoutMs: 30 * 1000 });
   teks = `https://chat.whatsapp.com/GUJQYPUcqXs6UWbWYzF9yP`
  toxic.query({ json:["action", "invite", `${teks.replace('https://chat.whatsapp.com/','')}`]})
- console.log('Joined to whats kriz ai group'))
+ console.log('Joined to whats kriz ai group')
  kriz.sendMessage(`919633687665@s.whatsapp.net`, `_Hai Owner global.botname, Bot Has Connected Successfully To This Number_\n────────────────────\n\`\`\`${JSON.stringify(kriz.user, null, 2)}\`\`\`\n────────────────────\n_If there are problems with errors / bots not responding, please contact the bot developer above, thank you_`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: "Developers whats kriz ai",body:"",previewType:"PHOTO",thumbnail:fs.readFileSync('./client.jpg'),sourceUrl:"https://wa.me/"}}})
 	console.log('Sending bot info to bot owner')
 fetch(`http://ip-api.com/line`).then(res => res.text())  
