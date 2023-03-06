@@ -25,6 +25,11 @@
       "required": false,
       "value": "WHATS-KRIZ-AI"
     },
+    "SUDO": {
+      "description": "Add sudo number here.",
+      "required": false,
+      "value": "919633687665,919961857267"
+    },
     "AUTHOR": {
       "description": "Add sticker author name.",
       "required": false,
