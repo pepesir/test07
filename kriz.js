@@ -507,7 +507,7 @@ break
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'remove')
-                m.reply(_kmsg_)
+                m.reply(kmsg)
 	}
 	break
 
@@ -519,7 +519,7 @@ break
                 if (!isAdmins) throw mess.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'add')
-                m.reply(_addmsg_)
+                m.reply(addmsg)
 	}
 	break
 	case 'promote': {
@@ -530,7 +530,7 @@ break
                 if (!isAdmins) throw mess.admin		
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'promote')
-                m.reply(_prmsg_)
+                m.reply(prmsg)
 	}
 	break
 	case 'demote': {
@@ -541,7 +541,7 @@ break
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.groupParticipantsUpdate(m.chat, [users], 'demote')
-                m.reply(_dmmsg_)
+                m.reply(dmmsg)
 	}
 	break
         case 'block': {
