@@ -451,9 +451,8 @@ var waveform = Array.from({length: 15}, () => Math.floor(Math.random() * 100)); 
 getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async function(audio) {
 if (audio) {
 return kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: ftroli })
+}
 
-}
-}
 break
 case 'jid':
 m.reply(m.chat)
