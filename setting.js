@@ -14,6 +14,7 @@ global.packname = config.PACKNAME
 global.ownername = config.OWNERNAME
 global.author = config.AUTHOR
 global.adbcimage = config.BCAUDIO_IMAGE
+global.mentionimg = config.MENTION_IMG
 global.sessionName = 'session'
 global.mentionaudio = 'true'
 global.jumlha = '999'
