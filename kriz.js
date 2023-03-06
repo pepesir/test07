@@ -501,7 +501,7 @@ break
             break
 	case 'kick': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const kmsg = `@${user[0].split('@')[0]} kicked from this group!`
+                const kmsg = `@${user.split('@')[0]} kicked from this group!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -513,7 +513,7 @@ break
 
 	case 'add': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const addmsg = `@${user[0].split('@')[0]} added to this group!`
+                const addmsg = `@${user.split('@')[0]} added to this group!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -524,7 +524,7 @@ break
 	break
 	case 'promote': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const prmsg = `@${user[0].split('@')[0]} promoted as admin!`
+                const prmsg = `@${user.split('@')[0]} promoted as admin!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin		
@@ -535,7 +535,7 @@ break
 	break
 	case 'demote': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const dmmsg = `@${user[0].split('@')[0]} demoted as member!`
+                const dmmsg = `@${user.split('@')[0]} demoted as member!`
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -546,7 +546,7 @@ break
 	break
         case 'block': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const blckmsg = `_ @${user[0].split('@')[0]} blocked!_`
+                const blckmsg = `_ @${user.split('@')[0]} blocked!_`
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.updateBlockStatus(users, 'block')
@@ -555,7 +555,7 @@ break
 	break
         case 'unblock': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-                const unbmsg = `_ @${user[0].split('@')[0]} unblocked!_`
+                const unbmsg = `_ @${user.split('@')[0]} unblocked!_`
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kriz.updateBlockStatus(users, 'unblock')
