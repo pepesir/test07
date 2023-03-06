@@ -327,7 +327,7 @@ jumlahharian = `${dataa.value}`
 			audio: res,
 			mimetype: 'audio/mpeg',
 			ptt: true,
-			waveform: [00,99,00,99,00,99,00],
+			waveform: [00,99,00,99,00,99,00,99,00,99,00],
 			contextInfo: {
 				externalAdReply: {
 					title: mt,
