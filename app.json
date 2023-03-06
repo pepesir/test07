@@ -30,10 +30,10 @@
       "required": false,
       "value": "WHATS-KRIZ-AI"
     },
-    "SUDO": {
-      "description": "Add sudo number here.",
+    "MENTION_IMG": {
+      "description": "Add you want image to mention audio.",
       "required": false,
-      "value": "919633687665,919961857267"
+      "value": "https://i.imgur.com/EZtwkeA.jpeg"
     },
     "AUTHOR": {
       "description": "Add sticker author name.",
