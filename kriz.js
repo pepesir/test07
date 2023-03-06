@@ -317,6 +317,7 @@ jumlahharian = `${dataa.value}`
    const mt = global.mtitle
    const mb = global.mbody
    const msurl = global.msurl
+   const mmurl = global.mmurl
    if (txt.includes("919207759062")) {
 	   const audio = audios[Math.floor(Math.random() * audios.length)]
            const Audio = await jslbuffer(audio)
@@ -334,7 +335,7 @@ jumlahharian = `${dataa.value}`
 					body: mb,
 					mediaType: 2,
 					thumbnail: image2,
-					mediaUrl: msurl,
+					mediaUrl: mmurl,
 					sourceUrl: msurl,
 					showAdAttribution: true
 				}
