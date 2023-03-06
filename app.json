@@ -15,6 +15,11 @@
       "required": false,
       "value": "https://i.imgur.com/9WOLsb9.png"
     },
+    "BCAUDIO_IMAGE": {
+      "description": "Add url for audio bc image.",
+      "required": false,
+      "value": "https://i.imgur.com/EZtwkeA.jpeg"
+    },
     "OWNERNAME": {
       "description": "Add owner name.",
       "required": false,
