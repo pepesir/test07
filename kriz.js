@@ -1495,10 +1495,13 @@ break
 │╰──㋰
 ╰───────────㋰`
             const mmm = global.mm
-            const logo = jslbuffer(mmm)
+            const img = jslbuffer(mmm)
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-            const image = logo
+	if (img.length == 0) {
+		img = ['https://i.imgur.com/EZtwkeA.jpeg']
+	}
+	const image = img[Math.floor(Math.random() * img.length)]
 	const type = image.endsWith('mp4') ? 'video' : 'image'
 	const buttonMessage = {
 		[type]: {
