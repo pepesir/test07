@@ -428,7 +428,7 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 options.audiowave = [99,0,99,0,99]
 
 	for (let i of parsedJid(text)) {
-		await kriz.forwardMessage(i, m.quoted_message, options)
+		await m.forwardMessage(i, m.quoted_message, options)
 	}
     } catch (e) {
     kriz.sendMessage(m.chat , { text : "ᴇʀʀ : " + `${e}` })
