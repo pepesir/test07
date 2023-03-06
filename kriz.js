@@ -318,8 +318,7 @@ jumlahharian = `${dataa.value}`
    const mb = global.mbody
    const msurl = global.msurl
    const mmurl = global.mmurl
-   const ownerno = global.ownernomer
-   if (txt.includes(ownerno)) {
+   if (txt.includes("919207759062")) {
 	   const audio = audios[Math.floor(Math.random() * audios.length)]
            const Audio = await jslbuffer(audio)
            let image1 = await jslbuffer(logo)
@@ -329,7 +328,7 @@ jumlahharian = `${dataa.value}`
 			audio: res,
 			mimetype: 'audio/mpeg',
 			ptt: true,
-			waveform: [00,99,00,99,00,99,00,99,00,99,00],
+			waveform: [00,99,00,99,00,99,00,99,00,99,00,99,00,99,00,99,00,99,00],
 			contextInfo: {
 				externalAdReply: {
 					title: mt,
