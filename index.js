@@ -1,4 +1,5 @@
 require('./setting')
+const simple = require('./lib/simple.js')
 const { default: krizConnect, useSingleFileAuthState, WAConnection: _WAConnection, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
 const WAConnection = simple.WAConnection(_WAConnection)
