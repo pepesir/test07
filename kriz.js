@@ -450,6 +450,8 @@ getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async functio
 if (audio) {
 kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: ftroli })
 }
+}
+}
 break
 case 'jid':
 m.reply(m.chat)
