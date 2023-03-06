@@ -1,5 +1,5 @@
 {
-  "name": "Hoream-MD",
+  "name": "WHATS-KRIZ-AI",
   "version": "1.2.3.4",
   "description": "WhatsApp Using Lib Baileys Multi Device",
   "main": "index.js",
@@ -59,6 +59,7 @@
     "node-webpmux": "^3.1.0",
     "os": "^0.1.2",
     "path": "^0.12.7",
+    "pastebin-js": "^1.0.6",
     "perf_hooks": "0.0.1",
     "pino": "^7.0.5",
     "pm2": "^5.2.0",
