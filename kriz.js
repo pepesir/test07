@@ -227,8 +227,23 @@ if (m.mention && m.mention[0] && SUDO.includes(men)) {
 var waveform = Array.from({length: 15}, () => Math.floor(Math.random() * 100)); // use this for fancy: [0,99,0,99,0,99]
 getAudioBufferFromLink(jids[Math.floor(Math.random()*jids.length)],async function(audio) {
 if (audio) {
-return kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform }, { quoted: m })
+return kriz.sendMessage(m.chat, {audio,mimetype: 'audio/mp4',ptt: true,waveform,contextInfo:{
+externalAdReply:{
+ title: ' WʜᴀᴛꜱKʀɪᴢ AI',
+		body: 'ᴛᴇᴀᴍ ᴛᴏxɪᴄ❗️',
+		mediaType: 2,
+		thumbnail: fs.readFileSync(`client.jpg`),
+		mediaUrl: 'https://www.instagram.com/p/heehe', 
+		sourceUrl: 'https://wa.me/919633687665?text=_*៚ʜᴇʟʟᴏ+ᴍᴀsᴋ+sᴇʀ+ʙɪɢ ғᴀɴ+ᴠʀᴏ+🪄*_',
+		showAdAttribution: true
+        }
+
+    },
+},{quoted:ftroli})
+
 }
+}
+
 
 
              
