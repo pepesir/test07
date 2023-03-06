@@ -47,7 +47,7 @@ const ownernya = ownernomer + '@s.whatsapp.net'
 let mentionaudio = global.mentionaudio
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/kriz.jpg')
-module.exports = kriz = async (kriz, m, match, chatUpdate, store) => {
+module.exports = kriz = async (kriz, m, match, chatUpdate, client, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
          var budy = typeof m.text == "string" ? m.text : "";
@@ -427,8 +427,8 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 	}
 options.audiowave = [99,0,99,0,99]
 
-	for (let i of parsedJid(text)) {
-		await m.forwardMessage(i, m.quoted_message, options)
+	for (let jid of parsedJid(text)) {
+		await client.forwardMessage(jid, m.quoted_message, options)
 	}
     } catch (e) {
     kriz.sendMessage(m.chat , { text : "ᴇʀʀ : " + `${e}` })
