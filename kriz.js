@@ -903,6 +903,46 @@ let acr = new acrcloud({
             }
             }
             break
+            case 'fek':  {
+if (!isCreator) throw mess.owner
+if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
+let anu = await store.chats.all().map(v => v.id)
+let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('client.jpg'), surface: 200, message: `WʜᴀᴛꜱKʀɪᴢ AI`, orderTitle: 'WʜᴀᴛꜱKʀɪᴢ AI', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
+for (let i of anu) {
+await sleep(1500)
+let butoon = [{
+urlButton: {
+displayText: `GITHUB`,
+url: 'https://github.com/fek/endi/fork'
+}
+},
+{
+quickReplyButton: {
+displayText: 'MENU',
+id: 'menu'
+}
+}]
+let media = await kriz.downloadAndSaveMediaMessage(quoted)
+let buffer = fs.readFileSync(media)
+if (/webp/.test(mime)) {
+kriz.sendMessage(i, { sticker: { url: media } }, { quoted: ftroli })
+} else if (/image/.test(mime)) {
+let junn = `*_BROADCAST IMAGE_*${text ? '\n\n' + text : ''}`
+kriz.send5ButImg(i, junn, `${global.weem}`, buffer, butoon)
+} else if (/video/.test(mime)) {
+let junn = `*_BROADCAST VIDIO_*${text ? '\n\n' + text : ''}`
+kriz.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: ftroli })
+} else if (/audio/.test(mime)) {
+kriz.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg'}, { quoted : ftroli })
+} else {
+reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
+}
+await fs.unlinkSync(media)
+}
+reply(` *Send Broadcast To* ${anu.length} *Chats*`)
+}
+break
             case 'owner': case 'creator': {
                 kriz.sendContact(m.chat, global.owner, m)
             }
