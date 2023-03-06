@@ -1,6 +1,6 @@
 require('./setting')
 const config = require('./config.js')
-const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, parsedJid, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
+const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
 const os = require('os')
@@ -35,7 +35,7 @@ const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
+const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, parsedJid, fetchJson, getJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 const hariini = moment.tz('Asia/Kolkata').format('dddd, DD MMMM YYYY')
 const hariiini = moment.tz('Asia/Kolkata').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Kolkata').format('HH:mm:ss')
@@ -383,8 +383,7 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 
 
 	if (!m.quoted) return await m.reply('*Reply to a message*')
-	if (!text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4 ...')
-	let anu = await store.chats.all().map(v => v.id)
+	if (!text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4...')
 	const image1 = await getBuffer(url1)
 	const image2 = await getBuffer(url2)
 	const options = {}
@@ -428,7 +427,7 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 	}
 options.audiowave = [99,0,99,0,99]
 
-	for (let i of anu(text)) {
+	for (let i of parsedJid(text)) {
 		await kriz.forwardMessage(i, m.quoted_message, options)
 	}
     } catch (e) {
