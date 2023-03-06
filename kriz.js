@@ -616,6 +616,17 @@ break
                 kriz.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
+case '>': {
+if (!isCreator) return m.reply(mess.owner)
+try {
+let evaled = await eval(q)
+if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+await setReply(evaled)
+} catch (err) {
+await m.reply(String(err))
+}
+}
+break
 case'hehe': {
                 if (!isCreator) throw mess.owner
                 if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
