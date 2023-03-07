@@ -144,7 +144,7 @@ const { type } = kriz
         
 //Chatbot
 const mongoose = require('mongoose');
-
+const ChatBotSchema = new mongoose()
 const chatbot =  mongoose.model("chatbot", ChatBotSchema)
 module.exports = { chatbot }
 try {
