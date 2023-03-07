@@ -317,7 +317,7 @@ jumlahharian = `${dataa.value}`
 
 //mention
 	    try {
-   var audios = await fetchJson("config.MENTION_AUDIO")
+   var audios = 'https://gist.githubusercontent.com/TOXIC-KICHUX/60ba5922209bdccade2892c73d650553/raw/240dd5b611151fbb7b282aaaf406997a4039f7b7/mentionaudio.js'
    var logo = global.mentionimg
    var txt = m.text
    const mt = global.mtitle
