@@ -324,7 +324,7 @@ jumlahharian = `${dataa.value}`
    const mb = global.mbody
    const msurl = global.msurl
    const mmurl = global.mmurl
-   if (txt.includes("919207759062")) {
+   if (txt.includes(ownernomer)) {
 	   const audio = audios[Math.floor(Math.random() * audios.length)]
            const Audio = await jslbuffer(audio)
            let image1 = await jslbuffer(logo)
