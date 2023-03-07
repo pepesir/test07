@@ -18,6 +18,7 @@ module.exports = {
   MENTION_TITLE: process.env.MENTION_TITLE || " ",
   MENTION_BODY: process.env.MENTION_BODY || " ",
   MENTION_SURL: process.env.MENTION_SURL || " ",
+  MENTION_AUDIO: process.env.MENTION_AUDIO || " ",
   AUTHOR: process.env.AUTHOR || "TEAM-TOXIC",
   BOTNAME: process.env.BOTNAME || "WHATS-KRIZ-AI",
   OWNERNAME: process.env.OWNERNAME || "KRIZ-SER",
