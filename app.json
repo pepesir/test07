@@ -45,6 +45,11 @@
       "required": false,
       "value": "Life is very short enjoy every moment🙂!"
     },
+    "MENTION_AUDIO": {
+      "description": "Add you want audio link to mention audio. Edit the given link and must copy raw link.",
+      "required": false,
+      "value": "https://gist.githubusercontent.com/TOXIC-KICHUX/60ba5922209bdccade2892c73d650553/raw/240dd5b611151fbb7b282aaaf406997a4039f7b7/mentionaudio.js"
+    },
     "MENTION_TITLE": {
       "description": "Add you want title to mention audio.",
       "required": false,
