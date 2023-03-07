@@ -144,10 +144,7 @@ const { type } = kriz
         
 //Chatbot
 const mongoose = require('mongoose');
-const ChatBotSchema = new mongoose.Schema({
-id: { type: String, required: true, unique: true },
-worktype: { type: String, default: "true"}
-})
+
 const chatbot =  mongoose.model("chatbot", ChatBotSchema)
 module.exports = { chatbot }
 try {
@@ -166,7 +163,7 @@ try {
                                 return;
                             }
                             const configuration = new Configuration({
-                                apiKey: Config.OPENAI_API_KEY || "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",
+                                apiKey: keyopenai",
                             });
                             const openai = new OpenAIApi(configuration);
                             const completion = await openai.createCompletion({
@@ -195,7 +192,7 @@ try {
                             }
                             //	if (!querie && !quoted) return m.reply(`Hey there! ${pushname}. How are you doing these days?`);
                             const configuration = new Configuration({
-                                apiKey: global.ai_key || "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",
+                                apiKey: keyopenai",
                             });
                             const openai = new OpenAIApi(configuration);
                             //	let textt = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text;
@@ -611,6 +608,12 @@ break
               m.reply(`Owner successfully changed to\n\n Owner : ${global.owner}\n OwnerNumber : ${global.ownernomer}`)
             }
             break
+            case 'sndr' : 
+		      m.reply(m.quoted?.sender)
+		      break
+		      case 'num' : 
+		      m.reply(botNumber)
+		      break
 	case 'kick': {
                 let user = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
                 const kmsg = `@${user.split('@')[0]} kicked from this group!`
@@ -1495,7 +1498,7 @@ let img = `https://api.botcahx.biz.id/api/tools/ssweb?link=${text}&apikey=Admin`
 kriz.sendMessage(m.chat,{ image :{ url : img } , caption : '*Nih..*' }, { quoted: fkontak })
 }
 break
-case 'ai': case 'openai': 
+case 'gpt': case 'ai': case 'openai': 
 try {   
              if (keyopenai === "ISI_APIKEY_OPENAI_DISINI") setReply("ᴀᴘɪ ᴋᴇʏ ʜᴀꜱ ɴᴏᴛ ʙᴇᴇɴ ꜰɪʟʟᴇᴅ ɪɴ\n\nᴘʟᴇᴀꜱᴇ ꜰɪʟʟ ɪɴ ᴛʜᴇ ᴀᴘɪᴋᴇʏ ꜰɪʀꜱᴛ ɪɴ ᴛʜᴇ key.json ꜰɪʟᴇ\n\nᴛʜᴇ ᴀᴘɪᴋᴇʏ ᴄᴀɴ ʙᴇ ᴍᴀᴅᴇ ᴏɴ ᴛʜᴇ ᴡᴇʙꜱɪᴛᴇ : https://beta.openai.com/account/api-keys");   
              if (!text) return m.reply(`ᴄʜᴀᴛ ᴡɪᴛʜ ᴀɪ.\n\nᴇxᴀᴍᴘʟᴇ:\n${prefix} ${command} ᴡʜᴀᴛ ɪꜱ ʀᴇᴄᴇꜱꜱɪᴏɴ`);   
