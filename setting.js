@@ -16,6 +16,7 @@ global.version = config.VERSION
 global.mm = config.MENU_MEDIA
 global.mmurl = config.MENTION_MURL
 global.author = config.AUTHOR
+global.key_ai = config.OPENAI_API_KEY
 global.adbcimage = config.BCAUDIO_IMAGE
 global.mentionimg = config.MENTION_IMG
 global.mtitle = config.MENTION_TITLE
