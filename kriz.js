@@ -163,7 +163,7 @@ try {
                                 return;
                             }
                             const configuration = new Configuration({
-                                apiKey: keyopenai",
+                                apiKey: global.key_ai || "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",
                             });
                             const openai = new OpenAIApi(configuration);
                             const completion = await openai.createCompletion({
