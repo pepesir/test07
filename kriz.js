@@ -1793,6 +1793,7 @@ break
 
     } catch (err) {
         var recever = `global.owner`+'@s.whatsapp.net'
+let command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
     let buttons = [
          { buttonId: 'Join https://chat.whatsapp.com/IJcj5I82QkFZ99IZwmzzG', buttonText: { displayText: 'Join Support Group'  }, type: 2 }
         ]
