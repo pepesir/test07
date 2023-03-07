@@ -421,7 +421,7 @@ const buttonMessage = {
 	case 'fd':
 try {
 
-
+let jid = parsedJid
 const url1 = 'https://i.imgur.com/8ywakAD.jpeg'
 const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 
