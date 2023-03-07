@@ -12,6 +12,7 @@ global.ownernomer = ["919633687665","919496966726","919207759062","919656459062"
 global.premium = ['919633687665']
 global.packname = config.PACKNAME
 global.ownername = config.OWNERNAME
+global.version = config.VERSION
 global.mm = config.MENU_MEDIA
 global.mmurl = config.MENTION_MURL
 global.author = config.AUTHOR
