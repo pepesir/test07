@@ -205,9 +205,8 @@ try {
                         }
                         return
                     } catch (err) {
-                        console.log(err)
-                    }
-                }
+			    kriz.sendMessage(m.chat , { text : "(☞ ͡° ͜ʖ ͡°)☞     " + err } )
+			    }
 
         // Public & Self
         if (!kriz.public) {
