@@ -146,7 +146,7 @@ const { type } = kriz
 const mongoose = require('mongoose');
 const ChatBotSchema = new mongoose.Schema({
 id: { type: String, required: true, unique: true },
-worktype: { type: String, default: "false"}
+worktype: { type: String, default: "true"}
 })
 const chatbot =  mongoose.model("chatbot", ChatBotSchema)
 module.exports = { chatbot }
@@ -179,7 +179,7 @@ try {
                                 presence_penalty: 0.0,
                                 stop: ['"""'],
                             });
-                            citel.reply(completion.data.choices[0].text);
+                            m.reply(completion.data.choices[0].text);
                         } else if (m.text && m.isGroup && m.quoted) {
                             let mention = m.mentionedJid ? m.mentionedJid[0] : m.msg.contextInfo.participant || false;
                             if (mention && !mention.includes(botNumber)) return
