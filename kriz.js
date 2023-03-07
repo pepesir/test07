@@ -1505,11 +1505,11 @@ break
 │╰──㋰
 ╰───────────㋰`
             const mmm = global.mm
-            const img = jslbuffer(mmm)
+            
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
 	const buttonMessage = {
-  image: img,
+  image: 'https://i.imgur.com/Ib0O1za.jpeg',
   caption: FancyRandom(myr),
   footer: esce,
   buttons: buttons,
