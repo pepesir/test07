@@ -143,7 +143,15 @@ const { type } = kriz
         }
         
 //Chatbot
+const mongoose = require('mongoose');
+const ChatBotSchema = new mongoose.Schema({
+id: { type: String, required: true, unique: true },
+worktype: { type: String, default: "false"}
+})
+const chatbot =  mongoose.model("chatbot", ChatBotSchema)
+module.exports = { chatbot }
 try {
+                        let zx = m.text.length
                         if (m.isGroup && !m.quoted) return
                         if (m.text && !m.isGroup) {
                             if (zx < 25) {
