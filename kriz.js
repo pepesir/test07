@@ -142,6 +142,73 @@ const { type } = kriz
             console.error(err)
         }
         
+//Chatbot
+try {
+                        if (m.isGroup && !m.quoted) return
+                        if (m.text && !m.isGroup) {
+                            if (zx < 25) {
+                                var diffuser = m.sender.split("@")[0];
+                                let fetchk = require("node-fetch");
+                                var textuser = budy
+                                let fetchtext = await fetchk(`http://api.brainshop.ai/get?bid=167991&key=aozpOoNOy3dfLgmB&uid=[${diffuser}]&msg=[${textuser}]`);
+                                let json = await fetchtext.json();
+                                let { cnt } = json;
+                                m.reply(cnt);
+                                console.log('CHATBOT RESPONSE\n' + 'text=>' + textuser + '\n\nResponse=>' + cnt)
+                                return;
+                            }
+                            const configuration = new Configuration({
+                                apiKey: Config.OPENAI_API_KEY || "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",
+                            });
+                            const openai = new OpenAIApi(configuration);
+                            const completion = await openai.createCompletion({
+                                model: "text-davinci-002",
+                                prompt: budy,
+                                temperature: 0.5,
+                                max_tokens: 80,
+                                top_p: 1.0,
+                                frequency_penalty: 0.5,
+                                presence_penalty: 0.0,
+                                stop: ['"""'],
+                            });
+                            citel.reply(completion.data.choices[0].text);
+                        } else if (m.text && m.isGroup && m.quoted) {
+                            let mention = m.mentionedJid ? m.mentionedJid[0] : m.msg.contextInfo.participant || false;
+                            if (mention && !mention.includes(botNumber)) return
+                            if (zx < 20) {
+                                var diffuser = m.sender.split("@")[0];
+                                let fetchk = require("node-fetch");
+                                let fetchtext = await fetchk(`http://api.brainshop.ai/get?bid=167991&key=aozpOoNOy3dfLgmB&uid=[${diffuser}]&msg=[${citel.text}]`);
+                                let json = await fetchtext.json();
+                                let { cnt } = json;
+				    console.log(cnt)
+                                m.reply(cnt);
+                                return;
+                            }
+                            //	if (!querie && !quoted) return m.reply(`Hey there! ${pushname}. How are you doing these days?`);
+                            const configuration = new Configuration({
+                                apiKey: global.ai_key || "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",
+                            });
+                            const openai = new OpenAIApi(configuration);
+                            //	let textt = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text;
+                            const completion = await openai.createCompletion({
+                                model: "text-davinci-002",
+                                prompt: budy,
+                                temperature: 0.5,
+                                max_tokens: 80,
+                                top_p: 1.0,
+                                frequency_penalty: 0.5,
+                                presence_penalty: 0.0,
+                                stop: ['"""'],
+                            });
+                            m.reply(completion.data.choices[0].text);
+                        }
+                        return
+                    } catch (err) {
+                        console.log(err)
+                    }
+                }
+
         // Public & Self
         if (!kriz.public) {
             if (!m.key.fromMe) return
@@ -1500,15 +1567,8 @@ break
             const img = jslbuffer(mmm)
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
-	if (img.length == 0) {
-		img = ['https://i.imgur.com/EZtwkeA.jpeg']
-	}
-	const image = img[Math.floor(Math.random() * img.length)]
-	const type = image.endsWith('mp4') ? 'video' : 'image'
 	const buttonMessage = {
-		[type]: {
-			url: image
-		},
+  image: img,
   caption: FancyRandom(myr),
   footer: esce,
   buttons: buttons,
@@ -1520,7 +1580,7 @@ break
   showAdAttribution: true,
   thumbnail: thumb,
   mediaType: 2,
-  mediaUrl: ghme,
+  mediaUrl: 'https://www.instagram.com',
   sourceUrl: webmy
   }}
   }
