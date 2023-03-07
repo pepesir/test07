@@ -30,6 +30,11 @@
       "required": false,
       "value": "WHATS-KRIZ-AI"
     },
+    "OPENAI_API_KEY": {
+      "description": "Add a api key from https://beta.openai.com/account/api-keys then paste it here.",
+      "required": false,
+      "value": "here"
+    },
     "MENTION_IMG": {
       "description": "Add you want image to mention audio.",
       "required": false,
