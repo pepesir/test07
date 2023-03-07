@@ -12,6 +12,7 @@ module.exports = {
   MENU_MEDIA: process.env.MENUMEDIA || " ",
   PACKNAME: process.env.PACKNAME || "WHATS-KRIZ-AI",
   BCAUDIO_IMAGE: process.env.BCAUDIO_IMAGE || " ",
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY || " ",
   MENTION_IMG: process.env.MENTION_IMG || " ",
   MENTION_MURL: process.env.MENTION_MURL || " ",
   MENTION_TITLE: process.env.MENTION_TITLE || " ",
