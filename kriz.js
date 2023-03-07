@@ -192,7 +192,7 @@ try {
                             }
                             //	if (!querie && !quoted) return m.reply(`Hey there! ${pushname}. How are you doing these days?`);
                             const configuration = new Configuration({
-                                apiKey: keyopenai",
+                                apiKey: global.key_ai || "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",
                             });
                             const openai = new OpenAIApi(configuration);
                             //	let textt = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text;
