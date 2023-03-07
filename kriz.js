@@ -3,6 +3,7 @@ const config = require('./config.js')
 const simple = require('./lib/simple.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
+const Heroku = require('heroku-client')
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
 const os = require('os')
 const { FancyRandom, jslbuffer } = require ("abu-bot");
@@ -474,6 +475,70 @@ options.audiowave = [99,0,99,0,99]
     } catch (e) {
     kriz.sendMessage(m.chat , { text : "ᴇʀʀ : " + `${e}` })
     }
+break
+case 'update':
+  const heroku = new Heroku({ token: config.HEROKU_API_KEY })
+  await git.fetch();
+  var commits = await git.log(['H.1' + '..origin/' + 'H.1']);
+  if (commits.total === 0) {
+    m.reply("*No pending updates!*")
+  } else {
+    var changelog = "_Pending updates:_\n\n";
+    commits['all'].map(
+        (commit) => {
+            m.reply(`• *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`)
+          }
+          );
+          mss = changelog;
+          var img = ""
+       var buttons = [{
+        urlButton: {
+            displayText: 'TEST',
+            url: 'teTs'
+        }
+    },// By drips 
+    {
+        quickReplyButton: {
+            displayText: 'update',
+            id: `updatenow`
+        }
+    }];
+    }
+    await kriz.sendMessage(m.chat, {text: ` *tap update to update the bot*`});
+    
+
+break
+case 'updatenow':
+  
+    await git.fetch();
+    var commits = await git.log(['H.1' + '..origin/' + 'H.1']);
+    if (commits.total === 0) {
+      return await kriz.sendMessage(m.chat, { text:"_Bot up to date_"})
+    } else {
+      await kriz.sendMessage(m.chat, {text: "_Build started ⏫_"})
+      try {
+        var app = await heroku.get('/apps/' + config.HEROKU_APP_NAME)
+        var git_url = await heroku.get(app.git_url)
+    } catch {
+        await kriz.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
+
+        await new Promise(r => setTimeout(r, 1000));
+      }
+      git.fetch('upstream', 'H.1');
+      git.reset('hard', ['FETCH_HEAD']);//lols
+
+    git_url =  git_url.replace("https://", "https://api:" + config.HEROKU_API_KEY + "@")//drips
+      try {
+        await git.addRemote('heroku', git_url);
+    } catch {console.log('Deploy error catched. Retrying...')}
+    try { await git.push('heroku', 'H.1'); } catch(e){ 
+    if (e.message.includes("concurrent")) return m.reply("Your account has reached in-parallel build limit! Please wait for the other app to finish its deploy ❗"); 
+    }
+    await kriz.sendMessage(m.chat, {text:"_Finished build! Restarting.._"})
+ //
+
+  }
+
 break
 
 case 'jid':
