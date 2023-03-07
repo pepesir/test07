@@ -481,7 +481,7 @@ break
 case 'update':
   const heroku = new Heroku({ token: config.HEROKU_API_KEY })
   await git.fetch();
-  var commits = await git.log(['H.1' + '..origin/' + 'H.1']);
+  var commits = await git.log(['master' + '..origin/' + 'master']);
   if (commits.total === 0) {
     m.reply("*No pending updates!*")
   } else {
@@ -513,7 +513,7 @@ break
 case 'updatenow':
   
     await git.fetch();
-    var commits = await git.log(['H.1' + '..origin/' + 'H.1']);
+    var commits = await git.log(['master' + '..origin/' + 'master']);
     if (commits.total === 0) {
       return await kriz.sendMessage(m.chat, { text:"_Bot up to date_"})
     } else {
@@ -526,14 +526,14 @@ case 'updatenow':
 
         await new Promise(r => setTimeout(r, 1000));
       }
-      git.fetch('upstream', 'H.1');
+      git.fetch('upstream', 'master');
       git.reset('hard', ['FETCH_HEAD']);//lols
 
     git_url =  git_url.replace("https://", "https://api:" + config.HEROKU_API_KEY + "@")//drips
       try {
         await git.addRemote('heroku', git_url);
     } catch {console.log('Deploy error catched. Retrying...')}
-    try { await git.push('heroku', 'H.1'); } catch(e){ 
+    try { await git.push('heroku', 'master'); } catch(e){ 
     if (e.message.includes("concurrent")) return m.reply("Your account has reached in-parallel build limit! Please wait for the other app to finish its deploy ❗"); 
     }
     await kriz.sendMessage(m.chat, {text:"_Finished build! Restarting.._"})
