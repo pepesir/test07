@@ -1509,7 +1509,7 @@ break
             let ments = [ownernya, me, ini_kangbaned]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ʟɪꜱᴛ' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: 'ᴘɪɴɢ' }, type: 1 }]
 	const buttonMessage = {
-  image: 'https://i.imgur.com/Ib0O1za.jpeg',
+  document: fs.readFileSync('./media/doc/fake.pptx'),
   caption: FancyRandom(myr),
   footer: esce,
   buttons: buttons,
