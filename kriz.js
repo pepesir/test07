@@ -145,7 +145,7 @@ const { type } = kriz
             console.error(err)
         }
         
-
+//hmm
 
         // Public & Self
         if (!kriz.public) {
