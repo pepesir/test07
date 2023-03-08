@@ -239,17 +239,12 @@ try {
                frequency_penalty: 0.0,   
                presence_penalty: 0.0,   
              });   
-             m.reply(`${response.data.choices[0].text}`);   
-           } catch (error) {   
-           if (error.response) {   
-             console.log(error.response.status);   
-             console.log(error.response.data);   
-             console.log(`${error.response.status}\n\n${error.response.data}`);   
-           } else {   
-             console.log(error);   
-             m.reply("Sorry, there seems to be an error :"+ error.message);  
-           }   
-         } 
+             m.reply(`${response.data.choices[0].text}`);
+
+    
+    
+
+}
              
              //Fake
 	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
