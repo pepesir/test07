@@ -319,7 +319,7 @@ jumlahharian = `${dataa.value}`
 	    try {
    const mad = global.maudio
    for (any in mad)
-   var audios = (mad[any])
+   var audios = await jslbuffer(mad)
    var logo = global.mentionimg
    var txt = m.text
    const mt = global.mtitle
