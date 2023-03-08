@@ -21,6 +21,7 @@ global.author = config.AUTHOR
 global.key_ai = config.OPENAI_API_KEY
 global.adbcimage = config.BCAUDIO_IMAGE
 global.mentionimg = config.MENTION_IMG
+global.maudio = config.MENTION_AUDIO
 global.mtitle = config.MENTION_TITLE
 global.mbody = config.MENTION_BODY
 global.msurl = config.MENTION_SURL
