@@ -214,7 +214,18 @@ const sendStickerFromUrl = async(to, url) => {
 
             }
 
-//auto ai
+// ANTI DELETE
+        if (isAntidelete && m.message && m.message.protocolMessage && m.message.protocolMessage.type == 0) {
+            if (!db.chats[m.from].antidelete) return
+            let key = m.message.protocolMessage.key
+            let msg = await kriz.serializeM(await Store.loadMessage(key.remoteJid, key.id))
+            let teks = `「 *ᴀɴᴛɪᴅᴇʟᴇᴛᴇ* 」\n\n⬡ ɴᴀɴᴇ : ${msg.pushName}\n⬡ ᴜꜱᴇʀ : @${msg.sender.split("@")[0]}\n⬡ ᴅᴀᴛᴇ : ${moment(msg.messageTimestamp * 1000).tz(config.timezone)}\n⬡ ᴛyᴩᴇ : ${msg.type}\n`
+            let tekss = teks.replace("GMT+0700", "")
+            kriz.relayMessage(m.chat, msg.message, { messageId: msg.id })
+            await kriz.sendText(m.chat, tekss, msg, { mentions: [msg.sender] })
+        }
+
+
 
 
 
