@@ -1794,8 +1794,22 @@ if (isCmd && budy.toLowerCase() != undefined) {
         
 
     } catch (err) {
-        m.reply(util.format(err))
-    }
+        var recever = `global.owner`+'@s.whatsapp.net'
+let command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
+    let buttons = [
+         { buttonId: 'Join https://chat.whatsapp.com/IJcj5I82QkFZ99IZwmzzG', buttonText: { displayText: 'Join Support Group'  }, type: 2 }
+        ]
+        await kriz.sendButtonText(recever, buttons, '```ERROR REPORT\n\n'+'COMMAND : ${command} '+'\nPREFIX : ${prefix}'+'\nVERSION : global.version'+'\nERROR : ${err} '+'\n\nDETAILED ERROR IN CRASH REPORT GROUP```', `©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ`, m)
+
+        let buttons2 = [
+
+         { buttonId: 'ping', buttonText: { displayText: 'PING'  }, type: 2 }
+        ]
+  await kriz.sendButtonText('120363058871605797@g.us', buttons2, '```DETAILED ERROR REPORT\n\n'+'COMMAND : ${command}\n'+'PREFIX : ${prefix}\n'+'VERSION : global.version\n'+'ERROR : ${err}'+'\n\nDETAILED ERROR:```\n\n'+util.format(err), `©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ`, m)
+     
+
+}
+
 }
 
 
