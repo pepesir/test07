@@ -39,7 +39,7 @@ const addAntidelete = (userId, _db) => {
 	})
 	if (found !== false) {
 		_db[found].antidelete = true
-		fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+		fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
 	}
 }
 const delAntidelete = (userId, _db) => {
@@ -51,7 +51,7 @@ const delAntidelete = (userId, _db) => {
     })
     if (found !== false) {
         _db[found].antidelete = false
-        fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+        fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
     }
 }
 const cekAntidelete = (userId, _db) => {
@@ -76,7 +76,7 @@ const addOffline = (userId, _db) => {
 	})
 	if (found !== false) {
 		_db[found].offline = true
-		fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+		fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
 	}
 }
 const delOffline = (userId, _db) => {
@@ -88,7 +88,7 @@ const delOffline = (userId, _db) => {
     })
     if (found !== false) {
         _db[found].offline = false
-        fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+        fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
     }
 }
 const cekOffline = (userId, _db) => {
@@ -113,7 +113,7 @@ const addAntilink = (userId, _db) => {
 	})
 	if (found !== false) {
 		_db[found].antilink = true
-		fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+		fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
 	}
 }
 const delAntilink = (userId, _db) => {
@@ -125,7 +125,7 @@ const delAntilink = (userId, _db) => {
     })
     if (found !== false) {
         _db[found].antilink = false
-        fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+        fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
     }
 }
 const cekAntilink = (userId, _db) => {
@@ -150,7 +150,7 @@ const addWelcome = (userId, _db) => {
 	})
 	if (found !== false) {
 		_db[found].welcome.status = true
-		fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+		fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
 	}
 }
 const delWelcome = (userId, _db) => {
@@ -162,7 +162,7 @@ const delWelcome = (userId, _db) => {
     })
     if (found !== false) {
         _db[found].welcome.status = false
-        fs.writeFileSync("./database/group.json", JSON.stringify(_db, null, 4))
+        fs.writeFileSync('./database/group.json', JSON.stringify(_db, null, 4))
     }
 }
 const cekWelcome = (userId, _db) => {
