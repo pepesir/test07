@@ -1772,6 +1772,22 @@ break
                 }
 			
 		
+if (isCmd && budy.toLowerCase() != undefined) {
+		    if (m.chat.endsWith('broadcast')) return
+		    if (m.isBaileys) return
+		    let msgs = global.db.data.database
+		    if (!(budy.toLowerCase() in msgs)) return
+		    kriz.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+		}
+        }
+        
+
+    } catch (err) {
+        m.reply(util.format(err))
+    }
+}
+
+
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 	fs.unwatchFile(file)
