@@ -220,32 +220,7 @@ const sendStickerFromUrl = async(to, url) => {
 
 
              
-if (setting.autoAI) {
-            if (budy) {
 
-try {   
-             if (keyopenai === "ISI_APIKEY_OPENAI_DISINI") setReply("ᴀᴘɪ ᴋᴇʏ ʜᴀꜱ ɴᴏᴛ ʙᴇᴇɴ ꜰɪʟʟᴇᴅ ɪɴ\n\nᴘʟᴇᴀꜱᴇ ꜰɪʟʟ ɪɴ ᴛʜᴇ ᴀᴘɪᴋᴇʏ ꜰɪʀꜱᴛ ɪɴ ᴛʜᴇ key.json ꜰɪʟᴇ\n\nᴛʜᴇ ᴀᴘɪᴋᴇʏ ᴄᴀɴ ʙᴇ ᴍᴀᴅᴇ ᴏɴ ᴛʜᴇ ᴡᴇʙꜱɪᴛᴇ : https://beta.openai.com/account/api-keys");   
-             
-             const configuration = new Configuration({   
-               apiKey: keyopenai,   
-             });   
-             const openai = new OpenAIApi(configuration);   
-             const response = await openai.createCompletion({  
-               model: "text-davinci-003",   
-               prompt: text,   
-               temperature: 0.3,   
-               max_tokens: 3000,   
-               top_p: 1.0, 
-               frequency_penalty: 0.0,   
-               presence_penalty: 0.0,   
-             });   
-             m.reply(`${response.data.choices[0].text}`);
-
-    }
-    
-}
-}
-             
              //Fake
 	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${weem}`, orderTitle: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${weem}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
