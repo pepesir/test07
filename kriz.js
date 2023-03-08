@@ -241,7 +241,7 @@ try {
              });   
              m.reply(`${response.data.choices[0].text}`);
 
-    
+    }
     
 
 }
