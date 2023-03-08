@@ -774,11 +774,11 @@ case'hehe': {
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].antilink) return m.reply(`_Already active!_`)
                 db.data.chats[m.chat].antilink = true
-                m.reply(`_Antilink Now Active !_`)
+                m.reply(`_Antilink activated!_`)
                 } else if (args[0] === "off") {
                 if (!db.data.chats[m.chat].antilink) return m.reply(`_Previously Inactive!_`)
                 db.data.chats[m.chat].antilink = false
-                m.reply(`_Antilink is Now Inactive !_`)
+                m.reply(`_Antilink turned off !_`)
                 } else {
                  let buttons = [
                         { buttonId: 'antilink on', buttonText: { displayText: 'ᴏɴ' }, type: 1 },
@@ -829,7 +829,7 @@ case'hehe': {
             	if (!isCreator) throw mess.owner
                 if (!m.quoted) throw false
                 let { chat, fromMe, id, isBaileys } = m.quoted
-                if (!isBaileys) throw 'The message was not sent by bot!'
+                if (!isBaileys) throw '_The message was not sent by bot!_'
                 kriz.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
@@ -1013,17 +1013,13 @@ let acr = new acrcloud({
 		if (code !== 0) throw msg
 		let { url, title, artists, album, genres, release_date } = res.metadata.music[0]
 		let button = [
-                    {buttonId: `play ${url} `, buttonText: {displayText: 'HEAR THIS️'}, type: 1}
+                    {buttonId: `play ${url} `, buttonText: {displayText: 'ᴀᴜᴅɪᴏ🎵'}, type: 1}
                 ]
-		let txt = `*𝑻𝒊𝒕𝒍𝒆:* ${title}
-
-*𝑨𝒓𝒕𝒊𝒔𝒕𝒔:* ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
-
-*𝑨𝒍𝒃𝒖𝒎:* ${album.name || ''}
-
-*𝑮𝒆𝒏𝒓𝒆𝒔:* ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
-
-*𝑹𝒆𝒍𝒆𝒂𝒔𝒆 𝑫𝒂𝒕𝒆:* ${release_date}`
+		let txt = `ᴛɪᴛʟᴇ : ${title}
+ᴀʀᴛɪꜱᴛs : ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
+ᴀʟʙᴜᴍ : ${album.name || ''}
+ɢᴇɴʀᴇꜱ : ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
+ʀᴇʟᴇᴀꜱᴇ ᴅᴀᴛᴇ : ${release_date}`
 		fs.unlinkSync(`./${m.sender}.${ext}`)
 		
      await kriz.sendButtonText(m.chat, button, txt, esce, m)
@@ -1139,14 +1135,14 @@ break
             break
 
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
-            if (!quoted) throw `*Reply Video/Image With caption* ${prefix + command}`
+            if (!quoted) throw `_Reply to photo or video!_`
             m.reply(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
                 let encmedia = await kriz.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return m.reply('_Maximum 10 seconds!_')
+                if ((quoted.msg || quoted).seconds > 11) return m.reply('_Maximum 10 second video!_')
                 let media = await quoted.download()
                 let encmedia = await kriz.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
@@ -1175,14 +1171,14 @@ break
             }
             break
          case 'tts': { 
-                  if (!text) throw `Example : ${prefix + command} text` 
+                  if (!text) throw `_.tts whats kriz ai_` 
               let tts = await fetchJson(`https://api.botcahx.biz.id/api/soundoftext?text=${text}&lang=id-ID&apikey=Admin`) 
               kriz.sendMessage(m.chat, {audio: { url: tts.result }, mimetype:'audio/mpeg', ptt:false , contextInfo:{"externalAdReply": {"title": `WʜᴀᴛꜱKʀɪᴢ AI`,"body": ` ᴅᴏɴᴛ ꜱᴩᴀᴍ`, "previewType": "PHOTO","thumbnailUrl": `https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI`,"thumbnail": fs.readFileSync(`client.jpg`),"sourceUrl": "https://github.com/TOXIC-KICHUX/WHATS-KRIZ-AI"}}}, { quoted: m})
                   } 
           break
            case 'photo': case 'toimage': case 'toimg': {
-                if (!quoted) throw 'Reply sticker'
-                if (!/webp/.test(mime)) throw `Reply sticker with caption *${prefix + command}*`
+                if (!quoted) throw '_Reply to sticker!_'
+                if (!/webp/.test(mime)) throw `_Reply to sticker!_`
                 m.reply(mess.wait)
                 let media = await kriz.downloadAndSaveMediaMessage(quoted)
                 let ran = await getRandom('.png')
@@ -1196,8 +1192,8 @@ break
             }
             break
 	        case 'mp4': case 'tomp4': case 'tovideo': {
-                if (!quoted) throw 'Reply animated sticker'
-                if (!/webp/.test(mime)) throw `Reply sticker with caption *${prefix + command}*`
+                if (!quoted) throw '_Reply to animated sticker!_'
+                if (!/webp/.test(mime)) throw `_Reply to animated sticker!_`
                 m.reply(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await kriz.downloadAndSaveMediaMessage(quoted)
@@ -1230,8 +1226,8 @@ break
             }
             break
             case 'gif': {
-                if (!quoted) throw 'Reply Image'
-                if (!/webp/.test(mime)) throw `reply sticker with caption *${prefix + command}*`
+                if (!quoted) throw '_Reply to animated sticker!_'
+                if (!/webp/.test(mime)) throw `_Reply to animated sticker!_`
                 m.reply(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await kriz.downloadAndSaveMediaMessage(quoted)
@@ -1241,7 +1237,6 @@ break
             }
             break
 	       case 'tourl': case 'url': {
-                m.reply(mess.wait)
 		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
                 let media = await kriz.downloadAndSaveMediaMessage(quoted)
                 if (/image/.test(mime)) {
@@ -1255,15 +1250,15 @@ break
             }
             break
             case 'toqr': case 'qr': {
-            	if (!text) throw 'No Query Text'
+            	if (!text) throw '_Send a text!_'
                m.reply(mess.wait)
                kriz.sendMessage(m.chat, { image: { url: `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${text}` }, caption: `Here!` }, { quoted: m })
             	}
             break
             case 'rmbg': case 'imagenobg': case 'removebg': case 'remove-bg': {
-	    if (!quoted) throw `Send/Reply Image With caption ${prefix + command}`
-	    if (!/image/.test(mime)) throw `Send/Reply Image With caption ${prefix + command}`
-	    if (/webp/.test(mime)) throw `Send/Reply Image With caption ${prefix + command}`
+	    if (!quoted) throw `_Reply to image!_`
+	    if (!/image/.test(mime)) throw `_Reply to image!_`
+	    if (/webp/.test(mime)) throw `_Reply to image!_`
 	    let remobg = require('remove.bg')
 	    let apirnobg = ['q61faXzzR5zNU6cvcrwtUkRU','S258diZhcuFJooAtHTaPEn4T','5LjfCVAp4vVNYiTjq9mXJWHF','aT7ibfUsGSwFyjaPZ9eoJc61','BY63t7Vx2tS68YZFY6AJ4HHF','5Gdq1sSWSeyZzPMHqz7ENfi8','86h6d6u4AXrst4BVMD9dzdGZ','xp8pSDavAgfE5XScqXo9UKHF','dWbCoCb3TacCP93imNEcPxcL']
 	    let apinobg = apirnobg[Math.floor(Math.random() * apirnobg.length)]
@@ -1286,39 +1281,37 @@ break
 	    }
 	    break
 	    case 'yts': case 'ytsearch': {
-                if (!text) throw `Example : ${prefix + command} story wa anime`
+                if (!text) throw `_.yts how to deploy whats kriz ai wa bot_`
                 let yts = require("yt-search")
                 let search = await yts(text)
-                let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
+                let teks = 'ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ\n\n ʀᴇꜱᴜʟᴛ ꜰʀᴏᴍ'+text+'\n\n'
                 let no = 1
                 for (let i of search.all) {
-                    teks += `No : ${no++}\nType : ${i.type}\nVideo ID : ${i.videoId}\nTitle : ${i.title}\nViews : ${i.views}\nDuration : ${i.timestamp}\nUpload At : ${i.ago}\nAuthor : ${i.author.name}\nUrl : ${i.url}\n\n─────────────────\n\n`
+                    teks += `ɴᴏ : ${no++}\nᴛʏᴘᴇ : ${i.type}\nᴛɪᴛʟᴇ : ${i.title}\nᴠɪᴇᴡꜱ : ${i.views}\nᴅᴜʀᴀᴛɪᴏɴ : ${i.timestamp}\nᴜᴘʟᴏᴀᴅ ᴀᴛ : ${i.ago}\nᴀᴜᴛʜᴏʀ : ${i.author.name}\nᴜʀʟ : ${i.url}\n\n─────────────────\n\n`
                 }
                 kriz.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
             break
 	    case 'song': case 'play': case 'ytplay': {
-                if (!text) throw `Example : ${prefix + command} story wa anime`
+                if (!text) throw `_.song xxxtenaction hope_`
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                 let buttons = [
-                    {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                    {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
+                    {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: 'ᴀᴜᴅɪᴏ🎵'}, type: 1},
+                    {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: 'ᴠɪᴅᴇᴏ▶️'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: anu.thumbnail },
                     caption: `
- *»* Title : ${anu.title}
- *»* Ext : Search
- *»* ID : ${anu.videoId}
- *»* Duration : ${anu.timestamp}
- *»* Viewers : ${anu.views}
- *»* Upload At : ${anu.ago}
- *»* Author : ${anu.author.name}
- *»* Channel : ${anu.author.url}
- *»* Description : ${anu.description}
- *»* Url : ${anu.url}`,
+ᴛɪᴛʟᴇ : ${anu.title}
+ᴅᴜʀᴀᴛɪᴏɴ : ${anu.timestamp}
+ᴠɪᴇᴡᴇʀꜱ : ${anu.views}
+ᴜᴘʟᴏᴀᴅ ᴀᴛ : ${anu.ago}
+ᴀᴜᴛʜᴏʀ : ${anu.author.name}
+ᴄʜᴀɴɴᴇʟ : ${anu.author.url}
+ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ : ${anu.description}
+ᴠɪᴅᴇᴏ ᴜʀʟ : ${anu.url}`,
                     footer: 'ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ',
                     buttons: buttons,
                     headerType: 4
@@ -1327,22 +1320,22 @@ break
             }
             break
 case 'ytmp3':
-if (!text) throw `Example : ${prefix + command} yt link`
+if (!text) throw `_Send youtube video link to convert song...!_`
 let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-if (!isLinks2) return m.reply(`Ugly link`)
-m.reply(mess.wait)
+if (!isLinks2) return m.reply(`_Invalid link!_`)
+m.reply('_Song is downloading...!_')
 anu = await ytMp4(`${q}`)
-titlenyaa = `SUCCESSFUL TITLE OBTAINED\n\Title : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDescription : ${anu.desc}\n\PLEASE WAIT IS SENDING MEDIA`
+titlenyaa = `ᴛɪᴛʟᴇ : ${anu.title}\nᴜᴘʟᴏᴀᴅ : ${anu.uploadDate}\nꜱɪᴢᴇ : ${anu.size}\nᴠɪᴇᴡꜱ : ${anu.views}\nʟɪᴋᴇ : ${anu.likes}\nᴅɪꜱʟɪᴋᴇ : ${anu.dislike}\nᴄʜᴀɴɴᴇʟ : ${anu.channel}\nᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ : ${anu.desc}`
 
 kriz.sendMessage(m.chat, { audio: { url: anu.result }, mimetype: 'audio/mpeg', fileName: `${anu.title}.mp3` }, { quoted: ftroli })
 break
 case 'ytmp4':
-if (!text) throw `Example : ${prefix + command} yt link`
+if (!text) throw `_Send youtube video link...!_`
 let isLinks= args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-if (!isLinks) return m.reply(`Ugly link`)
-m.reply(mess.wait)
+if (!isLinks) return m.reply(`_Invalid link!_`)
+m.reply('_Video is downloading...!_')
 anu = await ytMp4(`${q}`)
-titlenyaa = `SUCCESSFUL TITLE OBTAINED\n\Title : ${anu.title}\nUpload : ${anu.uploadDate}\nSize : ${anu.size}\nViews : ${anu.views}\nLike : ${anu.likes}\nDislike : ${anu.dislike}\nChannel : ${anu.channel}\nDescription : ${anu.desc}\n\nPLEASE WAIT IS SENDING MEDIA`
+titlenyaa = `ᴛɪᴛʟᴇ : ${anu.title}\nᴜᴘʟᴏᴀᴅ : ${anu.uploadDate}\nꜱɪᴢᴇ : ${anu.size}\nᴠɪᴇᴡꜱ : ${anu.views}\nʟɪᴋᴇ : ${anu.likes}\nᴅɪꜱʟɪᴋᴇ : ${anu.dislike}\nᴄʜᴀɴɴᴇʟ : ${anu.channel}\nᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ : ${anu.desc}`
 
 kriz.sendMessage(m.chat, { video: { url: anu.result }, mimetype: 'video/mp4', fileName: `${anu.title}.mp4` }, { quoted: ftroli })
 break
@@ -1369,7 +1362,7 @@ case 'ytv':  {
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]            
             
             hehe = `
- ᴛɪᴛʟᴇ : ${anu.title}
+ᴛɪᴛʟᴇ : ${anu.title}
 ᴅᴜʀᴀᴛɪᴏɴ : ${anu.timestamp}
 ᴜᴘʟᴏᴀᴅ ᴀᴛ : ${anu.ago}
 ᴀᴜᴛʜᴏʀ : ${anu.author.name}
@@ -1407,34 +1400,33 @@ const buttonMessage = {
             }
             break
             case 'tinyurl': case 'shortlink': {
-            	if (!text) throw 'Enter Query Link!'
+            	if (!text) throw '_Send a link!_'
                 let anu = await axios.get(`https://tinyurl.com/api-create.php?url=${text}`)
                 kriz.sendMessage(m.chat,{ text: anu.data + `\nHere!`}, { quoted: fdoc })
             }
             break
 case 'bitly': {
-            	if (!text) throw 'Enter Query Link!'
+            	if (!text) throw '_Send a link!_'
                 let bitly = await fetchJson(`https://api.botcahx.biz.id/api/linkshort/bitly?link=${text}&apikey=Admin`)
                 kriz.sendMessage(m.chat, { text: bitly.result + `\nHere!`}, { quoted: fdoc })
             }
             break
 case 'cuttly': {
-            	if (!text) throw 'Enter Query Link!'
+            	if (!text) throw '_Send a link!_'
                 let cuttly = await fetchJson(`https://api.botcahx.biz.id/api/linkshort/cuttly?link=${text}&apikey=Admin`)
                 kriz.sendMessage(m.chat, { text: cuttly.result + `\nHere!`}, { quoted: fdoc })
             }
             break
             case 'mediafire': {
-if (!text) throw 'Enter Query Link!'
+if (!text) throw '_Send medifire link!_'
 if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return m.reply(`The link you provided is invalid`)
 const baby1 = await mediafireDl(text)
 if (baby1[0].size.split('MB')[0] >= 999) return m.reply('*File Over Limit* '+util.format(baby1))
-const result4 = `*MEDIAFIRE DOWNLOADER*
-				
-*Name* : ${baby1[0].nama}
-*Size* : ${baby1[0].size}
-*Mime* : ${baby1[0].mime}
-*Link* : ${baby1[0].link}`
+const result4 = `
+ɴᴀᴍᴇ : ${baby1[0].nama}
+ꜱɪᴢᴇ : ${baby1[0].size}
+ᴍɪᴍᴇ : ${baby1[0].mime}
+ʟɪɴᴋ : ${baby1[0].link}`
 m.reply(`${result4}`)
 kriz.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }).catch ((err) => m.reply(mess.error))
 }
@@ -1779,36 +1771,7 @@ break
                     return !0
                 }
 			
-		if (isCmd && budy.toLowerCase() != undefined) {
-		    if (m.chat.endsWith('broadcast')) return
-		    if (m.isBaileys) return
-		    let msgs = global.db.data.database
-		    if (!(budy.toLowerCase() in msgs)) return
-		    kriz.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
-		}
-        }
-        
-
-    } catch (err) {
-        var recever = `global.owner`+'@s.whatsapp.net'
-let command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
-    let buttons = [
-         { buttonId: 'Join https://chat.whatsapp.com/IJcj5I82QkFZ99IZwmzzG', buttonText: { displayText: 'Join Support Group'  }, type: 2 }
-        ]
-        await kriz.sendButtonText(recever, buttons, '```ERROR REPORT\n\n'+'COMMAND : ${command} '+'\nPREFIX : ${prefix}'+'\nVERSION : global.version'+'\nERROR : ${err} '+'\n\nDETAILED ERROR IN CRASH REPORT GROUP```', `©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ`, m)
-
-        let buttons2 = [
-
-         { buttonId: 'ping', buttonText: { displayText: 'PING'  }, type: 2 }
-        ]
-  await kriz.sendButtonText('120363058871605797@g.us', buttons2, '```DETAILED ERROR REPORT\n\n'+'COMMAND : ${command}\n'+'PREFIX : ${prefix}\n'+'VERSION : global.version\n'+'ERROR : ${err}'+'\n\nDETAILED ERROR:```\n\n'+util.format(err), `©ᴡʜᴀᴛꜱ-ᴋʀɪᴢ-ᴀɪ`, m)
-     
-
-}
-
-}
-
-
+		
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 	fs.unwatchFile(file)
