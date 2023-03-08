@@ -4,6 +4,7 @@ const simple = require('./lib/simple.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const Heroku = require('heroku-client')
+const group = require('./data/group')
 const simpleGit = require('simple-git')
 const git = simpleGit()
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
@@ -39,6 +40,7 @@ const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
+
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, parsedJid, fetchJson, getJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 const hariini = moment.tz('Asia/Kolkata').format('dddd, DD MMMM YYYY')
@@ -215,6 +217,7 @@ const sendStickerFromUrl = async(to, url) => {
             }
 
 // ANTI DELETE
+isAntidelete = group.cekAntidelete(m.chat, _group)
         if (isAntidelete && m.message && m.message.protocolMessage && m.message.protocolMessage.type == 0) {
             if (!db.chats[m.from].antidelete) return
             let key = m.message.protocolMessage.key
