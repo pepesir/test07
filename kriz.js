@@ -1,6 +1,7 @@
 require('./setting')
 const config = require('./config.js')
 const simple = require('./lib/simple.js')
+let setting = require('./accesser.json')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const Heroku = require('heroku-client')
@@ -214,8 +215,36 @@ const sendStickerFromUrl = async(to, url) => {
 
             }
 
-//autoforward
+//auto ai
 
+
+if (setting.autoAI) {
+            if (budy) {
+                try {
+                    if (setting.keyopenai === 'ISI_APIKEY_OPENAI_DISINI') return m.reply('*ᴩᴏyɪ ᴀᴩɪ ᴋᴇy ᴍᴀᴛ ᴍyʀᴇ*')
+                    const configuration = new Configuration({
+                        apiKey: setting.keyopenai,
+                    });
+                    const openai = new OpenAIApi(configuration);
+
+                    
+
+                    const response = await openai.createCompletion({
+                        model: "text-davinci-003",
+                        prompt: prompt_template,
+                        temperature: 0.9,
+                        max_tokens: 3000,
+                        top_p: 1,
+                        frequency_penalty: 0.0,
+                        presence_penalty: 0.6,
+                    });
+                    m.reply(`${response.data.choices[0].text}\n\n`)
+                } catch (err) {
+                    console.log(err)
+                    m.reply('I am getting API Update right now. Please hold on anc check back in a while.')
+                }
+            }
+        }
 
 
 
