@@ -317,7 +317,7 @@ jumlahharian = `${dataa.value}`
 
 //mention
 	    try {
-   var audios = ["https://i.imgur.com/yyrdGqi.mp4" ,"https://i.imgur.com/tTG7zyW.mp4" ,"https://i.imgur.com/hqeUIMl.mp4" ,https://i.imgur.com/1fZJYQu.mp4" ,"https://i.imgur.com/dScaXqU.mp4" ,"https://i.imgur.com/EVE1sHf.mp4" ,"https://i.imgur.com/tmRTP3q.mp4" ,"https://i.imgur.com/Dwh9eP8.mp4" ,"https://i.imgur.com/y2ikmjU.mp4" ,"https://i.imgur.com/tiRA1Pz.mp4" ,"https://i.imgur.com/yilLFuZ.mp4" ,"https://i.imgur.com/oLcZYF9.mp4" ,"https://i.imgur.com/xHEvETZ.mp4" ,"https://i.imgur.com/oQr3aC4.mp4" ,"https://i.imgur.com/KmIxrhF.mp4" ,"https://i.imgur.com/L7QdDXn.mp4" ,"https://i.imgur.com/ZAWzRJ2.mp4" ,"https://i.imgur.com/5XgMcYv.mp4" ,"https://i.imgur.com/Nq0fX7J.mp4" ,"https://i.imgur.com/oswFfOT.mp4" ,"https://i.imgur.com/MDN8p7T.mp4" ,"https://i.imgur.com/P4ep07T.mp4"]
+   var audios = ["https://i.imgur.com/yyrdGqi.mp4" ,"https://i.imgur.com/tTG7zyW.mp4" ,"https://i.imgur.com/hqeUIMl.mp4" ,"https://i.imgur.com/1fZJYQu.mp4" ,"https://i.imgur.com/dScaXqU.mp4" ,"https://i.imgur.com/EVE1sHf.mp4" ,"https://i.imgur.com/tmRTP3q.mp4" ,"https://i.imgur.com/Dwh9eP8.mp4" ,"https://i.imgur.com/y2ikmjU.mp4" ,"https://i.imgur.com/tiRA1Pz.mp4" ,"https://i.imgur.com/yilLFuZ.mp4" ,"https://i.imgur.com/oLcZYF9.mp4" ,"https://i.imgur.com/xHEvETZ.mp4" ,"https://i.imgur.com/oQr3aC4.mp4" ,"https://i.imgur.com/KmIxrhF.mp4" ,"https://i.imgur.com/L7QdDXn.mp4" ,"https://i.imgur.com/ZAWzRJ2.mp4" ,"https://i.imgur.com/5XgMcYv.mp4" ,"https://i.imgur.com/Nq0fX7J.mp4" ,"https://i.imgur.com/oswFfOT.mp4" ,"https://i.imgur.com/MDN8p7T.mp4" ,"https://i.imgur.com/P4ep07T.mp4"]
    var logo = global.mentionimg
    var txt = m.text
    const mt = global.mtitle
