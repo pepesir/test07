@@ -238,13 +238,18 @@ if (setting.autoAI) {
                         frequency_penalty: 0.0,
                         presence_penalty: 0.6,
                     });
-                    m.reply(`${response.data.choices[0].text}\n\n`)
-                } catch (err) {
-                    console.log(err)
-                    m.reply('I am getting API Update right now. Please hold on anc check back in a while.')
-                }
-            }
-        }
+                    
+                m.reply(`${response.data.choices[0].text}`);   
+           } catch (error) {   
+           if (error.response) {   
+             console.log(error.response.status);   
+             console.log(error.response.data);   
+             console.log(`${error.response.status}\n\n${error.response.data}`);   
+           } else {   
+             console.log(error);   
+             m.reply("Sorry, there seems to be an error :"+ error.message);  
+           }   
+         } 
 
 
 
