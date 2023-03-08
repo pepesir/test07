@@ -317,7 +317,9 @@ jumlahharian = `${dataa.value}`
 
 //mention
 	    try {
-   var audios = ["https://i.imgur.com/6nUr64l.mp4", "https://i.imgur.com/1FfNyPa.mp4" ,"https://i.imgur.com/GDE7nwx.mp4" ,"https://i.imgur.com/Cfqnwwb.mp4" ,"https://i.imgur.com/yvUH5aq.mp4" ,"https://i.imgur.com/n5Fetnw.mp4" ,"https://i.imgur.com/qpyjy8j.mp4" ,"https://i.imgur.com/FFNrT2V.mp4" ,"https://i.imgur.com/fUjzFMJ.mp4" ,"https://i.imgur.com/uBzXLJu.mp4"]
+   const mad = global.maudio
+   for (any in mad)
+   var audios = (mad[any])
    var logo = global.mentionimg
    var txt = m.text
    const mt = global.mtitle
