@@ -1,5 +1,5 @@
 require('./setting')
-require('./global')
+
 const config = require('./config.js')
 const simple = require('./lib/simple.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
@@ -82,7 +82,7 @@ const { type } = kriz
 	// Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
-global.isAntidelete = group.cekAntidelete(m.chat, _group)
+
         // Group
         const groupMetadata = m.isGroup ? await kriz.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -217,17 +217,6 @@ const sendStickerFromUrl = async(to, url) => {
 
             }
 
-// ANTI DELETE
-
-        if (isAntidelete && m.message && m.message.protocolMessage && m.message.protocolMessage.type == 0) {
-            if (!db.chats[m.from].antidelete) return
-            let key = m.message.protocolMessage.key
-            let msg = await kriz.serializeM(await Store.loadMessage(key.remoteJid, key.id))
-            let teks = `「 *ᴀɴᴛɪᴅᴇʟᴇᴛᴇ* 」\n\n⬡ ɴᴀɴᴇ : ${msg.pushName}\n⬡ ᴜꜱᴇʀ : @${msg.sender.split("@")[0]}\n⬡ ᴅᴀᴛᴇ : ${moment(msg.messageTimestamp * 1000).tz(config.timezone)}\n⬡ ᴛyᴩᴇ : ${msg.type}\n`
-            let tekss = teks.replace("GMT+0700", "")
-            kriz.relayMessage(m.chat, msg.message, { messageId: msg.id })
-            await kriz.sendText(m.chat, tekss, msg, { mentions: [msg.sender] })
-        }
 
 
 
