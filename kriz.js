@@ -163,7 +163,10 @@ for ( any in from)
 if (m.jid === from[any]) {
 for (jid of parsedJid(to)){
 await m.kriz.forwardMessage(jid, m.data, {contextInfo: {isForwarded: false}})
-}}
+} catch (e) {
+			    kriz.sendMessage(m.chat , { text : "(☞ ͡° ͜ʖ ͡°)☞     " + e } )
+			    }
+
 
 //©WHATS-KRIZ-AI
 
