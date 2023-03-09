@@ -164,7 +164,7 @@ if (m.jid === from[any]) {
 for (jid of parsedJid(to)){
 await m.kriz.forwardMessage(jid, m.data, {contextInfo: {isForwarded: false}})
 }}
-})
+
 //©WHATS-KRIZ-AI
 
         // Public & Self
