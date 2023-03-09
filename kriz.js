@@ -447,8 +447,8 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 
 	if (!m.quoted) return await m.reply('*Reply to a message*')
 	if (!m.text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4...')
-	const image1 = await getBuffer(url1)
-	const image2 = await getBuffer(url2)
+	const image1 = await jslbuffer(url1)
+	const image2 = await jslbuffer(url2)
 	const options = {}
 	options.contextInfo = {
 		forwardingScore: 5, // change it to 999 for many times forwarded
@@ -490,7 +490,7 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 	}
 options.audiowave = [99,0,99,0,99]
       for (let jid of parsedJid(m.text)) {
-		await kriz.m.forward(jid, m.quoted_message, options)
+		await kriz.sendMessage(jid, m.quoted_message, options)
 	        }
     } catch (e) {
     kriz.sendMessage(m.chat , { text : "ᴇʀʀ : " + `${e}` })
