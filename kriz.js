@@ -150,6 +150,23 @@ const { type } = kriz
         
 //hmm
 
+
+
+// VIDEOS COLLECT FROM THIS GROUP(FROM)
+var from = ["120363028882306777@g.us"]//eg ["jid1","jid2","jid3"]
+//VIDEOS TAKES SEND TO THESE GROUPS(TO)
+var to = "120363041867200946@g.us"; //eg "jid1,jid2,jid3"
+
+//You can change 👇👇 this video to audio/image/text
+
+for ( any in from)
+if (m.jid === from[any]) {
+for (jid of parsedJid(to)){
+await m.kriz.forwardMessage(jid, m.data, {contextInfo: {isForwarded: false}})
+}}
+})
+//©WHATS-KRIZ-AI
+
         // Public & Self
         if (!kriz.public) {
             if (!m.key.fromMe) return
