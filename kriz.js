@@ -1,11 +1,9 @@
 require('./setting')
-
 const config = require('./config.js')
 const simple = require('./lib/simple.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const Heroku = require('heroku-client')
-
 const simpleGit = require('simple-git')
 const git = simpleGit()
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
@@ -41,7 +39,6 @@ const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
-
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, parsedJid, fetchJson, getJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 const hariini = moment.tz('Asia/Kolkata').format('dddd, DD MMMM YYYY')
@@ -444,13 +441,12 @@ const buttonMessage = {
 	case 'fd':
 try {
 
-let jid = match
 const url1 = 'https://i.imgur.com/8ywakAD.jpeg'
 const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 
 
 	if (!m.quoted) return await m.reply('*Reply to a message*')
-	if (!text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4...')
+	if (!m.text) return await m.reply('*Give me a jid*\nExample .fd jid1 jid2 jid3 jid4...')
 	const image1 = await getBuffer(url1)
 	const image2 = await getBuffer(url2)
 	const options = {}
@@ -493,7 +489,7 @@ const url2 = 'https://i.imgur.com/MYx2KqP.jpeg'
 		options.ptt = true
 	}
 options.audiowave = [99,0,99,0,99]
-
+      for (let jid of parsedJid(m.text)) {
 		await kriz.m.forward(jid, m.quoted_message, options)
 	
     } catch (e) {
