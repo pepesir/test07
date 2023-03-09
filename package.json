@@ -2,10 +2,10 @@
   "name": "WHATS-KRIZ-AI",
   "version": "1.2.3.4",
   "description": "WhatsApp Using Lib Baileys Multi Device",
-  "main": "./index.js",
+  "main": "./Ai-test-/index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "pm2 start . --attach --name WHATS-KRIZ-AI"
+    "start": "supervisor -s index.js"
   },
   "keywords": [
     "termux",
