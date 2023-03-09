@@ -1,10 +1,11 @@
 require('./setting')
+require('./global')
 const config = require('./config.js')
 const simple = require('./lib/simple.js')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto,  generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const Heroku = require('heroku-client')
-const group = require('./data/group')
+
 const simpleGit = require('simple-git')
 const git = simpleGit()
 const { ytMp4, ytMp3, ytPlay } = require('./lib/ytdl')
@@ -81,7 +82,7 @@ const { type } = kriz
 	// Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
-
+global.isAntidelete = group.cekAntidelete(m.chat, _group)
         // Group
         const groupMetadata = m.isGroup ? await kriz.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -217,7 +218,7 @@ const sendStickerFromUrl = async(to, url) => {
             }
 
 // ANTI DELETE
-isAntidelete = group.cekAntidelete(m.chat, _group)
+
         if (isAntidelete && m.message && m.message.protocolMessage && m.message.protocolMessage.type == 0) {
             if (!db.chats[m.from].antidelete) return
             let key = m.message.protocolMessage.key
