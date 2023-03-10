@@ -85,7 +85,7 @@ const buttons = [
 ]
 
 const buttonMessage = {
-    image: 'https://i.imgur.com/LgwJjMF.jpeg',
+    image: { url: 'https://i.imgur.com/LgwJjMF.jpeg' },
     text: tiny(menu),
     footer: tiny(
           `WHATS-KRIZ-AI`
