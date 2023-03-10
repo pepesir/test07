@@ -1,5 +1,5 @@
 FROM fusuf/whatsasena:latest
 RUN git clone https://github.com/V1P3R-X/X-AsenaDuplicated.git /XAsenaDuplicated
 WORKDIR /XAsenaDuplicated
-RUN yarn install --network-concurrency 1
+RUN npm install
 CMD ["node", "index.js"]
