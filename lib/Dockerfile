@@ -1,5 +1,19 @@
-FROM fusuf/whatsasena:latest
-RUN git clone https://github.com/TOXIC-KICHUX/Ai-test-.git /Kriz
-WORKDIR /Kriz
+FROM node:lts-buster
+
+RUN apt-get update && \
+  apt-get install -y \
+  ffmpeg \
+  imagemagick \
+  webp && \
+  apt-get upgrade -y && \
+  rm -rf /var/lib/apt/lists/*
+
+COPY package.json .
+
 RUN npm install
+
+COPY . .
+
+RUN yarn install
+
 CMD ["node", "index.js"]
