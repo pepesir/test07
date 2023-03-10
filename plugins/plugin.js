@@ -11,7 +11,7 @@ X-Asena - X-Electra
 
 command(
   {
-    pattern: "install ?(.*)",
+    pattern: "fek ?(.*)",
     fromMe: true,
     desc: "Install External plugins",
     type:'user'
