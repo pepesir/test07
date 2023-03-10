@@ -27,8 +27,8 @@ const store = makeInMemoryStore({
 
 require("events").EventEmitter.defaultMaxListeners = 500;
 
-if (!fs.existsSync("./media/session.json")) {
-  MakeSession(config.SESSION_ID, "./media/session.json").then(
+if (!fs.existsSync("./session.json")) {
+  MakeSession(config.SESSION_ID, "./session.json").then(
     console.log("Vesrion : " + require("./package.json").version)
   );
 }
