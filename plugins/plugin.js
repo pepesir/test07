@@ -46,7 +46,7 @@ command(
         try {
           require("./" + plugin_name);
         } catch (e) {
-          fs.unlinkSync("/xasena/plugins/" + plugin_name + ".js");
+          fs.unlinkSync(__dirname+'/'+plugin_name + '.js');
           return await message.sendMessage("Invalid Plugin\n ```" + e + "```");
         }
 
