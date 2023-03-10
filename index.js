@@ -146,9 +146,7 @@ const { state, saveState } = await useSingleFileAuthState(
             let comman;
             if (text_msg) {
               comman = text_msg.trim().split(/ +/)[0];
-              msg.prefix = new RegExp(config.HANDLERS).test(text_msg)
-                ? text_msg.split("").shift()
-                : ",";
+              msg.prefix = new RegExp(config.HANDLERS).test(text_msg) ? text_msg.split("").shift() : "^";
             }
             if (command.pattern && command.pattern.test(comman)) {
               var match;
