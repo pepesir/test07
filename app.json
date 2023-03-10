@@ -1,11 +1,11 @@
 {
-  "name": "X-AsenaDuplicated",
+  "name": "WHATS-KRIZ-AI",
   "description": "X-asena Multi Device whatsappbot",
   "logo": "https://i.hizliresim.com/6Bbj7i.jpg",
   "keywords": ["whatsapp"],
-  "repository": "https://github.com/V1P3R-X/X-AsenaDuplicated",
-  "website": "https://github.com/V1P3R-X/X-AsenaDuplicated",
-  "success_url": "https://github.com/V1P3R-X/X-AsenaDuplicated",
+  "repository": "https://github.com/TOXIC-KICHUX/Ai-test-",
+  "website": "https://github.com/TOXIC-KICHUX/Ai-test-",
+  "success_url": "https://github.com/TOXIC-KICHUX/Ai-test-",
   "stack": "container",
   "env": {
     "ANTI_LINK": {
@@ -27,7 +27,7 @@
     "HANDLERS": {
       "description": "prefix for commands, enter false for no prefix",
       "required": true,
-      "value": ","
+      "value": "."
     },
     "LOGS": {
       "description": "need to show message logs ?",
