@@ -29,6 +29,11 @@
       "required": true,
       "value": "."
     },
+    "WORK_TYPE": {
+      "description": "Work type",
+      "required": true,
+      "value": "public"
+    },
     "LOGS": {
       "description": "need to show message logs ?",
       "required": false
