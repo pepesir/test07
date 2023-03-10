@@ -60,6 +60,7 @@
     "simple-git": "^3.14.1",
     "sqlite3": "^5.1.1",
     "supervisor": "^0.12.0",
+    "ytdl-core": "0.0.0-development",
     "yt-search": "^2.10.3"
   }
 }
