@@ -2,9 +2,9 @@
   "name": "X-AsenaDuplicated",
   "version": "3.0.0",
   "description": "X-Asena project - a Whatsapp userbot helping to improve your Whatsapp experience.",
-  "main": "./bot.js",
+  "main": "./index.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
