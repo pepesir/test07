@@ -54,8 +54,7 @@ if (url.host === 'gist.github.com') {
         await message.sendMessage(
           `_New plugin installed : ${commands.join(",")}_`
         );
-}
-}));
+});
 
 /* Copyright (C) 2022 X-Electra.
 Licensed under the  GPL-3.0 License;
