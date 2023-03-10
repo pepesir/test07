@@ -29,9 +29,9 @@ Description : ${i.desc}\`\`\``
       let [date, time] = new Date()
         .toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
         .split(",");
-      let menu = `╭━━━[ WHATS-KRIZ-AI ]━━━✤
+      let menu = `╭━━━[ whats-kriz-ai ]━━━✤
 ╽╭─────────✤
-┃│  Owner :  KRIZ-SER
+┃│  Owner :  kriz-ser
 ┃│  Prefix : ${prefix}
 ┃│ Hostname :${hostname()}
 ┃│ Date : ${date}
@@ -77,27 +77,23 @@ Description : ${i.desc}\`\`\``
 
       menu += `\n╿\n╰━━━━━━━━━━━━━✵`;
  
-
-
-const buttons = [
-  {buttonId: `${prefix}ping`, buttonText: {displayText: tiny("Ping")}, type: 1},
-  {buttonId: `${prefix}list`, buttonText: {displayText: tiny("List")}, type: 1}
-]
-
-const buttonMessage = {
-    image: { url: 'https://i.imgur.com/LgwJjMF.jpeg' },
-    text: tiny(menu),
-    footer: tiny(
-          `WHATS-KRIZ-AI`
+      return await message.client.sendMessage(message.jid, {
+        image: { url: `https://i.imgur.com/LgwJjMF.jpeg` },
+        caption: tiny(menu),
+        footer: tiny(
+          `whats-kriz-ai`
         ),
-    buttons: buttons,
-    headerType: 1
-}
-return await message.sendMessage(message.jid, buttonMessage)
-
-
-
-      
+        buttons: [
+          {
+            buttonId: `${prefix}ping`,
+            buttonText: { displayText: serif_B("PING 🎈") },
+          },
+          {
+            buttonId: `${prefix}list`,
+            buttonText: { displayText: serif_B("LIST 🎈 ") },
+          },
+        ],
+      });
     }
   }
 );
