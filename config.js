@@ -24,7 +24,7 @@ module.exports = {
   HANDLERS:
     process.env.HANDLER === "false" || process.env.HANDLER === "null"
       ? "^"
-      : "^[,]",
+      : "^",
   RMBG_KEY: process.env.RMBG_KEY || false,
   BRANCH: "master",
   PACKNAME: process.env.PACKNAME || "X-Asena",
