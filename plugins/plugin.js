@@ -1,5 +1,6 @@
 const { command, getUrl } = require("../lib");
 const got = require("got");
+const axios = require('axios');
 const fs = require("fs");
 const { PluginDB, installPlugin } = require("../lib/database/plugins");
 
