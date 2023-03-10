@@ -26,28 +26,24 @@ command(
     } catch {
         return await message.sendMessage("_Invaild url!_");
     }
-
-      if (url.host === "gist.github.com") {
-        url.host = "gist.githubusercontent.com";
-        url = url.toString() + "/raw";
-      } else {
-        url = url.toString();
-      }
-      var plugin_name;
-      var response = await got(url);
-      if (response.statusCode == 200) {
-        var commands = response.body
-          .match(/(?<=pattern:)(.*)(?=\?(.*))/g)
-          .map((a) => a.trim().replace(/"|'|`/, ""));
-        plugin_name =
-          commands[0] ||
-          plugin_name[1] ||
-          "__" + Math.random().toString(36).substring(8);
-
-        fs.writeFileSync("./plugins/" + plugin_name + ".js", response.body);
-        try {
-          require("./" + plugin_name);
-        } catch (e) {
+if (url.host === 'gist.github.com') {
+        url.host = 'gist.githubusercontent.com';
+        url = url.toString() + '/raw'
+    } else {
+        url = url.toString()
+    }
+    try {
+        var response = await axios(url+"?timestamp="+new Date());
+    } catch {
+        return await message.sendMessage("_Invaild url!_")
+    }
+    let plugin_name = /pattern: ["'](.*)["'],/g.exec(response.data)
+    var plugin_name_temp = response.data.match(/pattern: ["'](.*)["'],/g)?response.data.match(/pattern: ["'](.*)["'],/g).map(e=>e.replace("pattern","").replace(/[^a-zA-Z]/g, "")):"temp"
+    try { plugin_name = plugin_name[1].split(" ")[0] } catch { return await message.sendReply("_Invalid plugin. No plugin name found!_") }
+    fs.writeFileSync('./plugins/' + plugin_name + '.js', response.data);
+    try {
+        require('./' + plugin_name);
+    } catch (e) {
           fs.unlinkSync(__dirname+'/'+plugin_name + '.js');
           return await message.sendMessage("Invalid Plugin\n ```" + e + "```");
         }
