@@ -1,5 +1,5 @@
 FROM fusuf/whatsasena:latest
-RUN git clone https://github.com/V1P3R-X/X-AsenaDuplicated.git /XAsenaDuplicated
-WORKDIR /XAsenaDuplicated
+RUN git clone https://github.com/TOXIC-KICHUX/Ai-test-.git /Kriz
+WORKDIR /Kriz
 RUN npm install
 CMD ["node", "index.js"]
