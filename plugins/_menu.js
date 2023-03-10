@@ -29,16 +29,19 @@ Description : ${i.desc}\`\`\``
       let [date, time] = new Date()
         .toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
         .split(",");
-      let menu = `╭━━━━━ᆫ ${BOT_NAME} ᄀ━━━
-┃ ⎆  Owner :  x-electra
-┃ ⎆  Prefix : ${prefix}
-┃ ⎆  Hostname :${hostname()}
-┃ ⎆  Date : ${date}
-┃ ⎆  Time : ${time}
-┃ ⎆  Commands : ${events.commands.length} 
-┃ ⎆  Uptime : ${clockString(uptime())} 
-╰━━━━━━━━━━━━━━━
-╭╼╾╼╾╼╾╼╾╼╾╼╾╼╾╼\n╽`;
+      let menu = `╭━━━[ ${BOT_NAME} ]━━━✤
+╽╭─────────✤
+┃│  Owner :  x-electra
+┃│  Prefix : ${prefix}
+┃│ Hostname :${hostname()}
+┃│ Date : ${date}
+┃│ Time : ${time}
+┃│  Plugins : ${events.commands.length} 
+┃│  Uptime : ${clockString(uptime())} 
+╿╰─────────✤
+╰━━━━━━━━━━━━━✤
+╭━━━━━━━━━━━━━✵
+╽╭━━━━━━━━━━❉`;
       let cmnd = [];
       let cmd;
       let category = [];
@@ -64,15 +67,15 @@ Description : ${i.desc}\`\`\``
       });
       cmnd.sort();
       category.sort().forEach((cmmd) => {
-        menu += `\n┠─────〔${cmmd}〕\n╿\n╿╭╼╾╼╾╼╾╼╾╼╾╼╾╼╾╼`;
+        menu += `┃╽\n┃│⌜ ${cmmd} ⌟\n┃╰┬━━━━━━━━━━❉\n┃┌┤`;
         let comad = cmnd.filter(({ type }) => type == cmmd);
         comad.forEach(({ cmd }, num) => {
-          menu += `\n╿┠ ${cmd.trim()}`;
+          menu += `\n┃╽ ${cmd.trim()}`;
         });
-        menu += `\n╿╰╼╾╼╾╼╾╼╾╼╾╼╾╼╾╼\n╿`;
+        menu += `\n┃╰━━━━━━━━━━❉`;
       });
 
-      menu += `\n╰╼╾╼╾╼╾╼╾╼╾╼╾╼╾╼╾╼`;
+      menu += `\n╿\n╰━━━━━━━━━━━━━✵`;
  
 
 
