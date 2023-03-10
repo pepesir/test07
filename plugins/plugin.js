@@ -18,7 +18,7 @@ command(
   },
   async (message, match) => {
     match = match[1]!==""?match[1]:message.reply_message.text
-    if (!match || !/\bhttps?:\/\/\S+/gi.test(match)) return await message.sendMessage("_Need url!_)
+    if (!match || !/\bhttps?:\/\/\S+/gi.test(match)) return await message.sendMessage("_Need url!_")
     let links = match.match(/\bhttps?:\/\/\S+/gi);
     for (let link of links){
     try {
