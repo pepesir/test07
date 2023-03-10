@@ -29,9 +29,9 @@ Description : ${i.desc}\`\`\``
       let [date, time] = new Date()
         .toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
         .split(",");
-      let menu = `╭━━━[ ${BOT_NAME} ]━━━✤
+      let menu = `╭━━━[ WHATS-KRIZ-AI ]━━━✤
 ╽╭─────────✤
-┃│  Owner :  x-electra
+┃│  Owner :  KRIZ-SER
 ┃│  Prefix : ${prefix}
 ┃│ Hostname :${hostname()}
 ┃│ Date : ${date}
@@ -85,9 +85,10 @@ const buttons = [
 ]
 
 const buttonMessage = {
+    image: 'https://i.imgur.com/LgwJjMF.jpeg',
     text: tiny(menu),
     footer: tiny(
-          `X-AsenaDuplicated\nVersion : ${require("../package.json").version}`
+          `WHATS-KRIZ-AI`
         ),
     buttons: buttons,
     headerType: 1
