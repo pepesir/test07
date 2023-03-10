@@ -277,25 +277,21 @@ X-Asena - X-Electra
 
 
 //message.reply_message.text
-command(
-  {
-    pattern: "insta ?(.*)",
-    fromMe: isPrivate,
-    desc: "downloads video from instagram",
-    type: "downloader",
-  },
-  async (message, match) => {
-    if (!match) return await message.sendMessage("ᴇɴᴛᴇʀ ʟɪɴᴋ");
-   // match = match || message.reply_message.text;
-    
-    if (!match.includes("instagram.com"))
-      return await message.reply("_Invalid URL_");
-    let response = await getJson(
-      `https://x-asena-api.up.railway.app/ig?q=${match}`
-    );
-    try { message.sendFromUrl(response.result[1].url); } catch { message.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
-  }
-);
+const { command, isPrivate, isUrl, getJson , getBuffer} = require("../lib")
+  command(
+    {
+           pattern: "insta",
+           fromMe: isPrivate,
+           type: "downloader",
+    },
+   async(message,match) => {
+  if(!match.includes("www.instagram.com")) await message.sendMessage("I need a valid Instagram Link");
+     let response = await getJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${match}&apikey=Admin`);
+  
+  let media = await getJson(response.result.url)
+  media = await getBuffer(media)
+     await message.client.sendMessage(message.jid , { video : media , caption : response.result.decs, mimetype: "video/mp4"} , { quoted : message  })
+});
 
 command(
   {
