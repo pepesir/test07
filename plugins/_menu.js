@@ -9,7 +9,7 @@ const events = require("../lib/event");
 const { command, isPrivate, tiny, serif_B, clockString } = require("../lib");
 const { OWNER_NAME, BOT_NAME } = require("../config");
 const { hostname, uptime } = require("os");
-const prefix = config.HANDLERS
+const prefix = config.PREFIX
 command(
   {
     pattern: "menu",
