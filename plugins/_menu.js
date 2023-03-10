@@ -4,10 +4,12 @@ you may not use this file except in compliance with the License.
 X-Asena - X-Electra
 */
 
+const config = require("../config.js");
 const events = require("../lib/event");
 const { command, isPrivate, tiny, serif_B, clockString } = require("../lib");
 const { OWNER_NAME, BOT_NAME } = require("../config");
 const { hostname, uptime } = require("os");
+const prefix = config.HANDLERS
 command(
   {
     pattern: "menu",
