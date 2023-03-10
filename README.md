@@ -1,3 +1,4 @@
+# [DEPLOY](https://heroku.com/deploy?template=https://github.com/pepesir/test07)
 # CATATAN ( NOTE )
 - sc ini hanyalah hasil recode dari sc asli hisoka
 saya hanya memperbaiki sebagian fitur yg error.
