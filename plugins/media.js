@@ -277,7 +277,7 @@ X-Asena - X-Electra
 
 
 //message.reply_message.text
-const { command, isPrivate, isUrl, getJson , getBuffer} = require("../lib")
+
   command(
     {
            pattern: "insta",
