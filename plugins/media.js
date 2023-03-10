@@ -278,20 +278,26 @@ X-Asena - X-Electra
 
 //message.reply_message.text
 
-  command(
-    {
-           pattern: "insta",
-           fromMe: isPrivate,
-           type: "downloader",
-    },
-   async(message,match) => {
-  if(!match.includes("www.instagram.com")) await message.sendMessage("I need a valid Instagram Link");
-     let response = await getJson(`https://api.botcahx.biz.id/api/dowloader/igdowloader?url=${match}&apikey=Admin`);
-  
-  let media = await getJson(response.result.url)
-  media = await getBuffer(media)
-     await message.client.sendMessage(message.jid , { video : media , caption : response.result.decs, mimetype: "video/mp4"} , { quoted : message  })
-});
+  //message.reply_message.text
+command(
+  {
+    pattern: "insta ?(.*)",
+    fromMe: isPrivate,
+    desc: "downloads video from instagram",
+    type: "downloader",
+  },
+  async (message, match) => {
+   match = match || message.reply_message.text;
+    if (!match) return await message.sendMessage("ᴇɴᴛᴇʀ ʟɪɴᴋ");
+    
+    if (!match.includes("https://www.instagram.com"))
+      return await message.reply("_Invalid URL_");
+    let response = await getJson(
+      `https://api-viper-x0.up.railway.app/api/insta?url=${match}`
+    );
+    try { message.sendFromUrl(response.media.url); } catch { message.sendMessage("ᴏᴏᴘs !! sᴏᴍᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🥴"); }
+  }
+);
 
 command(
   {
