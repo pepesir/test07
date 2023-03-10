@@ -1,5 +1,5 @@
 {
-  "name": "WHATS-KRIZ-AI",
+  "name": "supervisor -s index.js",
   "version": "3.0.0",
   "description": "X-Asena project - a Whatsapp userbot helping to improve your Whatsapp experience.",
   "main": "./index.js",
