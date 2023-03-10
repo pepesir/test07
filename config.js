@@ -51,7 +51,7 @@ module.exports = {
           },
           logging: false,
         }),
-  SUDO: process.env.SUDO || "919207759062,918113921898,918590508376,919778383987",
+  SUDO: process.env.SUDO || " ",
   HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || " ",
   HEROKU_API_KEY: process.env.HEROKU_API_KEY || " ",
   OWNER_NAME: process.env.OWNER_NAME || "X-Electra",
