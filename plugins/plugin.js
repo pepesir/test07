@@ -17,13 +17,15 @@ command(
     type:'user'
   },
   async (message, match) => {
-    if (!match) return await message.sendMessage("_Send a plugin url_");
-    for (let Url of getUrl(match)) {
-      try {
-        var url = new URL(Url);
-      } catch {
-        return await message.sendMessage("_Invalid Url_");
-      }
+    match = match[1]!==""?match[1]:message.reply_message.text
+    if (!match || !/\bhttps?:\/\/\S+/gi.test(match)) return await message.sendMessage("_Need url!_)
+    let links = match.match(/\bhttps?:\/\/\S+/gi);
+    for (let link of links){
+    try {
+        var url = new URL(link);
+    } catch {
+        return await message.sendMessage("_Invaild url!_");
+    }
 
       if (url.host === "gist.github.com") {
         url.host = "gist.githubusercontent.com";
