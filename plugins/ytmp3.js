@@ -17,7 +17,7 @@ command(
     type: "downloader",
   },
   async (message, match) => {
-if (!match) throw `Example : ${prefix + command} yt link`
+if (!match) throw `*ʟɪɴᴋ ᴠᴇᴄʜ ᴄᴍᴅ ᴀᴅɪ ᴍyʀᴇ*`
 let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
 if (!isLinks2) return message.reply(`Ugly link`)
 message.reply(mess.wait)
