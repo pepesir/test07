@@ -1,60 +1,54 @@
 const { command, getUrl } = require("../lib");
 const got = require("got");
-const axios = require('axios');
 const fs = require("fs");
 const { PluginDB, installPlugin } = require("../lib/database/plugins");
 
-/* Copyright (C) 2022 X-Electra.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-X-Asena - X-Electra
-*/
+
 
 command(
   {
-    pattern: "install ?(.*)",
+    pattern: "install",
     fromMe: true,
-    desc: "Install External plugins",
-    type:'user'
+    type: "user",
   },
   async (message, match) => {
-    match = match[1]!==""?match[1]:message.reply_message.text
-    if (!match || !/\bhttps?:\/\/\S+/gi.test(match)) return await message.sendMessage("_Need url!_")
-    let links = match.match(/\bhttps?:\/\/\S+/gi);
-    for (let link of links){
+    if (!match) return await message.sendMessage("Example:\n\nplugin url\n∴════∴\nplugin list");
+
     try {
-        var url = new URL(link);
-    } catch {
-        return await message.sendMessage("_Invaild url!_");
-    }
-if (url.host === 'gist.github.com') {
-        url.host = 'gist.githubusercontent.com';
-        url = url.toString() + '/raw'
-    } else {
-        url = url.toString()
-    }
-    try {
-        var response = await axios(url+"?timestamp="+new Date());
-    } catch {
-        return await message.sendMessage("_Invaild url!_")
-    }
-    let plugin_name = /pattern: ["'](.*)["'],/g.exec(response.data)
-    var plugin_name_temp = response.data.match(/pattern: ["'](.*)["'],/g)?response.data.match(/pattern: ["'](.*)["'],/g).map(e=>e.replace("pattern","").replace(/[^a-zA-Z]/g, "")):"temp"
-    try { plugin_name = plugin_name[1].split(" ")[0] } catch { return await message.sendReply("_Invalid plugin. No plugin name found!_") }
-    fs.writeFileSync('./plugins/' + plugin_name + '.js', response.data);
-    try {
-        require('./' + plugin_name);
+      var url = new URL(match);
     } catch (e) {
-          fs.unlinkSync(__dirname+'/'+plugin_name + '.js');
-          return await message.sendMessage("Invalid Plugin\n ```" + e + "```");
-        }
+      console.log(e);
+      return await message.sendMessage("_Ready_");
+    }
 
-        await installPlugin(url, plugin_name);
+    if (url.host === "gist.github.com") {
+      url.host = "gist.githubusercontent.com";
+      url = url.toString() + "/raw";
+    } else {
+      url = url.toString();
+    }
+    var plugin_name;
+    var { body, statusCode } = await got(url);
+    if (statusCode == 200) {
+      var comand = body.match(/(?<=pattern:) ["'](.*?)["']/);
+      plugin_name = comand[0].replace(/["']/g, "").trim().split(" ")[0];
+      if (!plugin_name) {
+        plugin_name = "__" + Math.random().toString(36).substring(8);
+      }
+      fs.writeFileSync(__dirname + "/" + plugin_name + ".js", body);
+      try {
+        require("./" + plugin_name);
+      } catch (e) {
+        fs.unlinkSync(__dirname + "/" + plugin_name + ".js");
+        return await message.sendMessage("Invalid Plugin\n ```" + e + "```");
+      }
 
-        await message.sendMessage(
-          `_New plugin installed : ${commands.join(",")}_`
-        );
-});
+      await installPlugin(url, plugin_name);
+
+      await message.sendMessage(`_New plugin installed : ${plugin_name}_`);
+    }
+  }
+);
 
 /* Copyright (C) 2022 X-Electra.
 Licensed under the  GPL-3.0 License;
